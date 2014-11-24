@@ -1,0 +1,6 @@
+# Custom for Visual Studio
+*.sdf 
+*.opensdf
+*.suo
+*.vcxproj.user
+ipch/*
