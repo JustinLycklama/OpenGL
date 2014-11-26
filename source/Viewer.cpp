@@ -15,19 +15,8 @@ Viewer::Viewer(void)
 	gVBO = 0;
 
 	initialize();
-	run();
-}
-
-
-Viewer::~Viewer(void)
-{
-}
-
-
-
-void Viewer::run()
-{
-	 // create buffer and fill it with the points of the triangle
+	
+	// create buffer and fill it with the points of the triangle
     LoadTriangle();
 
     // run while the window is open
@@ -38,6 +27,11 @@ void Viewer::run()
 
     // clean up and exit
     glfwTerminate();
+}
+
+
+Viewer::~Viewer(void)
+{
 }
 
 // loads a triangle into the VAO global
@@ -51,20 +45,25 @@ void Viewer::LoadTriangle() {
     glBindBuffer(GL_ARRAY_BUFFER, gVBO);
     
     // Put the three triangle verticies into the VBO
-    GLfloat vertexData[] = {
-        //  X     Y     Z
-         0.0f, 0.8f, 0.0f,
-        -0.8f,-0.8f, 0.0f,
-         0.8f,-0.8f, 0.0f,
+     GLfloat vertexData[] = {
+        //  X     Y     Z       U     V
+         0.0f, 0.8f, 0.0f,   0.5f, 1.0f,
+        -0.8f,-0.8f, 0.0f,   0.0f, 0.0f,
+         0.8f,-0.8f, 0.0f,   1.0f, 0.0f,
     };
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);
     
     // connect the xyz to the "vert" attribute of the vertex shader
 	GLuint vert = glGetAttribLocation(GLprogram, "vert");
+	GLuint vertTex = glGetAttribLocation(GLprogram, "vertTexCoord");
 
     glEnableVertexAttribArray(vert);
-    glVertexAttribPointer(vert, 3, GL_FLOAT, GL_FALSE, 0, NULL);
+    glVertexAttribPointer(vert, 3, GL_FLOAT, GL_FALSE, 5*sizeof(GLfloat), NULL);
     
+	// connect the uv coords to the "vertTexCoord" attribute of the vertex shader
+    glEnableVertexAttribArray(vertTex);
+    glVertexAttribPointer(vertTex, 2, GL_FLOAT, GL_TRUE,  5*sizeof(GLfloat), (const GLvoid*)(3 * sizeof(GLfloat)));
+
     // unbind the VBO and VAO
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
@@ -99,7 +98,6 @@ void Viewer::initialize() {
     // make sure OpenGL version 3.2 API is available
     if(!GLEW_VERSION_3_2)
         throw std::runtime_error("OpenGL 3.2 API is not available.");
-	
 
 	// Init GL shaders and program
 	vector<pair<string, GLenum>> shaderList;
@@ -108,20 +106,27 @@ void Viewer::initialize() {
 
     Program* program = new Program();
 	GLprogram = program->linkProgram(shaderList);
+	if(GLprogram == -1) throw runtime_error("Could not create/link program");
 
-	cout << GLprogram;
-
-	assert(GLprogram != -1);
+	// Load Textures
+	texture = new Texture("hazard.png", 9729, 33071);
 }
 
 
 // draws a single frame
 void Viewer::Render() {
     // clear everything
-    glClearColor(0, 0, 0, 1); // black
+    glClearColor(1, 1, 1, 1); // black
     glClear(GL_COLOR_BUFFER_BIT);
         
 	glUseProgram(GLprogram);
+
+	// bind the texture and set the "tex" uniform in the fragment shader
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, texture->getId());
+    //gProgram->setUniform("tex", 0); //set to 0 because the texture is bound to GL_TEXTURE0
+	GLint tex =  glGetUniformLocation(GLprogram, "tex");
+	glUniform1i(tex, 0);
 
     // bind the VAO (the triangle)
     glBindVertexArray(gVAO);
@@ -131,7 +136,8 @@ void Viewer::Render() {
     
     // unbind the VAO
     glBindVertexArray(0);
-    
+    glBindTexture(GL_TEXTURE_2D, 0);
+
 	// unbind the program
     glUseProgram(0);
 

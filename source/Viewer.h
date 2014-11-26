@@ -5,6 +5,8 @@
 #include <GL/glfw.h>
 #include <glm/glm.hpp>
 
+#include "Texture.h"
+
 using namespace std;
 
 class Viewer
@@ -18,12 +20,12 @@ class Viewer
 	void LoadTriangle();
 	void Render();
 	void initialize();
-	void run();
 
 	// globals
 	GLuint gVAO;
 	GLuint gVBO;
 
 	GLuint GLprogram;
+	Texture* texture;
 };
 

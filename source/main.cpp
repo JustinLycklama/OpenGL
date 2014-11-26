@@ -5,11 +5,13 @@
 
 #include "Viewer.h"
 
+
 int main(int argc, char *argv[]) {
     try {
 		Viewer* viewer = new Viewer();
     } catch (const std::exception& e){
-        std::cerr << "ERROR: " << e.what() << std::endl;
+        std::cerr << "\n\nERROR: " << e.what() << std::endl;
+		getchar();
         return EXIT_FAILURE;
     }
 
