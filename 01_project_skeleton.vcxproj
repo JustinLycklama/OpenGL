@@ -11,17 +11,26 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\hazard.png" />
     <None Include="source\fragment-shader.txt" />
     <None Include="source\vertex-shader.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\Bitmap.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\Program.cpp" />
+    <ClCompile Include="source\Texture.cpp" />
     <ClCompile Include="source\Viewer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="resource1.h" />
+    <ClInclude Include="source\Bitmap.h" />
     <ClInclude Include="source\Program.h" />
+    <ClInclude Include="source\Texture.h" />
     <ClInclude Include="source\Viewer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="01_project_skeleton1.rc" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{39E0D9AD-3960-4FB6-8BFE-C520DB242ED0}</ProjectGuid>
@@ -52,6 +61,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>$(ProjectDir)thirdparty\glew-1.9.0\include;$(ProjectDir)thirdparty\glfw-2.7.7\include;$(ProjectDir)thirdparty\glm-0.9.4.0;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)thirdparty\glew-1.9.0\lib;$(ProjectDir)thirdparty\glfw-2.7.7\lib-msvc100;$(LibraryPath)</LibraryPath>
+    <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>$(ProjectDir)thirdparty\glew-1.9.0\include;$(ProjectDir)thirdparty\glfw-2.7.7\include;$(ProjectDir)thirdparty\glm-0.9.4.0;$(IncludePath)</IncludePath>
@@ -62,6 +72,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Development Files\OpenGL\thirdparty\stb_image;D:\Development Files\OpenGL\Resources;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
