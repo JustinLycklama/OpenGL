@@ -190,8 +190,11 @@ Bitmap* Bitmap::bitmapFromFile(std::string filePath) {
 	const char* temp = filePath.c_str();
 
     unsigned char* pixels = stbi_load(temp, &width, &height, &channels, 0);
-    if(!pixels) throw std::runtime_error(stbi_failure_reason());
-    
+    if(!pixels){
+		std::string error = "Could not open Texture: \n" + filePath;
+		throw std::runtime_error(error);
+	}
+
     Bitmap* bmp = new Bitmap(width, height, (Format)channels, pixels);
     stbi_image_free(pixels);
     return bmp;

@@ -5,7 +5,10 @@
 #include <GL/glfw.h>
 #include <glm/glm.hpp>
 
+#include <vector>
+
 #include "Texture.h"
+#include "Geometry.h"
 
 using namespace std;
 
@@ -16,16 +19,14 @@ class Viewer
 	~Viewer(void);
 
   private:
-	// loads a triangle into the VAO global
-	void LoadTriangle();
 	void Render();
+	void Update(float secondsElapsed);
 	void initialize();
 
-	// globals
-	GLuint gVAO;
-	GLuint gVBO;
+	vector<Geometry*> objectList;
 
+	// globals
 	GLuint GLprogram;
-	Texture* texture;
+	Texture* texture, *crateTex;
 };
 

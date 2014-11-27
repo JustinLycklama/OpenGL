@@ -6,22 +6,27 @@
 #include <stdexcept>
 #include <cmath>
 
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 #include "Viewer.h"
 #include "Program.h"
 
 Viewer::Viewer(void)
 {
-	gVAO = 0;
-	gVBO = 0;
-
 	initialize();
 	
-	// create buffer and fill it with the points of the triangle
-    LoadTriangle();
+	Geometry* triangle = new Geometry(Triangle, texture, GLprogram);
+	Geometry* cube = new Geometry(Cube, crateTex, GLprogram);
+	objectList.push_back(cube);
 
     // run while the window is open
+	double lastTime = glfwGetTime();
     while(glfwGetWindowParam(GLFW_OPENED)){
-        // draw one frame
+		double thisTime = glfwGetTime();
+        Update(thisTime - lastTime);
+        lastTime = thisTime;
+
         Render();
     }
 
@@ -32,41 +37,6 @@ Viewer::Viewer(void)
 
 Viewer::~Viewer(void)
 {
-}
-
-// loads a triangle into the VAO global
-void Viewer::LoadTriangle() {
-    // make and bind the VAO
-    glGenVertexArrays(1, &gVAO);
-    glBindVertexArray(gVAO);
-    
-    // make and bind the VBO
-    glGenBuffers(1, &gVBO);
-    glBindBuffer(GL_ARRAY_BUFFER, gVBO);
-    
-    // Put the three triangle verticies into the VBO
-     GLfloat vertexData[] = {
-        //  X     Y     Z       U     V
-         0.0f, 0.8f, 0.0f,   0.5f, 1.0f,
-        -0.8f,-0.8f, 0.0f,   0.0f, 0.0f,
-         0.8f,-0.8f, 0.0f,   1.0f, 0.0f,
-    };
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);
-    
-    // connect the xyz to the "vert" attribute of the vertex shader
-	GLuint vert = glGetAttribLocation(GLprogram, "vert");
-	GLuint vertTex = glGetAttribLocation(GLprogram, "vertTexCoord");
-
-    glEnableVertexAttribArray(vert);
-    glVertexAttribPointer(vert, 3, GL_FLOAT, GL_FALSE, 5*sizeof(GLfloat), NULL);
-    
-	// connect the uv coords to the "vertTexCoord" attribute of the vertex shader
-    glEnableVertexAttribArray(vertTex);
-    glVertexAttribPointer(vertTex, 2, GL_FLOAT, GL_TRUE,  5*sizeof(GLfloat), (const GLvoid*)(3 * sizeof(GLfloat)));
-
-    // unbind the VBO and VAO
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-    glBindVertexArray(0);
 }
 
 void Viewer::initialize() {
@@ -99,6 +69,9 @@ void Viewer::initialize() {
     if(!GLEW_VERSION_3_2)
         throw std::runtime_error("OpenGL 3.2 API is not available.");
 
+	glEnable(GL_DEPTH_TEST);
+	glDepthFunc(GL_LESS);
+
 	// Init GL shaders and program
 	vector<pair<string, GLenum>> shaderList;
 	shaderList.push_back(pair<string, GLenum> ("vertex-shader.txt", GL_VERTEX_SHADER));
@@ -108,31 +81,40 @@ void Viewer::initialize() {
 	GLprogram = program->linkProgram(shaderList);
 	if(GLprogram == -1) throw runtime_error("Could not create/link program");
 
+	// Init camera
+	glUseProgram(GLprogram);
+
+	glm::mat4 projection = glm::perspective<float>(50.0, SCREEN_SIZE.x/SCREEN_SIZE.y, 0.1f, 10.0f);
+
+	GLint projPos =  glGetUniformLocation(GLprogram, "projection");
+	glUniformMatrix4fv(projPos, 1, false, glm::value_ptr(projection));
+
+	glm::mat4 camera = glm::lookAt(glm::vec3(3,3,3), glm::vec3(0,0,0), glm::vec3(0,1,0));
+
+	GLint cameraPos =  glGetUniformLocation(GLprogram, "camera");
+	glUniformMatrix4fv(cameraPos, 1, false, glm::value_ptr(camera));
+
+	glUseProgram(0);
+
 	// Load Textures
 	texture = new Texture("hazard.png", 9729, 33071);
+	crateTex = new Texture("wooden-crate.jpg", 9729, 33071);
 }
 
 
 // draws a single frame
 void Viewer::Render() {
     // clear everything
-    glClearColor(1, 1, 1, 1); // black
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClearColor(1, 1, 1, 1); // white
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
 	glUseProgram(GLprogram);
 
-	// bind the texture and set the "tex" uniform in the fragment shader
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, texture->getId());
-    //gProgram->setUniform("tex", 0); //set to 0 because the texture is bound to GL_TEXTURE0
-	GLint tex =  glGetUniformLocation(GLprogram, "tex");
-	glUniform1i(tex, 0);
-
-    // bind the VAO (the triangle)
-    glBindVertexArray(gVAO);
-    
-    // draw the VAO
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+	for(vector<Geometry*>::iterator it = objectList.begin(); it != objectList.end(); ++it)
+	{
+		Geometry* object = *it;
+		object->Render();
+	}
     
     // unbind the VAO
     glBindVertexArray(0);
@@ -143,4 +125,12 @@ void Viewer::Render() {
 
     // swap the display buffers (displays what was just drawn)
     glfwSwapBuffers();
+}
+
+void Viewer::Update(float secondsElapsed){
+	for(vector<Geometry*>::iterator it = objectList.begin(); it != objectList.end(); ++it)
+	{
+		Geometry* object = *it;
+		object->Update(secondsElapsed);
+	}
 }

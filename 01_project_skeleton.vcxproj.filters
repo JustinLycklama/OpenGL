@@ -1,33 +1,70 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="source\Bitmap.cpp" />
-    <ClCompile Include="source\main.cpp" />
-    <ClCompile Include="source\Program.cpp" />
-    <ClCompile Include="source\Texture.cpp" />
-    <ClCompile Include="source\Viewer.cpp" />
+    <ClCompile Include="source\Program.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Bitmap.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Texture.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Viewer.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Geometry.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="resource1.h" />
-    <ClInclude Include="source\Bitmap.h" />
-    <ClInclude Include="source\Program.h" />
-    <ClInclude Include="source\Texture.h" />
-    <ClInclude Include="source\Viewer.h" />
+    <ClInclude Include="source\Program.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Bitmap.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Viewer.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Texture.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="resource1.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Geometry.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="01_project_skeleton1.rc" />
+    <None Include="source\fragment-shader.txt">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="source\vertex-shader.txt">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="Resources\hazard.png">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="Resources\wooden-crate.jpg">
+      <Filter>Resources</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\hazard.png" />
-    <None Include="source\fragment-shader.txt" />
-    <None Include="source\vertex-shader.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="source">
-      <UniqueIdentifier>{92ecc9f1-ae15-4882-9eaa-8666e0ba4043}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resources">
       <UniqueIdentifier>{6da46bec-f0f1-41eb-84b0-9094e6871d98}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{ad216286-0012-4b53-88d0-ee1de9f2ec65}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="01_project_skeleton1.rc">
+      <Filter>Resources</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

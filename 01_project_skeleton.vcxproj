@@ -12,11 +12,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\hazard.png" />
+    <None Include="Resources\wooden-crate.jpg" />
     <None Include="source\fragment-shader.txt" />
     <None Include="source\vertex-shader.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Bitmap.cpp" />
+    <ClCompile Include="source\Geometry.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\Program.cpp" />
     <ClCompile Include="source\Texture.cpp" />
@@ -25,6 +27,7 @@
   <ItemGroup>
     <ClInclude Include="resource1.h" />
     <ClInclude Include="source\Bitmap.h" />
+    <ClInclude Include="source\Geometry.h" />
     <ClInclude Include="source\Program.h" />
     <ClInclude Include="source\Texture.h" />
     <ClInclude Include="source\Viewer.h" />
