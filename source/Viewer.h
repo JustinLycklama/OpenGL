@@ -8,9 +8,10 @@
 #include <vector>
 
 #include "Texture.h"
-#include "Geometry.h"
+#include "Asset.h"
 #include "Camera.h"
 #include "Window.h"
+#include "Instance.h"
 
 using namespace std;
 
@@ -25,14 +26,15 @@ class Viewer
 	void setWindow(Window* win);
 	void setCamera(Camera* cam);
 
-	void Render();
-	void Update(float secondsElapsed);
+	void render();
+	void update(float secondsElapsed);
 
   private:
-	vector<Geometry*> objectList;
+	Asset* boxAsset;
+	vector<Instance*> instanceList;
 
 	// globals
-	GLuint GLprogram;
+	Program* program;
 	Window* window;
 	Camera* camera;
 	Texture* texture, *crateTex;

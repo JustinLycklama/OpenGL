@@ -63,7 +63,7 @@ void Window::setCamera(Camera* cam) {
 	camera = cam;
 }
 
-void  Window::Update(float secondsElapsed) {
+void  Window::update(float secondsElapsed) {
 
 	float moveSpeed = 5.0; // Per second
 
@@ -100,6 +100,6 @@ void  Window::Update(float secondsElapsed) {
 	}
 }
 
-void Window::Render() {
+void Window::render() {
 
 }

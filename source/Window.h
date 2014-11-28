@@ -13,8 +13,8 @@ class Window
 	void setViewer(Viewer* vw);
 	void setCamera(Camera* cam);
 
-	void Render();
-	void Update(float secondsElapsed);
+	void render();
+	void update(float secondsElapsed);
 
 	const glm::vec2 SCREEN_SIZE;
 

@@ -6,6 +6,7 @@
 #include <glm/glm.hpp>
 
 #include "Texture.h"
+#include "Program.h"
 
 using namespace std;
 
@@ -13,25 +14,27 @@ enum Shape {
 	Triangle, Cube
 };
 
-class Geometry
+class Asset
 {
   public:
-	Geometry(Shape shape, Texture* tex, GLuint prog);
-	~Geometry(void);
-	void Render();
-	void Update(float secondsElapsed);
+	Asset(Shape shape, Texture* tex, Program* prog);
+	~Asset(void);
+
+	void render();
+	void update(float secondsElapsed);
 	
+	Program* program;
+
   private:
 	void LoadTriangle();
 	void LoadCube();
 
-	glm::mat4 model;
+	Texture* texture;
 
 	GLfloat gDegreesRotated;
 
 	GLuint gVAO;
 	GLuint gVBO;
-	GLuint program;
-	Texture* texture;
+	
 	Shape shape;
 };

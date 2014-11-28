@@ -20,7 +20,25 @@ Program::~Program()
 {
 }
 
-GLuint Program::linkProgram(vector<pair<string, GLenum>> fileList) {
+bool Program::isInUse() {
+	GLint curProgram;
+	glGetIntegerv(GL_CURRENT_PROGRAM, &curProgram);
+	return curProgram == GLprogram;
+}
+
+GLint Program::getUniformLocation(string var){
+	return glGetUniformLocation(GLprogram, var.c_str());
+}
+
+GLint Program::getAttributeLocation(string var) {
+	return glGetAttribLocation(GLprogram, var.c_str());
+}
+
+GLint Program::getProgramId() {
+	return GLprogram;
+}
+
+void Program::linkProgram(vector<pair<string, GLenum>> fileList) {
 
 	vector<GLuint> shaders;
 
@@ -59,10 +77,8 @@ GLuint Program::linkProgram(vector<pair<string, GLenum>> fileList) {
 		cout << msg;
 
         delete[] strInfoLog;
-		return -1;
+		GLprogram = -1;
     }
-
-	return GLprogram;
 }
 
 // returns the full path to the file `fileName` in the resources directory of the app bundle

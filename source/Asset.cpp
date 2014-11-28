@@ -10,11 +10,11 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include "Geometry.h"
+#include "Asset.h"
 
 using namespace std;
 
-Geometry::Geometry(Shape s, Texture* tex, GLuint prog)
+Asset::Asset(Shape s, Texture* tex, Program* prog)
 {
 	program = prog;
 	texture = tex;
@@ -32,26 +32,20 @@ Geometry::Geometry(Shape s, Texture* tex, GLuint prog)
 	}
 }
 
-Geometry::~Geometry()
+Asset::~Asset()
 {
 
 }
 
-void Geometry::Render(){
+void Asset::render(){
 	// Bind the texture and set the "tex" uniform in the fragment shader
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, texture->getId());
-	GLint tex =  glGetUniformLocation(program, "tex");
+	GLint tex =  glGetUniformLocation(program->getProgramId(), "tex");
 	glUniform1i(tex, 0);
 
     // bind the VAO
     glBindVertexArray(gVAO);
-
-	// Bind model uniform
-	model = glm::rotate(glm::mat4(), gDegreesRotated, glm::vec3(0,1,0));
-
-	GLint modelPos =  glGetUniformLocation(program, "model");
-	glUniformMatrix4fv(modelPos, 1, false, glm::value_ptr(model));
     
 	// draw the VAO
 	switch(shape){
@@ -64,13 +58,13 @@ void Geometry::Render(){
 	}
 }
 
-void Geometry::Update(float secondsElapsed) {
+void Asset::update(float secondsElapsed) {
 	const GLfloat degreesPerSecond = 90.0f;
     gDegreesRotated += secondsElapsed * degreesPerSecond;
     while(gDegreesRotated > 360.0f) gDegreesRotated -= 360.0f;
 }
 
-void Geometry::LoadTriangle() {
+void Asset::LoadTriangle() {
     // make and bind the VAO
     glGenVertexArrays(1, &gVAO);
     glBindVertexArray(gVAO);
@@ -89,8 +83,8 @@ void Geometry::LoadTriangle() {
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);
     
     // connect the xyz to the "vert" attribute of the vertex shader
-	GLuint vert = glGetAttribLocation(program, "vert");
-	GLuint vertTex = glGetAttribLocation(program, "vertTexCoord");
+	GLuint vert = program->getAttributeLocation("vert");
+	GLuint vertTex = program->getAttributeLocation("vertTexCoord");
 
     glEnableVertexAttribArray(vert);
     glVertexAttribPointer(vert, 3, GL_FLOAT, GL_FALSE, 5*sizeof(GLfloat), NULL);
@@ -105,7 +99,7 @@ void Geometry::LoadTriangle() {
 }
 
 
-void Geometry::LoadCube() {
+void Asset::LoadCube() {
 	 // make and bind the VAO
     glGenVertexArrays(1, &gVAO);
     glBindVertexArray(gVAO);
@@ -168,8 +162,8 @@ void Geometry::LoadCube() {
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);
 
 	// connect the xyz to the "vert" attribute of the vertex shader
-	GLuint vert = glGetAttribLocation(program, "vert");
-	GLuint vertTex = glGetAttribLocation(program, "vertTexCoord");
+	GLuint vert = program->getAttributeLocation("vert");
+	GLuint vertTex = program->getAttributeLocation("vertTexCoord");
 
     glEnableVertexAttribArray(vert);
     glVertexAttribPointer(vert, 3, GL_FLOAT, GL_FALSE, 5*sizeof(GLfloat), NULL);

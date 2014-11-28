@@ -16,13 +16,16 @@
     <ClCompile Include="source\Viewer.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="source\Geometry.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="source\Camera.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="source\Window.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Asset.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Instance.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
@@ -42,13 +45,16 @@
     <ClInclude Include="resource1.h">
       <Filter>Resources</Filter>
     </ClInclude>
-    <ClInclude Include="source\Geometry.h">
-      <Filter>Source</Filter>
-    </ClInclude>
     <ClInclude Include="source\Camera.h">
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="source\Window.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Asset.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Instance.h">
       <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>

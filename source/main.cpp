@@ -31,12 +31,16 @@ int main(int argc, char *argv[]) {
 			float secondsElapsed = thisTime - lastTime;
 			lastTime = thisTime;
 
-			window->Update(secondsElapsed);
-			viewer->Update(secondsElapsed);
+			window->update(secondsElapsed);
+			viewer->update(secondsElapsed);
 
-			window->Render();
-			viewer->Render();
+			window->render();
+			viewer->render();
 		}
+
+		free(window);
+		free(viewer);
+		free(camera);
 
 		// clean up and exit
 		glfwTerminate();
