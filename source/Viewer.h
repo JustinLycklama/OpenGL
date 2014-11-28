@@ -9,6 +9,8 @@
 
 #include "Texture.h"
 #include "Geometry.h"
+#include "Camera.h"
+#include "Window.h"
 
 using namespace std;
 
@@ -18,15 +20,21 @@ class Viewer
 	Viewer(void);
 	~Viewer(void);
 
-  private:
-	void Render();
-	void Update(float secondsElapsed);
 	void initialize();
 
+	void setWindow(Window* win);
+	void setCamera(Camera* cam);
+
+	void Render();
+	void Update(float secondsElapsed);
+
+  private:
 	vector<Geometry*> objectList;
 
 	// globals
 	GLuint GLprogram;
+	Window* window;
+	Camera* camera;
 	Texture* texture, *crateTex;
 };
 
