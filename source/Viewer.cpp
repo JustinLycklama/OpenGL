@@ -16,7 +16,6 @@ Viewer::Viewer(void)
 {	
 }
 
-
 Viewer::~Viewer(void)
 {
 	free(program);
@@ -26,8 +25,6 @@ Viewer::~Viewer(void)
 	{
 		free(*it);
 	}
-
-
 }
 
 void Viewer::setWindow(Window* win) {
@@ -67,10 +64,11 @@ void Viewer::initialize() {
 
 	// Create Light
 	light = new Light(boxAsset);
-	light->setPosition(vec3(4, 0, 4));
+	light->translate(vec3(2, 0, 4));
 	light->setIntensities(vec3(0.9, 0.9, 0.9));
-	light->setAttenuation(0.2f);
+	light->setAttenuation(0.01f);
 	light->setAmbientCoefficient(0.01f);
+	light->scale(vec3(0.1, 0.1, 0.1));
 
 	glUseProgram(0);
 	
@@ -78,40 +76,22 @@ void Viewer::initialize() {
 	Instance* cube = new Instance(boxAsset);
 	Instance* cube2 = new Instance(boxAsset);
 
-	cube2->translate(vec3(4, 0, -2));
+	cube2->translate(vec3(4, 0, 0));
 	cube2->scale(vec3(1, 2, 1));
-	cube2->rotate(vec3(0, 1, 0), 90);
+	cube2->rotate(vec3(0, 1, 0), 45);
 
 	instanceList.push_back(cube);
 	instanceList.push_back(cube2);
 }
 
 void Viewer::render() {
-    // clear everything
-    glClearColor(1, 1, 1, 1); // white
+    glClearColor(1, 1, 1, 1);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
 	glUseProgram(program->getProgramId());
 
-	// Set Camera
-	GLint cameraMatrix =  program->getUniformLocation("camera");
-	glUniformMatrix4fv(cameraMatrix, 1, false, glm::value_ptr(camera->matrix()));
-
-	GLint cameraPos =  program->getUniformLocation("cameraPosition");
-	glUniform3fv(cameraPos, 1, glm::value_ptr(camera->getPosition()));
-
-	// Set Light
-	GLint lightPos = program->getUniformLocation("light.position");
-	GLint lightColor = program->getUniformLocation("light.intensities");
-	GLint lightAtten = program->getUniformLocation("light.attenuation");
-	GLint lightAmbient = program->getUniformLocation("light.ambientCoefficient");
-
-	glUniform3fv(lightPos, 1, glm::value_ptr(light->getPosition()));
-	glUniform3fv(lightColor, 1, glm::value_ptr(light->getIntensities()));
-	glUniform1f(lightAtten, light->getAttenuation());
-	glUniform1f(lightAmbient, light->getAmbientCoefficient());
-
-	light->render();
+	camera->render(program);
+	light->render(program);
 
 	for(vector<Instance*>::iterator it = instanceList.begin(); it != instanceList.end(); ++it)
 	{

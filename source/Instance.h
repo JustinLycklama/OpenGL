@@ -17,13 +17,14 @@ class Instance
 	void setAsset(Asset* ast);
 	
 	mat4 getTransform();
+	vec3 getPosition();
 
 	void translate(vec3 trans);
 	void rotate(vec3 rot, float angle);
 	void scale(vec3 sc);
 
 	void update(float secondsElapsed);
-	void render();
+	virtual void render();
 
   private:
 	Asset* asset;

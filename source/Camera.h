@@ -4,6 +4,8 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <GL/glew.h>
 
+#include "Program.h"
+
 using namespace glm;
 
 class Camera
@@ -27,6 +29,8 @@ class Camera
 	vec3 forward();
 	vec3 right();
 	vec3 up();
+
+	void render(Program* program);
 
   private:
 	vec3 position;

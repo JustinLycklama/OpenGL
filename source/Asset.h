@@ -34,15 +34,10 @@ class Asset
 	void LoadCube();
 
 	Texture* texture;
-
-	vec3 specularColor;
-
-	GLfloat gDegreesRotated;
-	
-	GLuint gVAO;
-	GLuint gVBO;
-	
 	Shape shape;
 
+	GLuint gVAO;
+	GLuint gVBO;
 
+	vec3 specularColor;
 };

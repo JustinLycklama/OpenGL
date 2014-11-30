@@ -12,7 +12,7 @@ Instance::~Instance(void)
 }
 
 void Instance::update(float secondsElapsed) {
-
+	rotate(vec3(0, 0, 1), 1);
 }
 
 void Instance::render() {
@@ -29,6 +29,10 @@ void Instance::render() {
 mat4 Instance::getTransform() {
 	return translated * rotated * scaled;
 
+}
+
+vec3 Instance::getPosition() {
+	return vec3(getTransform() * vec4(0, 0, 0, 1));
 }
 
 /* Setters */

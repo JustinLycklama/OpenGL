@@ -5,7 +5,6 @@ Light::Light(Asset* asset) : Instance (asset)
 {
 }
 
-
 Light::~Light(void)
 {
 }
@@ -14,20 +13,12 @@ vec3 Light::getIntensities() {
 	return intensities;
 }
 
-vec3 Light::getPosition() {
-	return position;
-}
-
 float Light::getAttenuation() {
 	return attenuation;
 }
 
 float Light::getAmbientCoefficient() {
 	return ambientCoefficient;
-}
-
-void Light::setPosition(vec3 pos) {
-	position = pos;
 }
 
 void Light::setIntensities(vec3 col) {
@@ -42,3 +33,18 @@ void Light::setAmbientCoefficient(float amb) {
 	ambientCoefficient = amb;
 }
 
+void Light::render(Program* program) {
+	
+	// Set Light
+	GLint lightPos = program->getUniformLocation("light.position");
+	GLint lightColor = program->getUniformLocation("light.intensities");
+	GLint lightAtten = program->getUniformLocation("light.attenuation");
+	GLint lightAmbient = program->getUniformLocation("light.ambientCoefficient");
+
+	glUniform3fv(lightPos, 1, glm::value_ptr(getPosition()));
+	glUniform3fv(lightColor, 1, glm::value_ptr(intensities));
+	glUniform1f(lightAtten, attenuation);
+	glUniform1f(lightAmbient, ambientCoefficient);
+	
+	Instance::render();
+}

@@ -6,6 +6,8 @@
 #include <stdexcept>
 #include <cmath>
 
+#include <glm/gtc/type_ptr.hpp>
+
 #include "Camera.h"
 
 using namespace std;
@@ -25,6 +27,14 @@ Camera::Camera()
 
 Camera::~Camera() {
 
+}
+
+void Camera::render(Program* program) {
+	GLint cameraMatrix =  program->getUniformLocation("camera");
+	glUniformMatrix4fv(cameraMatrix, 1, false, glm::value_ptr(matrix()));
+
+	GLint cameraPos =  program->getUniformLocation("cameraPosition");
+	glUniform3fv(cameraPos, 1, glm::value_ptr(getPosition()));
 }
 
 /* Getters */

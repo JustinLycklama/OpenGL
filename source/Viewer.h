@@ -33,7 +33,6 @@ class Viewer
   private:
 	Asset* boxAsset;
 	vector<Instance*> instanceList;
-	//vector<Light*> lightList;
 
 	// globals
 	Program* program;

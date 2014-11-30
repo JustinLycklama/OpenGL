@@ -18,8 +18,6 @@ Asset::Asset(Shape s, Texture* tex, Program* prog)
 	texture = tex;
 	shape = s;
 
-	gDegreesRotated = 0.0f;
-
 	switch(shape){
 		case Triangle:
 			LoadTriangle();
@@ -70,9 +68,6 @@ void Asset::render(){
 }
 
 void Asset::update(float secondsElapsed) {
-	const GLfloat degreesPerSecond = 90.0f;
-    gDegreesRotated += secondsElapsed * degreesPerSecond;
-    while(gDegreesRotated > 360.0f) gDegreesRotated -= 360.0f;
 }
 
 void Asset::LoadTriangle() {

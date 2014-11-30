@@ -28,7 +28,7 @@ int main(int argc, char *argv[]) {
 			glfwPollEvents();
 
 			double thisTime = glfwGetTime();
-			float secondsElapsed = thisTime - lastTime;
+			float secondsElapsed = (float)thisTime - lastTime;
 			lastTime = thisTime;
 
 			window->update(secondsElapsed);

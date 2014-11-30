@@ -93,7 +93,7 @@ void  Window::update(float secondsElapsed) {
 	glfwSetMousePos(0, 0);
 
 	/* Scroll Wheel */
-	const float zoomSensitivity = -0.7;
+	const float zoomSensitivity = -0.7f;
 	float FoV = camera->getFieldOfView() + (zoomSensitivity * (float)glfwGetMouseWheel());
 	if(FoV < 5.0f) FoV = 5.0f;
 	if(FoV > 130.0f) FoV = 130.0f;

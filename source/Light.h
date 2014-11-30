@@ -16,19 +16,18 @@ class Light : public Instance
 	~Light(void);
 
 	vec3 getIntensities();
-	vec3 getPosition();
 	float Light::getAttenuation();
 	float Light::getAmbientCoefficient();
 
 	void setIntensities(vec3 col);
-	void setPosition(vec3 pos);
 	void setAttenuation(float att);
 	void setAmbientCoefficient(float amb);
 
+	void render( Program* program);
+
   private:
-	vec3 position;
-	vec3 intensities;
-	float attenuation;
-	float ambientCoefficient;
+	vec3 intensities; // Color
+	float attenuation; // Drop off in light due to distance
+	float ambientCoefficient; // The min amount of light on any surface
 };
 
