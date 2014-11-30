@@ -21,7 +21,7 @@ class Texture
 
   private:
 	string ResourcePath(string fileName);
-	static GLenum TextureFormatForBitmapFormat(Bitmap::Format format);
+	static GLenum TextureFormatForBitmapFormat(Bitmap::Format format, bool srgb);
 
 	/*int width, height, channels;
 	unsigned char* pixels;*/

@@ -12,8 +12,6 @@
 
 #include "Asset.h"
 
-using namespace std;
-
 Asset::Asset(Shape s, Texture* tex, Program* prog)
 {
 	program = prog;
@@ -37,12 +35,25 @@ Asset::~Asset()
 
 }
 
+vec3 Asset::getSpecularColor() {
+	return specularColor;
+}
+
+void Asset::setSpecularColor(vec3 col) {
+	specularColor = col;
+}
+
 void Asset::render(){
 	// Bind the texture and set the "tex" uniform in the fragment shader
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, texture->getId());
-	GLint tex =  glGetUniformLocation(program->getProgramId(), "tex");
+	GLint tex = program->getUniformLocation("materialTex");
+	GLint shini = program->getUniformLocation("materialShininess");
+	GLint specColor = program->getUniformLocation("materialSpecularColor");
+
 	glUniform1i(tex, 0);
+	glUniform1f(shini, shininess);
+	glUniform3fv(specColor, 1, glm::value_ptr(specularColor));
 
     // bind the VAO
     glBindVertexArray(gVAO);

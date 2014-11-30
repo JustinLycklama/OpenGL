@@ -8,7 +8,7 @@
 #include "Texture.h"
 #include "Program.h"
 
-using namespace std;
+using namespace glm;
 
 enum Shape {
 	Triangle, Cube
@@ -23,7 +23,11 @@ class Asset
 	void render();
 	void update(float secondsElapsed);
 	
+	vec3 getSpecularColor();
+	void setSpecularColor(vec3 col);
+
 	Program* program;
+	GLfloat shininess;
 
   private:
 	void LoadTriangle();
@@ -31,10 +35,14 @@ class Asset
 
 	Texture* texture;
 
-	GLfloat gDegreesRotated;
+	vec3 specularColor;
 
+	GLfloat gDegreesRotated;
+	
 	GLuint gVAO;
 	GLuint gVBO;
 	
 	Shape shape;
+
+
 };

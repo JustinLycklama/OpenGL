@@ -62,11 +62,15 @@ void Viewer::initialize() {
 	crateTex = new Texture("wooden-crate.jpg", 9729, 33071);
 
 	boxAsset = new Asset(Cube, crateTex, program);
+	boxAsset->shininess = 80.0f;
+	boxAsset->setSpecularColor(vec3(1.0f, 1.0f, 1.0f));
 
 	// Create Light
 	light = new Light(boxAsset);
 	light->setPosition(vec3(4, 0, 4));
 	light->setIntensities(vec3(0.9, 0.9, 0.9));
+	light->setAttenuation(0.2f);
+	light->setAmbientCoefficient(0.01f);
 
 	glUseProgram(0);
 	
@@ -90,18 +94,22 @@ void Viewer::render() {
 	glUseProgram(program->getProgramId());
 
 	// Set Camera
-	GLint cameraPos =  program->getUniformLocation("camera");
-	glUniformMatrix4fv(cameraPos, 1, false, glm::value_ptr(camera->matrix()));
+	GLint cameraMatrix =  program->getUniformLocation("camera");
+	glUniformMatrix4fv(cameraMatrix, 1, false, glm::value_ptr(camera->matrix()));
+
+	GLint cameraPos =  program->getUniformLocation("cameraPosition");
+	glUniform3fv(cameraPos, 1, glm::value_ptr(camera->getPosition()));
 
 	// Set Light
 	GLint lightPos = program->getUniformLocation("light.position");
 	GLint lightColor = program->getUniformLocation("light.intensities");
-	GLint garbage = program->getUniformLocation("garbage");
-	GLint test = glGetUniformLocation(program->getProgramId(), "tex");
-	GLint test2 = glGetUniformLocation(program->getProgramId(), "light_intensities");
+	GLint lightAtten = program->getUniformLocation("light.attenuation");
+	GLint lightAmbient = program->getUniformLocation("light.ambientCoefficient");
 
 	glUniform3fv(lightPos, 1, glm::value_ptr(light->getPosition()));
 	glUniform3fv(lightColor, 1, glm::value_ptr(light->getIntensities()));
+	glUniform1f(lightAtten, light->getAttenuation());
+	glUniform1f(lightAmbient, light->getAmbientCoefficient());
 
 	light->render();
 

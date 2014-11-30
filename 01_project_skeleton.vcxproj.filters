@@ -71,10 +71,13 @@
     <None Include="Resources\wooden-crate.jpg">
       <Filter>Resources</Filter>
     </None>
-    <None Include="source\fragment-shader.txt">
+    <None Include="source\vertex-shader.txt">
       <Filter>Source\Shaders</Filter>
     </None>
-    <None Include="source\vertex-shader.txt">
+    <None Include="source\fragment-shader_diffuse.txt">
+      <Filter>Source\Shaders</Filter>
+    </None>
+    <None Include="source\fragment-shader.txt">
       <Filter>Source\Shaders</Filter>
     </None>
   </ItemGroup>

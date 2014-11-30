@@ -14,6 +14,7 @@
     <None Include="Resources\hazard.png" />
     <None Include="Resources\wooden-crate.jpg" />
     <None Include="source\fragment-shader.txt" />
+    <None Include="source\fragment-shader_diffuse.txt" />
     <None Include="source\vertex-shader.txt" />
   </ItemGroup>
   <ItemGroup>
