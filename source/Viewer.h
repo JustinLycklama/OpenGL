@@ -12,6 +12,7 @@
 #include "Camera.h"
 #include "Window.h"
 #include "Instance.h"
+#include "Light.h"
 
 using namespace std;
 
@@ -32,11 +33,13 @@ class Viewer
   private:
 	Asset* boxAsset;
 	vector<Instance*> instanceList;
+	//vector<Light*> lightList;
 
 	// globals
 	Program* program;
 	Window* window;
 	Camera* camera;
 	Texture* texture, *crateTex;
+	Light* light;
 };
 

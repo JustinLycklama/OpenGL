@@ -1,75 +1,81 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="source\Program.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="source\main.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="source\Bitmap.cpp">
-      <Filter>Source</Filter>
+      <Filter>Source\Texture</Filter>
     </ClCompile>
     <ClCompile Include="source\Texture.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Viewer.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Camera.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Window.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Asset.cpp">
-      <Filter>Source</Filter>
+      <Filter>Source\Texture</Filter>
     </ClCompile>
     <ClCompile Include="source\Instance.cpp">
-      <Filter>Source</Filter>
+      <Filter>Source\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Asset.cpp">
+      <Filter>Source\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Camera.cpp">
+      <Filter>Source\Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Viewer.cpp">
+      <Filter>Source\Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Window.cpp">
+      <Filter>Source\Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Program.cpp">
+      <Filter>Source\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Light.cpp">
+      <Filter>Source\Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\Program.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Bitmap.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Viewer.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Texture.h">
-      <Filter>Source</Filter>
-    </ClInclude>
     <ClInclude Include="resource1.h">
       <Filter>Resources</Filter>
     </ClInclude>
-    <ClInclude Include="source\Camera.h">
-      <Filter>Source</Filter>
+    <ClInclude Include="source\Bitmap.h">
+      <Filter>Source\Texture</Filter>
     </ClInclude>
-    <ClInclude Include="source\Window.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Asset.h">
-      <Filter>Source</Filter>
+    <ClInclude Include="source\Texture.h">
+      <Filter>Source\Texture</Filter>
     </ClInclude>
     <ClInclude Include="source\Instance.h">
-      <Filter>Source</Filter>
+      <Filter>Source\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Asset.h">
+      <Filter>Source\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Camera.h">
+      <Filter>Source\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Viewer.h">
+      <Filter>Source\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Window.h">
+      <Filter>Source\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Program.h">
+      <Filter>Source\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Light.h">
+      <Filter>Source\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="source\fragment-shader.txt">
-      <Filter>Source</Filter>
-    </None>
-    <None Include="source\vertex-shader.txt">
-      <Filter>Source</Filter>
-    </None>
     <None Include="Resources\hazard.png">
       <Filter>Resources</Filter>
     </None>
     <None Include="Resources\wooden-crate.jpg">
       <Filter>Resources</Filter>
+    </None>
+    <None Include="source\fragment-shader.txt">
+      <Filter>Source\Shaders</Filter>
+    </None>
+    <None Include="source\vertex-shader.txt">
+      <Filter>Source\Shaders</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -78,6 +84,18 @@
     </Filter>
     <Filter Include="Source">
       <UniqueIdentifier>{ad216286-0012-4b53-88d0-ee1de9f2ec65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Object">
+      <UniqueIdentifier>{dee05b1a-9bfa-4dcf-9401-cbced53e0319}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Texture">
+      <UniqueIdentifier>{93d4f5ad-ff8e-41c1-83b9-f9f6f071ca46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Shaders">
+      <UniqueIdentifier>{baea1343-5363-431f-b0e1-4e3a859a29e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Viewer">
+      <UniqueIdentifier>{b3fd0306-8323-479b-a638-5633b480765b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

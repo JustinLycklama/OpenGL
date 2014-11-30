@@ -16,6 +16,7 @@ class Camera
 	mat4 orientation() const;
 	GLfloat getFieldOfView() const;
 	void setFieldOfView(GLfloat FoV);
+	vec3 getPosition();
 
 	void setPosition(vec3 pos);
 	void offsetPosition(const vec3& offset);

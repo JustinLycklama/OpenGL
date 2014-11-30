@@ -31,6 +31,10 @@ Window::Window(void): SCREEN_SIZE(800, 600)
 	glfwSetMousePos(0, 0);
 	glfwSetMouseWheel(0);
 
+	//glEnable(GL_CULL_FACE);
+	//glDisable(GL_CULL_FACE);
+	//glCullFace(GL_BACK);
+
     // initialise GLEW
     glewExperimental = GL_TRUE; //stops glew crashing on OSX :-/
     if(glewInit() != GLEW_OK)
@@ -48,6 +52,8 @@ Window::Window(void): SCREEN_SIZE(800, 600)
 
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);
+
+	cout << "\n";
 }
 
 

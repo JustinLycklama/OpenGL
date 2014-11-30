@@ -108,69 +108,74 @@ void Asset::LoadCube() {
     glGenBuffers(1, &gVBO);
     glBindBuffer(GL_ARRAY_BUFFER, gVBO);
 
-	GLfloat vertexData[] = {
-	//  X     Y     Z       U     V
-	// bottom
-	-1.0f,-1.0f,-1.0f,   0.0f, 0.0f,
-		1.0f,-1.0f,-1.0f,   1.0f, 0.0f,
-	-1.0f,-1.0f, 1.0f,   0.0f, 1.0f,
-		1.0f,-1.0f,-1.0f,   1.0f, 0.0f,
-		1.0f,-1.0f, 1.0f,   1.0f, 1.0f,
-	-1.0f,-1.0f, 1.0f,   0.0f, 1.0f,
+	 GLfloat vertexData[] = {
+        //  X     Y     Z       U     V          Normal
+        // bottom
+        -1.0f,-1.0f,-1.0f,   0.0f, 0.0f,   0.0f, -1.0f, 0.0f,
+         1.0f,-1.0f,-1.0f,   1.0f, 0.0f,   0.0f, -1.0f, 0.0f,
+        -1.0f,-1.0f, 1.0f,   0.0f, 1.0f,   0.0f, -1.0f, 0.0f,
+         1.0f,-1.0f,-1.0f,   1.0f, 0.0f,   0.0f, -1.0f, 0.0f,
+         1.0f,-1.0f, 1.0f,   1.0f, 1.0f,   0.0f, -1.0f, 0.0f,
+        -1.0f,-1.0f, 1.0f,   0.0f, 1.0f,   0.0f, -1.0f, 0.0f,
 
-	// top
-	-1.0f, 1.0f,-1.0f,   0.0f, 0.0f,
-	-1.0f, 1.0f, 1.0f,   0.0f, 1.0f,
-		1.0f, 1.0f,-1.0f,   1.0f, 0.0f,
-		1.0f, 1.0f,-1.0f,   1.0f, 0.0f,
-	-1.0f, 1.0f, 1.0f,   0.0f, 1.0f,
-		1.0f, 1.0f, 1.0f,   1.0f, 1.0f,
+        // top
+        -1.0f, 1.0f,-1.0f,   0.0f, 0.0f,   0.0f, 1.0f, 0.0f,
+        -1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   0.0f, 1.0f, 0.0f,
+         1.0f, 1.0f,-1.0f,   1.0f, 0.0f,   0.0f, 1.0f, 0.0f,
+         1.0f, 1.0f,-1.0f,   1.0f, 0.0f,   0.0f, 1.0f, 0.0f,
+        -1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   0.0f, 1.0f, 0.0f,
+         1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   0.0f, 1.0f, 0.0f,
 
-	// front
-	-1.0f,-1.0f, 1.0f,   1.0f, 0.0f,
-		1.0f,-1.0f, 1.0f,   0.0f, 0.0f,
-	-1.0f, 1.0f, 1.0f,   1.0f, 1.0f,
-		1.0f,-1.0f, 1.0f,   0.0f, 0.0f,
-		1.0f, 1.0f, 1.0f,   0.0f, 1.0f,
-	-1.0f, 1.0f, 1.0f,   1.0f, 1.0f,
+        // front
+        -1.0f,-1.0f, 1.0f,   1.0f, 0.0f,   0.0f, 0.0f, 1.0f,
+         1.0f,-1.0f, 1.0f,   0.0f, 0.0f,   0.0f, 0.0f, 1.0f,
+        -1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   0.0f, 0.0f, 1.0f,
+         1.0f,-1.0f, 1.0f,   0.0f, 0.0f,   0.0f, 0.0f, 1.0f,
+         1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   0.0f, 0.0f, 1.0f,
+        -1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   0.0f, 0.0f, 1.0f,
 
-	// back
-	-1.0f,-1.0f,-1.0f,   0.0f, 0.0f,
-	-1.0f, 1.0f,-1.0f,   0.0f, 1.0f,
-		1.0f,-1.0f,-1.0f,   1.0f, 0.0f,
-		1.0f,-1.0f,-1.0f,   1.0f, 0.0f,
-	-1.0f, 1.0f,-1.0f,   0.0f, 1.0f,
-		1.0f, 1.0f,-1.0f,   1.0f, 1.0f,
+        // back
+        -1.0f,-1.0f,-1.0f,   0.0f, 0.0f,   0.0f, 0.0f, -1.0f,
+        -1.0f, 1.0f,-1.0f,   0.0f, 1.0f,   0.0f, 0.0f, -1.0f,
+         1.0f,-1.0f,-1.0f,   1.0f, 0.0f,   0.0f, 0.0f, -1.0f,
+         1.0f,-1.0f,-1.0f,   1.0f, 0.0f,   0.0f, 0.0f, -1.0f,
+        -1.0f, 1.0f,-1.0f,   0.0f, 1.0f,   0.0f, 0.0f, -1.0f,
+         1.0f, 1.0f,-1.0f,   1.0f, 1.0f,   0.0f, 0.0f, -1.0f,
 
-	// left
-	-1.0f,-1.0f, 1.0f,   0.0f, 1.0f,
-	-1.0f, 1.0f,-1.0f,   1.0f, 0.0f,
-	-1.0f,-1.0f,-1.0f,   0.0f, 0.0f,
-	-1.0f,-1.0f, 1.0f,   0.0f, 1.0f,
-	-1.0f, 1.0f, 1.0f,   1.0f, 1.0f,
-	-1.0f, 1.0f,-1.0f,   1.0f, 0.0f,
+        // left
+        -1.0f,-1.0f, 1.0f,   0.0f, 1.0f,   -1.0f, 0.0f, 0.0f,
+        -1.0f, 1.0f,-1.0f,   1.0f, 0.0f,   -1.0f, 0.0f, 0.0f,
+        -1.0f,-1.0f,-1.0f,   0.0f, 0.0f,   -1.0f, 0.0f, 0.0f,
+        -1.0f,-1.0f, 1.0f,   0.0f, 1.0f,   -1.0f, 0.0f, 0.0f,
+        -1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   -1.0f, 0.0f, 0.0f,
+        -1.0f, 1.0f,-1.0f,   1.0f, 0.0f,   -1.0f, 0.0f, 0.0f,
 
-	// right
-		1.0f,-1.0f, 1.0f,   1.0f, 1.0f,
-		1.0f,-1.0f,-1.0f,   1.0f, 0.0f,
-		1.0f, 1.0f,-1.0f,   0.0f, 0.0f,
-		1.0f,-1.0f, 1.0f,   1.0f, 1.0f,
-		1.0f, 1.0f,-1.0f,   0.0f, 0.0f,
-		1.0f, 1.0f, 1.0f,   0.0f, 1.0f
-	};
+        // right
+         1.0f,-1.0f, 1.0f,   1.0f, 1.0f,   1.0f, 0.0f, 0.0f,
+         1.0f,-1.0f,-1.0f,   1.0f, 0.0f,   1.0f, 0.0f, 0.0f,
+         1.0f, 1.0f,-1.0f,   0.0f, 0.0f,   1.0f, 0.0f, 0.0f,
+         1.0f,-1.0f, 1.0f,   1.0f, 1.0f,   1.0f, 0.0f, 0.0f,
+         1.0f, 1.0f,-1.0f,   0.0f, 0.0f,   1.0f, 0.0f, 0.0f,
+         1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   1.0f, 0.0f, 0.0f
+    };
 
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);
 
 	// connect the xyz to the "vert" attribute of the vertex shader
 	GLuint vert = program->getAttributeLocation("vert");
 	GLuint vertTex = program->getAttributeLocation("vertTexCoord");
+	GLuint vertNormal = program->getAttributeLocation("vertNormal");
 
     glEnableVertexAttribArray(vert);
-    glVertexAttribPointer(vert, 3, GL_FLOAT, GL_FALSE, 5*sizeof(GLfloat), NULL);
+    glVertexAttribPointer(vert, 3, GL_FLOAT, GL_FALSE, 8*sizeof(GLfloat), NULL);
     
 	// connect the uv coords to the "vertTexCoord" attribute of the vertex shader
     glEnableVertexAttribArray(vertTex);
-    glVertexAttribPointer(vertTex, 2, GL_FLOAT, GL_TRUE,  5*sizeof(GLfloat), (const GLvoid*)(3 * sizeof(GLfloat)));
+    glVertexAttribPointer(vertTex, 2, GL_FLOAT, GL_TRUE,  8*sizeof(GLfloat), (const GLvoid*)(3 * sizeof(GLfloat)));
+
+	// connect the Normal coords to the "vertNormalCoord" attribute of the vertex shader
+    glEnableVertexAttribArray(vertNormal);
+    glVertexAttribPointer(vertNormal, 3, GL_FLOAT, GL_TRUE,  8*sizeof(GLfloat), (const GLvoid*)(5 * sizeof(GLfloat)));
 
     // unbind the VBO and VAO
     glBindBuffer(GL_ARRAY_BUFFER, 0);

@@ -16,7 +16,7 @@ Camera::Camera()
     horizontalAngle = 0.0f;
     verticalAngle = 0.0f;
     fieldOfView = 50.0f;
-    nearPlane = 0.01f;
+    nearPlane = 0.5f;
     farPlane = 100.0f;
     aspectRatio = 4.0f/3.0f;
 
@@ -44,6 +44,10 @@ glm::mat4 Camera::orientation() const {
 
 GLfloat Camera::getFieldOfView() const {
 	return fieldOfView;
+}
+
+vec3 Camera::getPosition() {
+	return position;
 }
 
 vec3 Camera::forward() {

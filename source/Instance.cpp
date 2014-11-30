@@ -27,7 +27,7 @@ void Instance::render() {
 /* Getters */
 
 mat4 Instance::getTransform() {
-	return translated * scaled * rotated;
+	return translated * rotated * scaled;
 
 }
 

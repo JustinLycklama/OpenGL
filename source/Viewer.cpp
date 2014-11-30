@@ -51,26 +51,32 @@ void Viewer::initialize() {
 
 	glUseProgram(program->getProgramId());
 
-	camera->setPosition(glm::vec3(0, 0, 4));
+	camera->setPosition(vec3(0, 0, 4));
 	camera->setAspectRatio(window->SCREEN_SIZE.x / window->SCREEN_SIZE.y);
 
 	GLint cameraPos =  program->getUniformLocation("camera");
 	glUniformMatrix4fv(cameraPos, 1, false, glm::value_ptr(camera->matrix()));
-
-	glUseProgram(0);
-
+	
 	// Load Textures
 	texture = new Texture("hazard.png", 9729, 33071);
 	crateTex = new Texture("wooden-crate.jpg", 9729, 33071);
 
 	boxAsset = new Asset(Cube, crateTex, program);
+
+	// Create Light
+	light = new Light(boxAsset);
+	light->setPosition(vec3(4, 0, 4));
+	light->setIntensities(vec3(0.9, 0.9, 0.9));
+
+	glUseProgram(0);
 	
+	// Create Instances
 	Instance* cube = new Instance(boxAsset);
 	Instance* cube2 = new Instance(boxAsset);
 
-	cube2->translate(vec3(4, 0, 0));
+	cube2->translate(vec3(4, 0, -2));
 	cube2->scale(vec3(1, 2, 1));
-	cube2->rotate(vec3(0, 1, 0), 45);
+	cube2->rotate(vec3(0, 1, 0), 90);
 
 	instanceList.push_back(cube);
 	instanceList.push_back(cube2);
@@ -83,8 +89,21 @@ void Viewer::render() {
         
 	glUseProgram(program->getProgramId());
 
+	// Set Camera
 	GLint cameraPos =  program->getUniformLocation("camera");
 	glUniformMatrix4fv(cameraPos, 1, false, glm::value_ptr(camera->matrix()));
+
+	// Set Light
+	GLint lightPos = program->getUniformLocation("light.position");
+	GLint lightColor = program->getUniformLocation("light.intensities");
+	GLint garbage = program->getUniformLocation("garbage");
+	GLint test = glGetUniformLocation(program->getProgramId(), "tex");
+	GLint test2 = glGetUniformLocation(program->getProgramId(), "light_intensities");
+
+	glUniform3fv(lightPos, 1, glm::value_ptr(light->getPosition()));
+	glUniform3fv(lightColor, 1, glm::value_ptr(light->getIntensities()));
+
+	light->render();
 
 	for(vector<Instance*>::iterator it = instanceList.begin(); it != instanceList.end(); ++it)
 	{
@@ -104,6 +123,9 @@ void Viewer::render() {
 }
 
 void Viewer::update(float secondsElapsed){
+	
+	//light->position = camera->getPosition();
+
 	for(vector<Instance*>::iterator it = instanceList.begin(); it != instanceList.end(); ++it)
 	{
 		Instance* object = *it;
