@@ -1,5 +1,6 @@
-#include "Instance.h"
+#include <glm/gtc/matrix_access.hpp>
 
+#include "Instance.h"
 
 Instance::Instance(Asset* ast)
 {
@@ -35,7 +36,35 @@ vec3 Instance::getPosition() {
 	return vec3(getTransform() * vec4(0, 0, 0, 1));
 }
 
+vec3 Instance::getDirection() {
+	mat4 transform = getTransform();
+	return -vec3(glm::column(transform, 2));
+}
+
+mat4 Instance::getTranslation() {
+	return translated;
+}
+
+mat4 Instance::getRotation() {
+	return rotated;
+}
+
+mat4 Instance::getScale() {
+	return scaled;
+}
+
 /* Setters */
+
+void Instance::copyTransform(Instance* other) {
+	translated = other->getTranslation();	
+	rotated = other->getRotation();
+	scaled = other->getScale();
+}
+
+void Instance::copyTransform(Camera* camera) {
+	translated = glm::translate(mat4(), camera->getPosition());
+	rotated = glm::inverse(camera->orientation());
+}
 
 void Instance::translate(vec3 trans) {
 	translated = glm::translate(translated, trans);

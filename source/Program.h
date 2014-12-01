@@ -17,6 +17,7 @@ class Program
 
 	bool isInUse();
 	GLint getUniformLocation(string var);
+	GLint getUniformStructLocation(string var, int index);
 	GLint getAttributeLocation(string var);
 
   private:

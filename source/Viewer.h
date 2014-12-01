@@ -39,6 +39,6 @@ class Viewer
 	Window* window;
 	Camera* camera;
 	Texture* texture, *crateTex;
-	Light* light;
+	vector<Light*> lights;
 };
 

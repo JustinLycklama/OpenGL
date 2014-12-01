@@ -80,6 +80,9 @@
     <None Include="source\fragment-shader.txt">
       <Filter>Source\Shaders</Filter>
     </None>
+    <None Include="source\fragment-shader_single-light.txt">
+      <Filter>Source\Shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resources">

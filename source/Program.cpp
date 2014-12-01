@@ -8,6 +8,7 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include <algorithm>
 
 #include "Program.h"
 
@@ -26,12 +27,28 @@ bool Program::isInUse() {
 	return curProgram == GLprogram;
 }
 
+GLint Program::getUniformStructLocation(string var, int index) {
+	std::ostringstream ss;
+	ss << "[" << index << "]";
+	var.insert(var.find('.'), ss.str());
+
+	return getUniformLocation(var);
+}
+
 GLint Program::getUniformLocation(string var){
-	return glGetUniformLocation(GLprogram, var.c_str());
+	GLint loc = glGetUniformLocation(GLprogram, var.c_str());
+	if(loc == -1)
+		throw std::runtime_error("Could not find Uniform: " + var + ".\n");
+
+	return loc;
 }
 
 GLint Program::getAttributeLocation(string var) {
-	return glGetAttribLocation(GLprogram, var.c_str());
+	GLint loc = glGetAttribLocation(GLprogram, var.c_str());
+	if(loc == -1)
+		throw std::runtime_error("Could not find Attribute: " + var + ".\n");
+
+	return loc;
 }
 
 GLint Program::getProgramId() {

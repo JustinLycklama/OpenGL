@@ -1,8 +1,14 @@
 #include "Light.h"
 
+int Light::count = 0;
 
 Light::Light(Asset* asset) : Instance (asset)
 {
+	lightNumber = count;
+	count++;
+
+	if(count >= 10)
+		throw std::runtime_error("Too many lights created");
 }
 
 Light::~Light(void)
@@ -21,6 +27,10 @@ float Light::getAmbientCoefficient() {
 	return ambientCoefficient;
 }
 
+float Light::getAngle() {
+	return angle;
+}
+
 void Light::setIntensities(vec3 col) {
 	intensities = col;
 }
@@ -33,18 +43,26 @@ void Light::setAmbientCoefficient(float amb) {
 	ambientCoefficient = amb;
 }
 
+void Light::setAngle(float ang) {
+	angle = ang;
+}
+
 void Light::render(Program* program) {
 	
 	// Set Light
-	GLint lightPos = program->getUniformLocation("light.position");
-	GLint lightColor = program->getUniformLocation("light.intensities");
-	GLint lightAtten = program->getUniformLocation("light.attenuation");
-	GLint lightAmbient = program->getUniformLocation("light.ambientCoefficient");
+	GLint lightPos = program->getUniformStructLocation("allLights.position", lightNumber);
+	GLint lightColor = program->getUniformStructLocation("allLights.intensities", lightNumber);
+	GLint lightAtten = program->getUniformStructLocation("allLights.attenuation", lightNumber);
+	GLint lightAmbient = program->getUniformStructLocation("allLights.ambientCoefficient", lightNumber);
+	GLint lightAngle = program->getUniformStructLocation("allLights.coneAngle", lightNumber);
+	GLint lightDriection = program->getUniformStructLocation("allLights.coneDirection", lightNumber);
 
 	glUniform3fv(lightPos, 1, glm::value_ptr(getPosition()));
 	glUniform3fv(lightColor, 1, glm::value_ptr(intensities));
 	glUniform1f(lightAtten, attenuation);
 	glUniform1f(lightAmbient, ambientCoefficient);
-	
+	glUniform1f(lightAngle, angle);
+	glUniform3fv(lightDriection, 1, glm::value_ptr(getDirection()));
+
 	Instance::render();
 }

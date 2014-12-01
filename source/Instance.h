@@ -5,6 +5,7 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include "Asset.h"
+#include "Camera.h"
 
 using namespace glm;  
 
@@ -18,7 +19,14 @@ class Instance
 	
 	mat4 getTransform();
 	vec3 getPosition();
+	vec3 getDirection();
 
+	mat4 getTranslation();
+	mat4 getRotation();
+	mat4 getScale();
+
+	void copyTransform(Instance* other);
+	void copyTransform(Camera* camera);
 	void translate(vec3 trans);
 	void rotate(vec3 rot, float angle);
 	void scale(vec3 sc);
@@ -28,7 +36,6 @@ class Instance
 
   private:
 	Asset* asset;
-	mat4 transform;
 
 	mat4 translated;
 	mat4 rotated;

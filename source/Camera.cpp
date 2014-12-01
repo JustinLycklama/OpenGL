@@ -83,7 +83,6 @@ void Camera::setPosition(vec3 pos) {
 
 void Camera::offsetPosition(const vec3& offset) {
 	position += offset;
-	std::cout << position.z << std::endl;
 }
 
 void Camera::offsetOrientation(float up, float right) {

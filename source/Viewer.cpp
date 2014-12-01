@@ -63,12 +63,26 @@ void Viewer::initialize() {
 	boxAsset->setSpecularColor(vec3(1.0f, 1.0f, 1.0f));
 
 	// Create Light
-	light = new Light(boxAsset);
+	Light* light = new Light(boxAsset);
 	light->translate(vec3(2, 0, 4));
 	light->setIntensities(vec3(0.9, 0.9, 0.9));
 	light->setAttenuation(0.01f);
 	light->setAmbientCoefficient(0.01f);
 	light->scale(vec3(0.1, 0.1, 0.1));
+	light->setAngle(10.0f);
+
+	lights.push_back(light);
+
+	Light* light2 = new Light(boxAsset);
+	light2->translate(vec3(2, 0, -4));
+	light2->setIntensities(vec3(0.9, 0.9, 0.9));
+	light2->setAttenuation(0.01f);
+	light2->setAmbientCoefficient(0.01f);
+	light2->scale(vec3(0.1, 0.1, 0.1));
+	light2->rotate(vec3(0, 1, 0), 180);
+	light2->setAngle(35.0f);
+
+	lights.push_back(light2);
 
 	glUseProgram(0);
 	
@@ -91,7 +105,14 @@ void Viewer::render() {
 	glUseProgram(program->getProgramId());
 
 	camera->render(program);
-	light->render(program);
+
+	// Render Lights
+	glUniform1i(program->getUniformLocation("numLights"), lights.size());
+	for(vector<Light*>::iterator it = lights.begin(); it != lights.end(); ++it)
+	{
+		Light* light = *it;
+		light->render(program);
+	}
 
 	for(vector<Instance*>::iterator it = instanceList.begin(); it != instanceList.end(); ++it)
 	{
@@ -112,7 +133,7 @@ void Viewer::render() {
 
 void Viewer::update(float secondsElapsed){
 	
-	//light->position = camera->getPosition();
+	lights.front()->copyTransform(camera);
 
 	for(vector<Instance*>::iterator it = instanceList.begin(); it != instanceList.end(); ++it)
 	{
