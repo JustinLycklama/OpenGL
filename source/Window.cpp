@@ -35,6 +35,12 @@ Window::Window(void): SCREEN_SIZE(800, 600)
 	//glDisable(GL_CULL_FACE);
 	//glCullFace(GL_BACK);
 
+	 /*glEnable (GL_LINE_SMOOTH);
+	 glEnable (GL_BLEND);
+	 glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	 glHint (GL_LINE_SMOOTH_HINT, GL_DONT_CARE);
+	 glLineWidth (1.5);*/
+
     // initialise GLEW
     glewExperimental = GL_TRUE; //stops glew crashing on OSX :-/
     if(glewInit() != GLEW_OK)

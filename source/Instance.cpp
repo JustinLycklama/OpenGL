@@ -12,6 +12,8 @@ Instance::~Instance(void)
 {
 }
 
+
+
 void Instance::update(float secondsElapsed) {
 	rotate(vec3(0, 0, 1), 1);
 }
@@ -26,6 +28,17 @@ void Instance::render() {
 }
 
 /* Getters */
+
+Asset* Instance::getAsset() {
+	return asset;
+}
+
+Program* Instance::getProgram() {
+	if(asset)
+		return asset->program;
+
+	return NULL;
+}
 
 mat4 Instance::getTransform() {
 	return translated * rotated * scaled;
@@ -55,6 +68,10 @@ mat4 Instance::getScale() {
 
 /* Setters */
 
+void Instance::setAsset(Asset* ast) {
+	asset = ast;
+}
+
 void Instance::copyTransform(Instance* other) {
 	translated = other->getTranslation();	
 	rotated = other->getRotation();
@@ -76,9 +93,4 @@ void Instance::rotate(vec3 axis, float angle) {
 
 void Instance::scale(vec3 sc) {
 	scaled = glm::scale(scaled, sc);
-}
-
-
-void Instance::setAsset(Asset* ast) {
-	asset = ast;
 }

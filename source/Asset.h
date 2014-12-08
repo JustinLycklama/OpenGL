@@ -33,6 +33,8 @@ class Asset
 	void LoadTriangle();
 	void LoadCube();
 
+	void loadMesh(string fileName);
+
 	Texture* texture;
 	Shape shape;
 

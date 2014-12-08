@@ -28,7 +28,7 @@ class Light : public Instance
 	void setAmbientCoefficient(float amb);
 	void setAngle(float ang);
 
-	void render(Program* program);
+	void updateLighting(Program* program);
 
   private:
 	int lightNumber;

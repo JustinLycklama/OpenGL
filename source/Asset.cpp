@@ -45,13 +45,12 @@ void Asset::render(){
 	// Bind the texture and set the "tex" uniform in the fragment shader
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, texture->getId());
-	GLint tex = program->getUniformLocation("materialTex");
-	GLint shini = program->getUniformLocation("materialShininess");
-	GLint specColor = program->getUniformLocation("materialSpecularColor");
 
-	glUniform1i(tex, 0);
-	glUniform1f(shini, shininess);
-	glUniform3fv(specColor, 1, glm::value_ptr(specularColor));
+	if(program->hasTextures())
+		glUniform1i(program->getUniformLocation("materialTex"), 0);
+	
+	glUniform1f(program->getUniformLocation("materialShininess"), shininess);
+	glUniform3fv(program->getUniformLocation("materialSpecularColor"), 1, glm::value_ptr(specularColor));
 
     // bind the VAO
     glBindVertexArray(gVAO);
@@ -169,21 +168,31 @@ void Asset::LoadCube() {
 
 	// connect the xyz to the "vert" attribute of the vertex shader
 	GLuint vert = program->getAttributeLocation("vert");
-	GLuint vertTex = program->getAttributeLocation("vertTexCoord");
-	GLuint vertNormal = program->getAttributeLocation("vertNormal");
 
     glEnableVertexAttribArray(vert);
     glVertexAttribPointer(vert, 3, GL_FLOAT, GL_FALSE, 8*sizeof(GLfloat), NULL);
     
 	// connect the uv coords to the "vertTexCoord" attribute of the vertex shader
-    glEnableVertexAttribArray(vertTex);
-    glVertexAttribPointer(vertTex, 2, GL_FLOAT, GL_TRUE,  8*sizeof(GLfloat), (const GLvoid*)(3 * sizeof(GLfloat)));
+	if(program->hasTextures()) {
+		GLuint vertTex = program->getAttributeLocation("vertTexCoord");
+		
+		glEnableVertexAttribArray(vertTex);
+		glVertexAttribPointer(vertTex, 2, GL_FLOAT, GL_TRUE,  8*sizeof(GLfloat), (const GLvoid*)(3 * sizeof(GLfloat)));
+	}
 
 	// connect the Normal coords to the "vertNormalCoord" attribute of the vertex shader
+	GLuint vertNormal = program->getAttributeLocation("vertNormal");
+
     glEnableVertexAttribArray(vertNormal);
     glVertexAttribPointer(vertNormal, 3, GL_FLOAT, GL_TRUE,  8*sizeof(GLfloat), (const GLvoid*)(5 * sizeof(GLfloat)));
 
     // unbind the VBO and VAO
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
+}
+
+void Asset::loadMesh(string fileName) {
+
+
+
 }

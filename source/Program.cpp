@@ -12,8 +12,9 @@
 
 #include "Program.h"
 
-Program::Program()
+Program::Program(bool tex)
 {
+	textures = tex;
 	GLprogram = glCreateProgram();
 }
 
@@ -25,6 +26,10 @@ bool Program::isInUse() {
 	GLint curProgram;
 	glGetIntegerv(GL_CURRENT_PROGRAM, &curProgram);
 	return curProgram == GLprogram;
+}
+
+bool Program::hasTextures() {
+	return textures;
 }
 
 GLint Program::getUniformStructLocation(string var, int index) {

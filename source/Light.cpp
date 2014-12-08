@@ -47,7 +47,7 @@ void Light::setAngle(float ang) {
 	angle = ang;
 }
 
-void Light::render(Program* program) {
+void Light::updateLighting(Program* program) {
 	
 	// Set Light
 	GLint lightPos = program->getUniformStructLocation("allLights.position", lightNumber);
@@ -63,6 +63,4 @@ void Light::render(Program* program) {
 	glUniform1f(lightAmbient, ambientCoefficient);
 	glUniform1f(lightAngle, angle);
 	glUniform3fv(lightDriection, 1, glm::value_ptr(getDirection()));
-
-	Instance::render();
 }

@@ -16,6 +16,8 @@ class Instance
 	~Instance(void);
 
 	void setAsset(Asset* ast);
+	Asset* getAsset();
+	Program* getProgram();
 	
 	mat4 getTransform();
 	vec3 getPosition();

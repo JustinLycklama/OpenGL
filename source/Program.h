@@ -7,7 +7,7 @@ using namespace std;
 class Program
 {
   public:
-	Program(void);
+	Program(bool tex);
 	~Program(void);
 
 	// Links program to shader files, and returns program number
@@ -16,6 +16,8 @@ class Program
 	GLint getProgramId();
 
 	bool isInUse();
+	bool hasTextures();
+
 	GLint getUniformLocation(string var);
 	GLint getUniformStructLocation(string var, int index);
 	GLint getAttributeLocation(string var);
@@ -26,5 +28,6 @@ class Program
 	static void init_resources(void);
 
 	GLuint GLprogram;
+	bool textures;
 };
 

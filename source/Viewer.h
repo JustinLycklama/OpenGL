@@ -31,11 +31,12 @@ class Viewer
 	void update(float secondsElapsed);
 
   private:
-	Asset* boxAsset;
 	vector<Instance*> instanceList;
 
 	// globals
-	Program* program;
+	Program* programTextures;
+	Program* programNoTextures;
+
 	Window* window;
 	Camera* camera;
 	Texture* texture, *crateTex;

@@ -13,10 +13,10 @@
   <ItemGroup>
     <None Include="Resources\hazard.png" />
     <None Include="Resources\wooden-crate.jpg" />
-    <None Include="source\fragment-shader.txt" />
-    <None Include="source\fragment-shader_diffuse.txt" />
-    <None Include="source\fragment-shader_single-light.txt" />
-    <None Include="source\vertex-shader.txt" />
+    <None Include="source\fragment-shader-texture.txt" />
+    <None Include="source\fragment-shader-no-texture.txt" />
+    <None Include="source\vertex-shader-no-texture.txt" />
+    <None Include="source\vertex-shader-texture.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Bitmap.cpp" />
@@ -92,7 +92,7 @@
       <AdditionalDependencies>GLFW.lib;glew32s.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command> copy "$(ProjectDir)source\*shader.txt" "$(OutDir)\"</Command>
+      <Command> copy "$(ProjectDir)source\*.txt" "$(OutDir)\"</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copy shaders into same directory as executable</Message>
