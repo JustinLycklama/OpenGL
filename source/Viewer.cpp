@@ -73,11 +73,14 @@ void Viewer::initialize() {
 	boxAsset->shininess = 80.0f;
 	boxAsset->setSpecularColor(vec3(1.0f, 1.0f, 1.0f));
 
-	Asset* blankBoxAsset = new Asset(Cube, crateTex, programNoTextures);	
+	Asset* cubeAsset = new Asset("micro_subaru.obj", NULL, programNoTextures);
+	cubeAsset->shininess = 80.0f;
+	cubeAsset->setSpecularColor(vec3(1.0f, 1.0f, 1.0f));
+
+	Asset* blankBoxAsset = new Asset(Cube, NULL, programNoTextures);	
 	blankBoxAsset->shininess = 80.0f;
 	blankBoxAsset->setSpecularColor(vec3(1.0f, 1.0f, 1.0f));
 
-	
 	// Create Light
 	Light* light = new Light(blankBoxAsset);
 	light->translate(vec3(2, 0, 4));
@@ -103,13 +106,17 @@ void Viewer::initialize() {
 	// Create Instances
 	Instance* cube = new Instance(boxAsset);
 	Instance* cube2 = new Instance(blankBoxAsset);
+	Instance* cube3 = new Instance(cubeAsset);
 
 	cube2->translate(vec3(4, 0, 0));
 	cube2->scale(vec3(1, 2, 1));
 	cube2->rotate(vec3(0, 1, 0), 45);
 
+	cube3->translate(vec3(-4, 0, 0));
+
 	instanceList.push_back(cube);
 	instanceList.push_back(cube2);
+	instanceList.push_back(cube3);
 }
 
 void Viewer::render() {

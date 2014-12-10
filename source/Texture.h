@@ -20,11 +20,8 @@ class Texture
 	GLuint getId();
 
   private:
-	string ResourcePath(string fileName);
 	static GLenum TextureFormatForBitmapFormat(Bitmap::Format format, bool srgb);
 
-	/*int width, height, channels;
-	unsigned char* pixels;*/
 	GLuint id;
 	Bitmap* bitmap;
 };

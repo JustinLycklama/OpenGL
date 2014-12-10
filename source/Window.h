@@ -18,6 +18,9 @@ class Window
 
 	const glm::vec2 SCREEN_SIZE;
 
+	// returns the full path to the file `fileName` in the resources directory of the app bundle
+	static string ResourcePath(string fileName);
+
   private:
 	Viewer* viewer;
 	Camera* camera;

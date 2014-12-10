@@ -25,6 +25,7 @@
     <ClCompile Include="source\Instance.cpp" />
     <ClCompile Include="source\Light.cpp" />
     <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\Mesh.cpp" />
     <ClCompile Include="source\Program.cpp" />
     <ClCompile Include="source\Texture.cpp" />
     <ClCompile Include="source\Viewer.cpp" />
@@ -37,6 +38,7 @@
     <ClInclude Include="source\Asset.h" />
     <ClInclude Include="source\Instance.h" />
     <ClInclude Include="source\Light.h" />
+    <ClInclude Include="source\Mesh.h" />
     <ClInclude Include="source\Program.h" />
     <ClInclude Include="source\Texture.h" />
     <ClInclude Include="source\Viewer.h" />
@@ -75,6 +77,7 @@
     <IncludePath>$(ProjectDir)thirdparty\glew-1.9.0\include;$(ProjectDir)thirdparty\glfw-2.7.7\include;$(ProjectDir)thirdparty\glm-0.9.4.0;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)thirdparty\glew-1.9.0\lib;$(ProjectDir)thirdparty\glfw-2.7.7\lib-msvc100;$(LibraryPath)</LibraryPath>
     <LinkIncremental>false</LinkIncremental>
+    <ExtensionsToDeleteOnClean>$(ExtensionsToDeleteOnClean)</ExtensionsToDeleteOnClean>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>$(ProjectDir)thirdparty\glew-1.9.0\include;$(ProjectDir)thirdparty\glfw-2.7.7\include;$(ProjectDir)thirdparty\glm-0.9.4.0;$(IncludePath)</IncludePath>
@@ -92,7 +95,9 @@
       <AdditionalDependencies>GLFW.lib;glew32s.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command> copy "$(ProjectDir)source\*.txt" "$(OutDir)\"</Command>
+      <Command> copy "$(ProjectDir)source\*.txt" "$(OutDir)\"
+ copy "$(ProjectDir)Resources\*" "$(OutDir)\"
+</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copy shaders into same directory as executable</Message>

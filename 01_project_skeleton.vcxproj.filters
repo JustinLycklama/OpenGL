@@ -31,6 +31,9 @@
     <ClCompile Include="source\Light.cpp">
       <Filter>Source\Object</Filter>
     </ClCompile>
+    <ClCompile Include="source\Mesh.cpp">
+      <Filter>Source\Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource1.h">
@@ -61,6 +64,9 @@
       <Filter>Source\Shaders</Filter>
     </ClInclude>
     <ClInclude Include="source\Light.h">
+      <Filter>Source\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Mesh.h">
       <Filter>Source\Object</Filter>
     </ClInclude>
   </ItemGroup>

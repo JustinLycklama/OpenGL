@@ -11,6 +11,7 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include "Asset.h"
+#include "Mesh.h"
 
 Asset::Asset(Shape s, Texture* tex, Program* prog)
 {
@@ -28,6 +29,14 @@ Asset::Asset(Shape s, Texture* tex, Program* prog)
 	}
 }
 
+Asset::Asset(string mesh, Texture* tex, Program* prog)
+{
+	program = prog;
+	texture = tex;
+
+	loadMesh(mesh);
+}
+
 Asset::~Asset()
 {
 
@@ -42,28 +51,20 @@ void Asset::setSpecularColor(vec3 col) {
 }
 
 void Asset::render(){
-	// Bind the texture and set the "tex" uniform in the fragment shader
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, texture->getId());
+	if(program->hasTextures()) {
+		// Bind the texture and set the "tex" uniform in the fragment shader
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, texture->getId());
 
-	if(program->hasTextures())
 		glUniform1i(program->getUniformLocation("materialTex"), 0);
+	}
 	
 	glUniform1f(program->getUniformLocation("materialShininess"), shininess);
 	glUniform3fv(program->getUniformLocation("materialSpecularColor"), 1, glm::value_ptr(specularColor));
 
     // bind the VAO
     glBindVertexArray(gVAO);
-    
-	// draw the VAO
-	switch(shape){
-		case Triangle:
-			glDrawArrays(GL_TRIANGLES, 0, 3);
-		break;
-		case Cube:
-			glDrawArrays(GL_TRIANGLES, 0, 6*2*3);
-		break;
-	}
+	glDrawArrays(GL_TRIANGLES, 0, vertexCount);
 }
 
 void Asset::update(float secondsElapsed) {
@@ -101,6 +102,9 @@ void Asset::LoadTriangle() {
     // unbind the VBO and VAO
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
+
+	// Set vertex count
+	vertexCount = 3;
 }
 
 
@@ -113,7 +117,7 @@ void Asset::LoadCube() {
     glGenBuffers(1, &gVBO);
     glBindBuffer(GL_ARRAY_BUFFER, gVBO);
 
-	 GLfloat vertexData[] = {
+	GLfloat vertexData[] = {
         //  X     Y     Z       U     V          Normal
         // bottom
         -1.0f,-1.0f,-1.0f,   0.0f, 0.0f,   0.0f, -1.0f, 0.0f,
@@ -189,10 +193,53 @@ void Asset::LoadCube() {
     // unbind the VBO and VAO
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
+
+	// Set vertex count
+	vertexCount = 36;
 }
 
 void Asset::loadMesh(string fileName) {
+	 // make and bind the VAO
+    glGenVertexArrays(1, &gVAO);
+    glBindVertexArray(gVAO);
+    
+    // make and bind the VBO
+    glGenBuffers(1, &gVBO);
+    glBindBuffer(GL_ARRAY_BUFFER, gVBO);
 
+	Mesh* mesh = new Mesh(fileName);
+	GLfloat* vertexData = mesh->getVertexData();
 
+	int sizeOf = sizeof(GLfloat) * mesh->getVertexCount() * mesh->getPointsPerVertex();
+	glBufferData(GL_ARRAY_BUFFER, sizeOf, vertexData, GL_STATIC_DRAW);
 
+	// connect the xyz to the "vert" attribute of the vertex shader
+	GLuint vert = program->getAttributeLocation("vert");
+
+    glEnableVertexAttribArray(vert);
+    glVertexAttribPointer(vert, 3, GL_FLOAT, GL_FALSE, 8*sizeof(GLfloat), NULL);
+    
+	// connect the uv coords to the "vertTexCoord" attribute of the vertex shader
+	if(program->hasTextures()) {
+		GLuint vertTex = program->getAttributeLocation("vertTexCoord");
+		
+		glEnableVertexAttribArray(vertTex);
+		glVertexAttribPointer(vertTex, 2, GL_FLOAT, GL_TRUE,  8*sizeof(GLfloat), (const GLvoid*)(3 * sizeof(GLfloat)));
+	}
+
+	// connect the Normal coords to the "vertNormalCoord" attribute of the vertex shader
+	GLuint vertNormal = program->getAttributeLocation("vertNormal");
+
+    glEnableVertexAttribArray(vertNormal);
+    glVertexAttribPointer(vertNormal, 3, GL_FLOAT, GL_TRUE,  8*sizeof(GLfloat), (const GLvoid*)(5 * sizeof(GLfloat)));
+
+    // unbind the VBO and VAO
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindVertexArray(0);
+
+	// Set vertex count
+	vertexCount = mesh->getVertexCount();
+
+	// Dealloc mesh
+	free(mesh);
 }

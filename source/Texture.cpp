@@ -10,10 +10,11 @@
 #include <string>
 
 #include "Texture.h"
+#include "Window.h"
 
 Texture::Texture(string file, GLint minMagFiler, GLint wrapMode)
 { 
-	bitmap = Bitmap::bitmapFromFile(ResourcePath(file));
+	bitmap = Bitmap::bitmapFromFile(Window::ResourcePath(file));
 	bitmap->flipVertically();
 
 	glGenTextures(1, &id);
@@ -53,15 +54,4 @@ Texture::~Texture(void)
 
 GLuint Texture::getId() {
 	return id;
-}
-
-// returns the full path to the file `fileName` in the resources directory of the app bundle
-string Texture::ResourcePath(string fileName) {
-    char executablePath[1024] = {'\0'};
-    DWORD charsCopied = GetModuleFileName(NULL, executablePath, 1024);
-	//replace(path.begin(), path.end(), ' ', '\ ');
-    if(charsCopied > 0 && charsCopied < 1024)
-        return std::string(executablePath) + "\\..\\" + fileName;
-    else
-        throw std::runtime_error("GetModuleFileName failed a bit");
 }

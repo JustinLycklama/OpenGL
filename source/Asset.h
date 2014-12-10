@@ -7,6 +7,7 @@
 
 #include "Texture.h"
 #include "Program.h"
+#include "Mesh.h"
 
 using namespace glm;
 
@@ -18,6 +19,7 @@ class Asset
 {
   public:
 	Asset(Shape shape, Texture* tex, Program* prog);
+	Asset(string mesh, Texture* tex, Program* prog);
 	~Asset(void);
 
 	void render();
@@ -32,14 +34,17 @@ class Asset
   private:
 	void LoadTriangle();
 	void LoadCube();
+	void loadMesh(string mesh);
 
-	void loadMesh(string fileName);
+	Mesh* mesh;
 
 	Texture* texture;
 	Shape shape;
 
 	GLuint gVAO;
 	GLuint gVBO;
+
+	int vertexCount;
 
 	vec3 specularColor;
 };
