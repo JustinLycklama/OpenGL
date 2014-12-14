@@ -2,12 +2,18 @@
 #include <vector>
 #include <utility>
 
+#include <GL/glew.h>
+
 using namespace std;
+
+enum PROGRAM_TYPE {
+	NO_TEX, TEX, NO_TEX_BUMP, TEX_BUMP
+};
 
 class Program
 {
   public:
-	Program(bool tex);
+	Program(PROGRAM_TYPE ptype);
 	~Program(void);
 
 	// Links program to shader files, and returns program number
@@ -17,6 +23,7 @@ class Program
 
 	bool isInUse();
 	bool hasTextures();
+	bool hasBumpMapping();
 
 	GLint getUniformLocation(string var);
 	GLint getUniformStructLocation(string var, int index);
@@ -28,6 +35,6 @@ class Program
 	static void init_resources(void);
 
 	GLuint GLprogram;
-	bool textures;
+	PROGRAM_TYPE type;
 };
 

@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <fstream>
 #include <sstream>
 #include <algorithm>
@@ -5,15 +6,27 @@
 #include "Mesh.h"
 #include "Window.h"
 
+/* NOTE: When exporting, only select: INCLUDE NORMALS, INCLUDE UV, TRIANGULATE FACES */
 
 Mesh::Mesh(string fileName)
 {
-	loadMesh(fileName);
+	loadMesh(fileName + ".obj");
+	writeVertexData(fileName + ".data");
 }
 
 
 Mesh::~Mesh(void)
 {
+}
+
+void Mesh::writeVertexData(string fileName) {
+	FILE * pFile;
+	GLfloat* buffer = getVertexData();
+	pFile = fopen (fileName.c_str(), "wb");
+
+	long size = getVertexCount() * getPointsPerVertex();
+	fwrite (buffer , sizeof(GLfloat), size, pFile);
+	fclose (pFile);
 }
 
 GLfloat* Mesh::getVertexData() {
@@ -24,7 +37,7 @@ GLfloat* Mesh::getVertexData() {
 	GLfloat* vertexData = new GLfloat[bufferSize];
 
 	int row = 0;
-	for(vector<Mesh::Face*>::iterator it = faces.begin(); it != faces.end(); ++it) {
+	for(vector<Mesh::vertexData*>::iterator it = vertData.begin(); it != vertData.end(); ++it) {
 		
 		vertexData[row + 0] = vertices.at((*it)->v)->x;
 		vertexData[row + 1] = vertices.at((*it)->v)->y;
@@ -36,20 +49,26 @@ GLfloat* Mesh::getVertexData() {
 		vertexData[row + 5] = normals.at((*it)->n)->x;
 		vertexData[row + 6] = normals.at((*it)->n)->y;
 		vertexData[row + 7] = normals.at((*it)->n)->z;
+
+		vertexData[row + 8] = normals.at((*it)->n)->x;
+		vertexData[row + 9] = normals.at((*it)->n)->y;
+		vertexData[row + 10] = normals.at((*it)->n)->z;
 	
-		row += 8;
+		row += getPointsPerVertex();
 	}
 
 	return vertexData;
 }
 
 int Mesh::getVertexCount() {
-	return faces.size();
+	return vertData.size();
 }
 
 int Mesh::getPointsPerVertex() {
-	return 3 + 2 + 3; // 3 vertex coordinates, 2 texture coordinates, 3 normal coordinates
+	return 3 + 2 + 3 + 3; // 3 vertex coordinates, 2 texture coordinates, 3 normal coordinates, 3 tangent coordinates
 }
+
+
 
 void Mesh::loadMesh(string fileName) {
 
@@ -103,9 +122,32 @@ void Mesh::loadMesh(string fileName) {
 			normals.push_back(normal);
 		}
         else if(params.front().compare("f") == 0) {
-			faces.push_back(buildFace(params.at(1)));
-			faces.push_back(buildFace(params.at(2)));
-			faces.push_back(buildFace(params.at(3)));
+
+			vertexData* a = buildVertexData(params.at(1));
+			vertexData* b = buildVertexData(params.at(2));
+			vertexData* c = buildVertexData(params.at(3));
+
+			if(vertices.size() <= a->n || vertices.size() <= b->n) {
+				 throw runtime_error("Faces loaded before verticies.\n");
+			}
+
+			Vertex* av = vertices.at(a->n);
+			Vertex* bv = vertices.at(b->n);
+			Normal* tangent = new Normal();
+
+			tangent->x = av->x - bv->x;
+			tangent->y = av->y - bv->y;
+			tangent->z = av->z - bv->z;
+
+			a->tangent = tangents.size();
+			b->tangent = tangents.size();
+			c->tangent = tangents.size();
+
+			tangents.push_back(tangent);
+
+			vertData.push_back(a);
+			vertData.push_back(b);
+			vertData.push_back(c);
 		}
 
 		lineNumber++;
@@ -114,7 +156,7 @@ void Mesh::loadMesh(string fileName) {
 	inOBJ.close();
 }
 
-Mesh::Face* Mesh::buildFace(string line) {
+Mesh::vertexData* Mesh::buildVertexData(string line) {
 
 	vector<string> params;
 
@@ -127,10 +169,10 @@ Mesh::Face* Mesh::buildFace(string line) {
 
 	params.push_back(line);
 
-	Face* face = new Face();
-	face->v = atoi(params.at(0).c_str()) - 1;
-	face->t = atoi(params.at(1).c_str()) - 1;
-	face->n = atoi(params.at(2).c_str()) - 1;
+	vertexData* data = new vertexData();
+	data->v = atoi(params.at(0).c_str()) - 1;
+	data->t = atoi(params.at(1).c_str()) - 1;
+	data->n = atoi(params.at(2).c_str()) - 1;
 
-	return face;
+	return data;
 }

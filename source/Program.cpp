@@ -12,9 +12,9 @@
 
 #include "Program.h"
 
-Program::Program(bool tex)
+Program::Program(PROGRAM_TYPE ptype)
 {
-	textures = tex;
+	type = ptype;
 	GLprogram = glCreateProgram();
 }
 
@@ -29,7 +29,11 @@ bool Program::isInUse() {
 }
 
 bool Program::hasTextures() {
-	return textures;
+	return type == TEX || type == TEX_BUMP;
+}
+
+bool Program::hasBumpMapping() {
+	return type == NO_TEX_BUMP || type == TEX_BUMP;
 }
 
 GLint Program::getUniformStructLocation(string var, int index) {

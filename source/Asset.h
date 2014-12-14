@@ -35,6 +35,8 @@ class Asset
 	void LoadTriangle();
 	void LoadCube();
 	void loadMesh(string mesh);
+	
+	GLfloat* loadDataFile(string fileName);
 
 	Mesh* mesh;
 

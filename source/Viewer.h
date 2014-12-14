@@ -5,14 +5,8 @@
 #include <GL/glfw.h>
 #include <glm/glm.hpp>
 
-#include <vector>
-
-#include "Texture.h"
-#include "Asset.h"
-#include "Camera.h"
 #include "Window.h"
-#include "Instance.h"
-#include "Light.h"
+#include "World.h"
 
 using namespace std;
 
@@ -31,15 +25,10 @@ class Viewer
 	void update(float secondsElapsed);
 
   private:
-	vector<Instance*> instanceList;
-
-	// globals
-	Program* programTextures;
-	Program* programNoTextures;
+	map<PROGRAM_TYPE, Program*> programs;
 
 	Window* window;
+	World* world;
 	Camera* camera;
-	Texture* texture, *crateTex;
-	vector<Light*> lights;
 };
 

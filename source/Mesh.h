@@ -27,11 +27,12 @@ class Mesh
 		float v;
 	};
 
-	struct Face
+	struct vertexData
 	{
 		int v;
 		int t;
 		int n;
+		int tangent; // Useful in bump mapping.
 	};
 
   public:
@@ -39,16 +40,19 @@ class Mesh
 	~Mesh(void);
 
 	GLfloat* getVertexData();
+	void writeVertexData(string fileName);
+
 	int getVertexCount();
 	int getPointsPerVertex();
 
   private:
 	void loadMesh(string fileName);
-	Face* buildFace(string face);
+	vertexData* buildVertexData(string data);
 
 	vector<Vertex*> vertices;
     vector<Tex*> textures;
     vector<Normal*> normals;
-    vector<Face*> faces;
+	vector<Normal*> tangents;
+    vector<vertexData*> vertData;
 };
 

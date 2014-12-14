@@ -13,6 +13,8 @@
 #include "Asset.h"
 #include "Mesh.h"
 
+const bool FORCE_RELOAD = false;
+
 Asset::Asset(Shape s, Texture* tex, Program* prog)
 {
 	program = prog;
@@ -199,7 +201,44 @@ void Asset::LoadCube() {
 }
 
 void Asset::loadMesh(string fileName) {
-	 // make and bind the VAO
+	 
+	FILE * pFile;
+	long sizeOf;
+	int pointsPerVertex = 11;
+	GLfloat* vertexData;
+	size_t result;	
+	
+	pFile = fopen ((fileName + ".data").c_str(), "rb");
+
+	// If no .data file exists, load a .obj and create a .data	
+	if (pFile==NULL || FORCE_RELOAD) {
+		
+		Mesh* mesh = new Mesh(fileName);
+
+		vertexData = mesh->getVertexData();
+		sizeOf = sizeof(GLfloat) * mesh->getVertexCount() * mesh->getPointsPerVertex();
+			
+		free(mesh);
+	}
+	// Otherwise load the .data file
+	else {
+		// obtain file size:
+		fseek (pFile , 0 , SEEK_END);
+		sizeOf = ftell (pFile);
+		rewind (pFile);
+
+		// allocate memory to contain the whole file:
+		vertexData = (GLfloat*) malloc (sizeof(char)*sizeOf);
+		if (vertexData == NULL) { throw std::runtime_error("Memory Failure in Loading Mesh .data"); }
+
+		// copy the file into the buffer:
+		result = fread (vertexData,1,sizeOf,pFile);
+		if (result != sizeOf) { throw std::runtime_error("Reading error in Loading Mesh .data"); }
+
+		fclose (pFile);
+	}
+
+	// make and bind the VAO
     glGenVertexArrays(1, &gVAO);
     glBindVertexArray(gVAO);
     
@@ -207,39 +246,40 @@ void Asset::loadMesh(string fileName) {
     glGenBuffers(1, &gVBO);
     glBindBuffer(GL_ARRAY_BUFFER, gVBO);
 
-	Mesh* mesh = new Mesh(fileName);
-	GLfloat* vertexData = mesh->getVertexData();
-
-	int sizeOf = sizeof(GLfloat) * mesh->getVertexCount() * mesh->getPointsPerVertex();
 	glBufferData(GL_ARRAY_BUFFER, sizeOf, vertexData, GL_STATIC_DRAW);
 
 	// connect the xyz to the "vert" attribute of the vertex shader
 	GLuint vert = program->getAttributeLocation("vert");
 
     glEnableVertexAttribArray(vert);
-    glVertexAttribPointer(vert, 3, GL_FLOAT, GL_FALSE, 8*sizeof(GLfloat), NULL);
+    glVertexAttribPointer(vert, 3, GL_FLOAT, GL_FALSE, pointsPerVertex*sizeof(GLfloat), NULL);
     
 	// connect the uv coords to the "vertTexCoord" attribute of the vertex shader
 	if(program->hasTextures()) {
 		GLuint vertTex = program->getAttributeLocation("vertTexCoord");
 		
 		glEnableVertexAttribArray(vertTex);
-		glVertexAttribPointer(vertTex, 2, GL_FLOAT, GL_TRUE,  8*sizeof(GLfloat), (const GLvoid*)(3 * sizeof(GLfloat)));
+		glVertexAttribPointer(vertTex, 2, GL_FLOAT, GL_TRUE,  pointsPerVertex*sizeof(GLfloat), (const GLvoid*)(3 * sizeof(GLfloat)));
 	}
 
 	// connect the Normal coords to the "vertNormalCoord" attribute of the vertex shader
 	GLuint vertNormal = program->getAttributeLocation("vertNormal");
 
     glEnableVertexAttribArray(vertNormal);
-    glVertexAttribPointer(vertNormal, 3, GL_FLOAT, GL_TRUE,  8*sizeof(GLfloat), (const GLvoid*)(5 * sizeof(GLfloat)));
+    glVertexAttribPointer(vertNormal, 3, GL_FLOAT, GL_TRUE,  pointsPerVertex*sizeof(GLfloat), (const GLvoid*)(5 * sizeof(GLfloat)));
+
+	if(program->hasBumpMapping()) {
+		// connect the Tangent coords to the "vertNormalCoord" attribute of the vertex shader
+		GLuint vertTangent = program->getAttributeLocation("vertTangent");
+
+		glEnableVertexAttribArray(vertTangent);
+		glVertexAttribPointer(vertTangent, 3, GL_FLOAT, GL_TRUE,  pointsPerVertex*sizeof(GLfloat), (const GLvoid*)(8 * sizeof(GLfloat)));
+	}
 
     // unbind the VBO and VAO
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
 
 	// Set vertex count
-	vertexCount = mesh->getVertexCount();
-
-	// Dealloc mesh
-	free(mesh);
+	vertexCount = sizeOf / (sizeof(GLfloat) * pointsPerVertex);
 }

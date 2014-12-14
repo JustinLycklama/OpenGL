@@ -34,6 +34,9 @@
     <ClCompile Include="source\Mesh.cpp">
       <Filter>Source\Object</Filter>
     </ClCompile>
+    <ClCompile Include="source\World.cpp">
+      <Filter>Source\Environment</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource1.h">
@@ -69,6 +72,9 @@
     <ClInclude Include="source\Mesh.h">
       <Filter>Source\Object</Filter>
     </ClInclude>
+    <ClInclude Include="source\World.h">
+      <Filter>Source\Environment</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\hazard.png">
@@ -77,17 +83,17 @@
     <None Include="Resources\wooden-crate.jpg">
       <Filter>Resources</Filter>
     </None>
-    <None Include="source\fragment-shader-texture.txt">
-      <Filter>Source\Shaders</Filter>
-    </None>
     <None Include="source\fragment-shader-no-texture.txt">
-      <Filter>Source\Shaders</Filter>
+      <Filter>Source\Shaders\Fragment</Filter>
+    </None>
+    <None Include="source\fragment-shader-texture.txt">
+      <Filter>Source\Shaders\Fragment</Filter>
     </None>
     <None Include="source\vertex-shader-no-texture.txt">
-      <Filter>Source\Shaders</Filter>
+      <Filter>Source\Shaders\vertex</Filter>
     </None>
     <None Include="source\vertex-shader-texture.txt">
-      <Filter>Source\Shaders</Filter>
+      <Filter>Source\Shaders\vertex</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -108,6 +114,15 @@
     </Filter>
     <Filter Include="Source\Viewer">
       <UniqueIdentifier>{b3fd0306-8323-479b-a638-5633b480765b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Shaders\Fragment">
+      <UniqueIdentifier>{a9776790-a42e-4260-8d50-4f57718ba683}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Shaders\vertex">
+      <UniqueIdentifier>{fae95df4-5fb7-40ea-9ba0-d86e05009bc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Environment">
+      <UniqueIdentifier>{5bec7928-4f58-4f78-9879-404ba5431d90}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

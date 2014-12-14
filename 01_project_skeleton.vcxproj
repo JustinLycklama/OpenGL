@@ -30,6 +30,7 @@
     <ClCompile Include="source\Texture.cpp" />
     <ClCompile Include="source\Viewer.cpp" />
     <ClCompile Include="source\Window.cpp" />
+    <ClCompile Include="source\World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource1.h" />
@@ -43,6 +44,7 @@
     <ClInclude Include="source\Texture.h" />
     <ClInclude Include="source\Viewer.h" />
     <ClInclude Include="source\Window.h" />
+    <ClInclude Include="source\World.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="01_project_skeleton1.rc" />
@@ -77,7 +79,7 @@
     <IncludePath>$(ProjectDir)thirdparty\glew-1.9.0\include;$(ProjectDir)thirdparty\glfw-2.7.7\include;$(ProjectDir)thirdparty\glm-0.9.4.0;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)thirdparty\glew-1.9.0\lib;$(ProjectDir)thirdparty\glfw-2.7.7\lib-msvc100;$(LibraryPath)</LibraryPath>
     <LinkIncremental>false</LinkIncremental>
-    <ExtensionsToDeleteOnClean>$(ExtensionsToDeleteOnClean)</ExtensionsToDeleteOnClean>
+    <ExtensionsToDeleteOnClean>*.data;$(ExtensionsToDeleteOnClean)</ExtensionsToDeleteOnClean>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>$(ProjectDir)thirdparty\glew-1.9.0\include;$(ProjectDir)thirdparty\glfw-2.7.7\include;$(ProjectDir)thirdparty\glm-0.9.4.0;$(IncludePath)</IncludePath>
