@@ -13,7 +13,7 @@
 #include "Asset.h"
 #include "Mesh.h"
 
-const bool FORCE_RELOAD = false;
+const bool FORCE_RELOAD = true;
 
 Asset::Asset(Shape s, Texture* tex, Program* prog)
 {
@@ -31,10 +31,11 @@ Asset::Asset(Shape s, Texture* tex, Program* prog)
 	}
 }
 
-Asset::Asset(string mesh, Texture* tex, Program* prog)
+Asset::Asset(string mesh, Texture* tex, Texture* bmp, Program* prog)
 {
 	program = prog;
 	texture = tex;
+	normalMap = bmp;
 
 	loadMesh(mesh);
 }
@@ -54,13 +55,18 @@ void Asset::setSpecularColor(vec3 col) {
 
 void Asset::render(){
 	if(program->hasTextures()) {
-		// Bind the texture and set the "tex" uniform in the fragment shader
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, texture->getId());
 
 		glUniform1i(program->getUniformLocation("materialTex"), 0);
 	}
-	
+	if(program->hasBumpMapping()) {
+		glActiveTexture(GL_TEXTURE1);
+		glBindTexture(GL_TEXTURE_2D, normalMap->getId());
+
+		glUniform1i(program->getUniformLocation("normalMap"), 1);
+	}
+
 	glUniform1f(program->getUniformLocation("materialShininess"), shininess);
 	glUniform3fv(program->getUniformLocation("materialSpecularColor"), 1, glm::value_ptr(specularColor));
 
@@ -255,7 +261,7 @@ void Asset::loadMesh(string fileName) {
     glVertexAttribPointer(vert, 3, GL_FLOAT, GL_FALSE, pointsPerVertex*sizeof(GLfloat), NULL);
     
 	// connect the uv coords to the "vertTexCoord" attribute of the vertex shader
-	if(program->hasTextures()) {
+	if(program->hasTextures() || program->hasBumpMapping()) {
 		GLuint vertTex = program->getAttributeLocation("vertTexCoord");
 		
 		glEnableVertexAttribArray(vertTex);

@@ -19,7 +19,7 @@ class Asset
 {
   public:
 	Asset(Shape shape, Texture* tex, Program* prog);
-	Asset(string mesh, Texture* tex, Program* prog);
+	Asset(string mesh, Texture* tex, Texture* bmp, Program* prog);
 	~Asset(void);
 
 	void render();
@@ -41,6 +41,8 @@ class Asset
 	Mesh* mesh;
 
 	Texture* texture;
+	Texture* normalMap;
+
 	Shape shape;
 
 	GLuint gVAO;

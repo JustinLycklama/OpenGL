@@ -22,13 +22,14 @@ World::~World(void)
 void World::initAssets() {
 	// Load Textures
 	Texture* crate = new Texture("wooden-crate.jpg", 9729, 33071);
+	Texture* normalMap = new Texture("Normal_Map.bmp", 9729, 33071);
 
 	Asset* crateAsset = new Asset(Cube, crate, programs->at(TEX));	
 	crateAsset->shininess = 80.0f;
 	crateAsset->setSpecularColor(vec3(1.0f, 1.0f, 1.0f));
 	assets.insert(std::pair<ASSETS, Asset*>(CRATE, crateAsset));
 
-	Asset* mesh = new Asset("micro_subaru_body", NULL, programs->at(NO_TEX));
+	Asset* mesh = new Asset("cube", normalMap, normalMap, programs->at(NO_TEX_BUMP));
 	mesh->shininess = 80.0f;
 	mesh->setSpecularColor(vec3(1.0f, 1.0f, 1.0f));
 	assets.insert(std::pair<ASSETS, Asset*>(MESH, mesh));
@@ -44,13 +45,13 @@ void World::initLights() {
 	light->translate(vec3(2, 0, 4));
 	light->setIntensities(vec3(0.9, 0.9, 0.9));
 	light->setAttenuation(0.01f);
-	light->setAmbientCoefficient(0.01f);
+	light->setAmbientCoefficient(0.05f);
 	light->scale(vec3(0.1, 0.1, 0.1));
-	light->setAngle(10.0f);
+	light->setAngle(180.0f);
 
 	lights.push_back(light);
 		
-	Light* light2 = new Light(assets.at(BOX));
+	/*Light* light2 = new Light(assets.at(BOX));
 	light2->translate(vec3(2, 0, -4));
 	light2->setIntensities(vec3(0.9, 0.9, 0.9));
 	light2->setAttenuation(0.01f);
@@ -59,18 +60,18 @@ void World::initLights() {
 	light2->rotate(vec3(0, 1, 0), 180);
 	light2->setAngle(35.0f);
 
-	lights.push_back(light2);
+	lights.push_back(light2);*/
 }
 	
 void World::initInstances() {
-	Instance* one = new Instance(assets.at(CRATE));
+	//Instance* one = new Instance(assets.at(CRATE));
 	Instance* two = new Instance(assets.at(BOX));
 	Instance* three = new Instance(assets.at(MESH));
 
 	two->translate(vec3(4, 0, 0));
-	three->translate(vec3(-4, 0, 0));
+	//three->translate(vec3(-4, 0, 0));
 
-	instances.push_back(one);
+	//instances.push_back(one);
 	instances.push_back(two);
 	instances.push_back(three);
 }

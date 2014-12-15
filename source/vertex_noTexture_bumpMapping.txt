@@ -1,0 +1,25 @@
+#version 150
+
+uniform mat4 camera; // Contains projection and view transformations
+uniform mat4 model;
+
+in vec3 vert;
+in vec3 vertNormal;
+in vec3 vertTangent;
+in vec2 vertTexCoord;
+
+out vec3 fragVert;
+out vec2 fragTexCoord;
+out mat3 TBN;
+
+void main() {
+	fragVert = vert;
+	fragTexCoord = vertTexCoord;
+
+	// Create TBN matrix - Tangent space to object space
+	vec3 tangent = normalize(vertTangent - dot(vertTangent, vertNormal) * vertNormal);
+	vec3 biTangent = cross(vertTangent, vertNormal);
+	TBN = mat3(vertTangent, biTangent, vertNormal);
+
+    gl_Position =  camera * model * vec4(vert, 1);
+}

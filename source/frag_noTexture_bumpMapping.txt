@@ -1,0 +1,102 @@
+#version 150
+
+uniform mat4 model;
+uniform vec3 cameraPosition;
+
+// material settings
+uniform sampler2D normalMap;
+uniform vec4 materialColor;
+uniform float materialShininess;
+uniform vec3 materialSpecularColor;
+
+#define MAX_LIGHTS 10
+uniform int numLights;
+uniform struct Light {
+   vec3 position;
+   vec3 intensities; //a.k.a the color of the light
+   float attenuation;
+   float ambientCoefficient;
+   float coneAngle;
+   vec3 coneDirection;
+} allLights[MAX_LIGHTS];
+
+in mat3 TBN;
+in vec3 fragVert;
+in vec2 fragTexCoord;
+
+out vec4 finalColor;
+
+void main() {
+	// Constants
+	//vec3 normal = normalize(transpose(inverse(mat3(model))) * fragNormal);
+	vec3 nMap = texture(normalMap, fragTexCoord).rgb;
+	vec3 normal;
+
+	normal.x = ((nMap.r * 2) - 1);
+	normal.y = ((nMap.g * 2) - 1);
+	normal.z = ((nMap.b * 2) - 1);
+
+	//normal.x = ((nMap.r + 1) / 2);
+	//normal.y = ((nMap.g + 1) / 2);
+	//normal.z = ((nMap.b + 1) / 2);
+
+	//normal.x = nMap.r;
+	//normal.y = nMap.g;
+	//normal.z = nMap.b;
+
+	// goes from tangent space to object space
+	normal = TBN * normal;
+	normal = normalize(normal);
+
+	// goes from object to model space?
+	//normal = normalize(vec3(model * vec4(normal, 1)));
+
+	vec3 surfacePos = vec3(model * vec4(fragVert, 1));
+	vec4 surfaceColor =  vec4( 0.8, 0.8, 0.8, 1); //texture(normalMap, fragTexCoord);
+	vec3 surfaceToCamera = normalize(cameraPosition - surfacePos);
+
+
+
+
+
+
+
+
+
+
+
+	vec3 linearColor = vec3(0, 0, 0);
+	
+	for(int i = 0; i < numLights; i++) {
+		vec3 surfaceToLight = normalize(allLights[i].position - surfacePos);
+    
+		//ambient
+		vec3 ambient = allLights[i].ambientCoefficient * surfaceColor.rgb * allLights[i].intensities;
+
+		//diffuse
+		float diffuseCoefficient = max(0.0, dot(normal, surfaceToLight));
+		vec3 diffuse = diffuseCoefficient * surfaceColor.rgb * allLights[i].intensities;
+    
+		//specular
+		float specularCoefficient = 0.0;
+		if(diffuseCoefficient > 0.0)
+			specularCoefficient = pow(max(0.0, dot(surfaceToCamera, reflect(-surfaceToLight, normal))), materialShininess);
+		vec3 specular = specularCoefficient * materialSpecularColor * allLights[i].intensities;
+    
+		//attenuation
+		float distanceToLight = length(allLights[i].position - surfacePos);
+		float attenuation = 1.0 / (1.0 + allLights[i].attenuation * pow(distanceToLight, 2));
+
+		float lightToSurfaceAngle = degrees(acos(dot(-surfaceToLight, normalize(allLights[i].coneDirection))));
+		if(lightToSurfaceAngle > allLights[i].coneAngle){
+			attenuation = 0.0f;
+		} 
+
+		//linear color (color before gamma correction)
+		linearColor += ambient + attenuation*(diffuse + specular);
+	}
+    
+    //final color (after gamma correction)
+    vec3 gamma = vec3(1.0/2.2);
+    finalColor = vec4(pow(linearColor, gamma), surfaceColor.a);
+}

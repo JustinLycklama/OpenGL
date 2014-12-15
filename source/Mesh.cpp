@@ -50,9 +50,9 @@ GLfloat* Mesh::getVertexData() {
 		vertexData[row + 6] = normals.at((*it)->n)->y;
 		vertexData[row + 7] = normals.at((*it)->n)->z;
 
-		vertexData[row + 8] = normals.at((*it)->n)->x;
-		vertexData[row + 9] = normals.at((*it)->n)->y;
-		vertexData[row + 10] = normals.at((*it)->n)->z;
+		vertexData[row + 8] = tangents.at((*it)->tangent)->x;
+		vertexData[row + 9] = tangents.at((*it)->tangent)->y;
+		vertexData[row + 10] = tangents.at((*it)->tangent)->z;
 	
 		row += getPointsPerVertex();
 	}
@@ -131,17 +131,33 @@ void Mesh::loadMesh(string fileName) {
 				 throw runtime_error("Faces loaded before verticies.\n");
 			}
 
-			Vertex* av = vertices.at(a->n);
-			Vertex* bv = vertices.at(b->n);
+			Vertex* av = vertices.at(a->v);
+			Vertex* bv = vertices.at(b->v);
+			Tex* at = textures.at(a->t);
+			Tex* bt = textures.at(b->t);
 			Normal* tangent = new Normal();
+
+			// Old Tangent Method
 
 			tangent->x = av->x - bv->x;
 			tangent->y = av->y - bv->y;
 			tangent->z = av->z - bv->z;
 
+			// New Tangent Method
+			/*float coef = 1/ (at->u * bt->v - bt->u * at->v);
+			tangent->x = coef * ((av->x * bt->v)  + (bv->x * -at->v));
+			tangent->y = coef * ((av->y * bt->v)  + (bv->y * -at->v));
+			tangent->z = coef * ((av->z * bt->v)  + (bv->z * -at->v));*/
+
 			a->tangent = tangents.size();
 			b->tangent = tangents.size();
 			c->tangent = tangents.size();
+
+			float length = sqrt((tangent->x * tangent->x) + (tangent->y * tangent->y) + (tangent->z * tangent->z));
+			
+			tangent->x /= length;
+			tangent->y /= length;
+			tangent->z /= length;
 
 			tangents.push_back(tangent);
 

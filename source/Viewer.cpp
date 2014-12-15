@@ -44,29 +44,43 @@ void Viewer::initialize() {
 
 	/* INIT SHADER PROGRAMS */
 
-	// No textures
 	vector<pair<string, GLenum>> shaderList;
-	shaderList.push_back(pair<string, GLenum> ("vertex-shader-no-texture.txt", GL_VERTEX_SHADER));
-	shaderList.push_back(pair<string, GLenum> ("fragment-shader-no-texture.txt", GL_FRAGMENT_SHADER));
+
+	// No textures
+	shaderList.push_back(pair<string, GLenum> ("vertex_noTexture.txt", GL_VERTEX_SHADER));
+	shaderList.push_back(pair<string, GLenum> ("frag_noTexture.txt", GL_FRAGMENT_SHADER));
 
     Program* noTextures = new Program(NO_TEX);
 	noTextures->linkProgram(shaderList);
 	shaderList.clear();
 
-	if(noTextures->getProgramId() == -1) throw runtime_error("Could not create/link program");
+	if(noTextures->getProgramId() == -1) throw runtime_error("Could not create/link program: NO_TEX");
 	programs.insert(std::pair<PROGRAM_TYPE, Program*>(NO_TEX, noTextures));
 
+	// No textures and Bump Mapping
+	shaderList.push_back(pair<string, GLenum> ("vertex_noTexture_bumpMapping.txt", GL_VERTEX_SHADER));
+	shaderList.push_back(pair<string, GLenum> ("frag_noTexture_bumpMapping.txt", GL_FRAGMENT_SHADER));
+
+    Program* noTexturesBump = new Program(NO_TEX_BUMP);
+	noTexturesBump->linkProgram(shaderList);
+	shaderList.clear();
+
+	if(noTextures->getProgramId() == -1) throw runtime_error("Could not create/link program: NO_TEX_BUMP");
+	programs.insert(std::pair<PROGRAM_TYPE, Program*>(NO_TEX_BUMP, noTexturesBump));
+
 	// Textures
-	shaderList.push_back(pair<string, GLenum> ("vertex-shader-texture.txt", GL_VERTEX_SHADER));
-	shaderList.push_back(pair<string, GLenum> ("fragment-shader-texture.txt", GL_FRAGMENT_SHADER));
+	shaderList.push_back(pair<string, GLenum> ("vertex_texture.txt", GL_VERTEX_SHADER));
+	shaderList.push_back(pair<string, GLenum> ("frag_texture.txt", GL_FRAGMENT_SHADER));
 
     Program* textures = new Program(TEX);
 	textures->linkProgram(shaderList);
 	shaderList.clear();
 
-	if(textures->getProgramId() == -1) throw runtime_error("Could not create/link program");
+	if(textures->getProgramId() == -1) throw runtime_error("Could not create/link program: TEX");
 	programs.insert(std::pair<PROGRAM_TYPE, Program*>(TEX, textures));
 
+
+	/* Init Camera and World */
 	camera->setPosition(vec3(0, 0, 4));
 	camera->setAspectRatio(window->SCREEN_SIZE.x / window->SCREEN_SIZE.y);
 	
