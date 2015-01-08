@@ -13,7 +13,7 @@
 #include "Asset.h"
 #include "Mesh.h"
 
-const bool FORCE_RELOAD = true;
+const bool FORCE_RELOAD = false;
 
 Asset::Asset(Shape s, Texture* tex, Program* prog)
 {

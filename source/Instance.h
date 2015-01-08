@@ -36,6 +36,8 @@ class Instance
 	void update(float secondsElapsed);
 	virtual void render();
 
+	bool shouldRotate;
+
   private:
 	Asset* asset;
 

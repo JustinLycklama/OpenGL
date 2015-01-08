@@ -69,6 +69,12 @@ int Mesh::getPointsPerVertex() {
 }
 
 
+void Mesh::averageVertexTangents() {
+	for(map<int, vector<vertexData*>*>::iterator it = vertexDataMap.begin(); it != vertexDataMap.end(); ++it) {
+		vector<vertexData*>* vec = it->second;
+
+	}
+}
 
 void Mesh::loadMesh(string fileName) {
 
@@ -189,6 +195,18 @@ Mesh::vertexData* Mesh::buildVertexData(string line) {
 	data->v = atoi(params.at(0).c_str()) - 1;
 	data->t = atoi(params.at(1).c_str()) - 1;
 	data->n = atoi(params.at(2).c_str()) - 1;
+
+	// Add to vertex data map, for tangent averages
+	vector<vertexData*>* vec;
+	if(vertexDataMap.find(data->v) == vertexDataMap.end()) {
+		vec = new vector<vertexData*>();
+		vertexDataMap.insert(std::pair<int, vector<vertexData*>*>(data->v, vec));
+	}
+	else {
+		vec = vertexDataMap.at(data->v);
+	}
+
+	vec->push_back(data);
 
 	return data;
 }

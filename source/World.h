@@ -10,7 +10,7 @@
 #include <map>
 
 enum ASSETS {
-	BOX, CRATE, MESH
+	BOX, CRATE, BODY, WHEEL, INTERIOR
 };
 
 class World

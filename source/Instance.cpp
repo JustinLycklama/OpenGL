@@ -15,7 +15,7 @@ Instance::~Instance(void)
 
 
 void Instance::update(float secondsElapsed) {
-	//rotate(vec3(0, 0, 1), 1);
+	if(shouldRotate) rotate(vec3(1, 0, 0), 10);
 }
 
 void Instance::render() {

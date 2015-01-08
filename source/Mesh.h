@@ -2,6 +2,7 @@
 
 #include <GL/glew.h>
 #include <vector>
+#include <map>
 
 using namespace std;
 
@@ -48,11 +49,16 @@ class Mesh
   private:
 	void loadMesh(string fileName);
 	vertexData* buildVertexData(string data);
+	
+	void averageVertexTangents();
 
 	vector<Vertex*> vertices;
     vector<Tex*> textures;
     vector<Normal*> normals;
 	vector<Normal*> tangents;
     vector<vertexData*> vertData;
+
+	vector<Normal*> averageTangents;
+	map<int, vector<vertexData*>*> vertexDataMap;
 };
 
