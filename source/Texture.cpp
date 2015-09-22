@@ -1,6 +1,6 @@
 // third-party libraries
-#include <windows.h>
-#include <GL/glew.h>
+//#include <windows.h>
+//#include <GL/glew.h>
 
 // standard C++ libraries
 #include <fstream>

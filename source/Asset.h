@@ -1,9 +1,10 @@
 #pragma once
 // third-party libraries
-#include <windows.h>
-#include <GL/glew.h>
-#include <GL/glfw.h>
-#include <glm/glm.hpp>
+//#include <windows.h>
+//#include <GL/glew.h>
+//#include <GL/glfw.h>
+
+#include "glm/glm.hpp"
 
 #include "Texture.h"
 #include "Program.h"

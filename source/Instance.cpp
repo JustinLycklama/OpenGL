@@ -1,4 +1,6 @@
-#include <glm/gtc/matrix_access.hpp>
+
+#include <OpenGLES/ES2/gl.h>
+#include "glm/gtc/matrix_access.hpp"
 
 #include "Instance.h"
 
@@ -11,7 +13,6 @@ Instance::Instance(Asset* ast)
 Instance::~Instance(void)
 {
 }
-
 
 
 void Instance::update(float secondsElapsed) {

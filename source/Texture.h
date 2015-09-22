@@ -1,5 +1,7 @@
 #pragma once
+
 #include <iostream>
+#include <OpenGLES/gltypes.h>
 
 #include "Bitmap.h"
 
