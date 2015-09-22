@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#import "OpenGLView.h"
+
 @interface AppDelegate ()
 
 @end
@@ -23,6 +25,9 @@
 	[self.window makeKeyAndVisible];
 	
 	UIViewController* rootViewController = [[UIViewController alloc] init];
+	
+	OpenGLView* glView = [[OpenGLView alloc] initWithFrame:CGRectMake(0, 0, 500, 500)];
+	[rootViewController setView:glView];
 	
 	[self.window setRootViewController:rootViewController];
 	

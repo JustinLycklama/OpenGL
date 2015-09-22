@@ -232,7 +232,6 @@
 			isa = PBXGroup;
 			children = (
 				7DE57E3C1BB054390042257C /* OpenGL-iOS */,
-				7DE57E3D1BB054390042257C /* Supporting Files */,
 				7D151CA21BB0A18900E71A7C /* Engine */,
 				7DE57E561BB054390042257C /* OpenGL-iOSTests */,
 				7DE57E611BB054390042257C /* OpenGL-iOSUITests */,
@@ -259,6 +258,7 @@
 				7D151CFD1BB0A26400E71A7C /* AppDelegate.m */,
 				7D151CFE1BB0A26400E71A7C /* OpenGLView.h */,
 				7D151CFF1BB0A26400E71A7C /* OpenGLView.m */,
+				7DE57E3D1BB054390042257C /* Supporting Files */,
 			);
 			path = "OpenGL-iOS";
 			sourceTree = "<group>";
@@ -270,7 +270,6 @@
 				7D151D021BB0A26C00E71A7C /* Info.plist */,
 			);
 			name = "Supporting Files";
-			path = "OpenGL-iOS";
 			sourceTree = "<group>";
 		};
 		7DE57E561BB054390042257C /* OpenGL-iOSTests */ = {

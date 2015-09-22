@@ -1,5 +1,6 @@
 
-#include <OpenGLES/ES2/gl.h>
+
+#include <OpenGLES/ES3/gl.h>
 #include "glm/gtc/matrix_access.hpp"
 
 #include "Instance.h"
