@@ -5,6 +5,7 @@
 
 #include "Mesh.h"
 #include "Window.h"
+#include "math.h"
 
 /* NOTE: When exporting, only select: INCLUDE NORMALS, INCLUDE UV, TRIANGULATE FACES */
 
@@ -79,7 +80,7 @@ void Mesh::averageVertexTangents() {
 void Mesh::loadMesh(string fileName) {
 
 	ifstream inOBJ;
-    inOBJ.open(Window::ResourcePath(fileName));
+    //inOBJ.open(Window::ResourcePath(fileName));
     if(!inOBJ.good())
     {
         throw runtime_error("Could not load mesh: " + fileName + ".\n");

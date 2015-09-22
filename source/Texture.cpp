@@ -9,12 +9,16 @@
 #include <algorithm>
 #include <string>
 
+#include <OpenGLES/ES3/gl.h>
+#include <OpenGLES/ES3/glext.h>
+#include <OpenGLES/gltypes.h>
+
 #include "Texture.h"
 #include "Window.h"
 
 Texture::Texture(string file, GLint minMagFiler, GLint wrapMode)
 { 
-	bitmap = Bitmap::bitmapFromFile(Window::ResourcePath(file));
+	//bitmap = Bitmap::bitmapFromFile(Window::ResourcePath(file));
 	bitmap->flipVertically();
 
 	glGenTextures(1, &id);
@@ -41,7 +45,7 @@ GLenum Texture::TextureFormatForBitmapFormat(Bitmap::Format format, bool srgb)
         case Bitmap::Format_Grayscale: return GL_LUMINANCE;
         case Bitmap::Format_GrayscaleAlpha: return GL_LUMINANCE_ALPHA;
 		case Bitmap::Format_RGB: return (srgb? GL_SRGB : GL_RGB);
-        case Bitmap::Format_RGBA: return (srgb? GL_SRGB_ALPHA : GL_RGBA);
+        case Bitmap::Format_RGBA: return (srgb? GL_SRGB8_ALPHA8 : GL_RGBA); // Was GL_SRGB_ALPHA : GL_RGBA
         default: throw std::runtime_error("Unrecognised Bitmap::Format");
     }
 }

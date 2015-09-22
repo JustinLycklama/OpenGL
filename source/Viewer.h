@@ -3,7 +3,7 @@
 //#include <windows.h>
 //#include <GL/glew.h>
 //#include <GL/glfw.h>
-#include <glm/glm.hpp>
+#include "glm/glm.hpp"
 
 #include "Window.h"
 #include "World.h"
@@ -18,7 +18,7 @@ class Viewer
 
 	void initialize();
 
-	void setWindow(Window* win);
+	//void setWindow(Window* win);
 	void setCamera(Camera* cam);
 
 	void render();
@@ -27,7 +27,7 @@ class Viewer
   private:
 	map<PROGRAM_TYPE, Program*> programs;
 
-	Window* window;
+	//Window* window;
 	World* world;
 	Camera* camera;
 };

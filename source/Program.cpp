@@ -2,6 +2,11 @@
 //#include <windows.h>
 //#include "GL/glew.h"
 //#include "GL/glfw.h"
+
+#include <OpenGLES/gltypes.h>
+#include <OpenGLES/ES2/gl.h>
+#include <OpenGLES/ES2/glext.h>
+
 #include "glm/glm.hpp"
 
 // standard C++ libraries
@@ -109,12 +114,14 @@ void Program::linkProgram(vector<pair<string, GLenum>> fileList) {
 
 // returns the full path to the file `fileName` in the resources directory of the app bundle
 string Program::ResourcePath(std::string fileName) {
-    char executablePath[1024] = {'\0'};
-    DWORD charsCopied = GetModuleFileName(NULL, executablePath, 1024);
-    if(charsCopied > 0 && charsCopied < 1024)
-        return std::string(executablePath) + "\\..\\" + fileName;
-    else
-        throw std::runtime_error("GetModuleFileName failed a bit");
+//    char executablePath[1024] = {'\0'};
+//    DWORD charsCopied = GetModuleFileName(NULL, executablePath, 1024);
+//    if(charsCopied > 0 && charsCopied < 1024)
+//        return std::string(executablePath) + "\\..\\" + fileName;
+//    else
+//        throw std::runtime_error("GetModuleFileName failed a bit");
+	
+	return NULL;
 }
 
 string Program::getSource(std::string fileName) {

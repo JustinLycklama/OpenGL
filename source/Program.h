@@ -2,6 +2,7 @@
 #include <vector>
 #include <utility>
 
+#include <OpenGLES/gltypes.h>
 //#include <GL/glew.h>
 
 using namespace std;

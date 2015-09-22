@@ -8,8 +8,11 @@
 
 #include <vector>
 
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
+#include <OpenGLES/ES3/gl.h>
+#include <OpenGLES/ES3/glext.h>
+
+#include "glm/gtc/matrix_transform.hpp"
+#include "glm/gtc/type_ptr.hpp"
 
 #include "Viewer.h"
 #include "Program.h"
@@ -32,9 +35,9 @@ Viewer::~Viewer(void)
 	}
 }
 
-void Viewer::setWindow(Window* win) {
-	window = win;
-}
+//void Viewer::setWindow(Window* win) {
+//	window = win;
+//}
 
 void Viewer::setCamera(Camera* cam) {
 	camera = cam;
@@ -82,7 +85,7 @@ void Viewer::initialize() {
 
 	/* Init Camera and World */
 	camera->setPosition(vec3(0, 0, 4));
-	camera->setAspectRatio(window->SCREEN_SIZE.x / window->SCREEN_SIZE.y);
+	//camera->setAspectRatio(window->SCREEN_SIZE.x / window->SCREEN_SIZE.y);
 	
 	world = new World(&programs, camera);
 }
@@ -126,7 +129,7 @@ void Viewer::render() {
     glUseProgram(0);
 
     // swap the display buffers (displays what was just drawn)
-    glfwSwapBuffers();
+    //glfwSwapBuffers();
 }
 
 void Viewer::update(float secondsElapsed){

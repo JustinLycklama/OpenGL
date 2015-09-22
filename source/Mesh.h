@@ -1,5 +1,6 @@
 #pragma once
 
+#include <OpenGLES/gltypes.h>
 //#include <GL/glew.h>
 #include <vector>
 #include <map>
