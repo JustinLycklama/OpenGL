@@ -1,4 +1,4 @@
-#version 150
+#version 300 es
 
 uniform mat4 camera; // Contains projection and view transformations
 uniform mat4 model;

@@ -50,8 +50,8 @@ void Viewer::initialize() {
 	vector<pair<string, GLenum>> shaderList;
 
 	// No textures
-	shaderList.push_back(pair<string, GLenum> ("vertex_noTexture.txt", GL_VERTEX_SHADER));
-	shaderList.push_back(pair<string, GLenum> ("frag_noTexture.txt", GL_FRAGMENT_SHADER));
+	shaderList.push_back(pair<string, GLenum> ("vertex_noTexture", GL_VERTEX_SHADER));
+	shaderList.push_back(pair<string, GLenum> ("frag_noTexture", GL_FRAGMENT_SHADER));
 
     Program* noTextures = new Program(NO_TEX);
 	noTextures->linkProgram(shaderList);
@@ -61,8 +61,8 @@ void Viewer::initialize() {
 	programs.insert(std::pair<PROGRAM_TYPE, Program*>(NO_TEX, noTextures));
 
 	// No textures and Bump Mapping
-	shaderList.push_back(pair<string, GLenum> ("vertex_noTexture_bumpMapping.txt", GL_VERTEX_SHADER));
-	shaderList.push_back(pair<string, GLenum> ("frag_noTexture_bumpMapping.txt", GL_FRAGMENT_SHADER));
+	shaderList.push_back(pair<string, GLenum> ("vertex_noTexture_bumpMapping", GL_VERTEX_SHADER));
+	shaderList.push_back(pair<string, GLenum> ("frag_noTexture_bumpMapping", GL_FRAGMENT_SHADER));
 
     Program* noTexturesBump = new Program(NO_TEX_BUMP);
 	noTexturesBump->linkProgram(shaderList);
@@ -72,8 +72,8 @@ void Viewer::initialize() {
 	programs.insert(std::pair<PROGRAM_TYPE, Program*>(NO_TEX_BUMP, noTexturesBump));
 
 	// Textures
-	shaderList.push_back(pair<string, GLenum> ("vertex_texture.txt", GL_VERTEX_SHADER));
-	shaderList.push_back(pair<string, GLenum> ("frag_texture.txt", GL_FRAGMENT_SHADER));
+	shaderList.push_back(pair<string, GLenum> ("vertex_texture", GL_VERTEX_SHADER));
+	shaderList.push_back(pair<string, GLenum> ("frag_texture", GL_FRAGMENT_SHADER));
 
     Program* textures = new Program(TEX);
 	textures->linkProgram(shaderList);
@@ -83,6 +83,8 @@ void Viewer::initialize() {
 	programs.insert(std::pair<PROGRAM_TYPE, Program*>(TEX, textures));
 
 
+	camera->forward();
+	
 	/* Init Camera and World */
 	camera->setPosition(vec3(0, 0, 4));
 	//camera->setAspectRatio(window->SCREEN_SIZE.x / window->SCREEN_SIZE.y);
@@ -128,6 +130,7 @@ void Viewer::render() {
 	// unbind the program
     glUseProgram(0);
 
+	
     // swap the display buffers (displays what was just drawn)
     //glfwSwapBuffers();
 }

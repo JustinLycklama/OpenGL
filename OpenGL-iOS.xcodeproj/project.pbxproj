@@ -67,6 +67,9 @@
 		7D151D051BB0A26C00E71A7C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D151D031BB0A26C00E71A7C /* main.m */; settings = {ASSET_TAGS = (); }; };
 		7D151D0E1BB0A43500E71A7C /* glm-0.9.4.0 in Resources */ = {isa = PBXBuildFile; fileRef = 7D151D0A1BB0A43500E71A7C /* glm-0.9.4.0 */; settings = {ASSET_TAGS = (); }; };
 		7D151D0F1BB0A43500E71A7C /* stb_image in Resources */ = {isa = PBXBuildFile; fileRef = 7D151D0B1BB0A43500E71A7C /* stb_image */; settings = {ASSET_TAGS = (); }; };
+		7DCCA5DF1BB33708007894DF /* RWTBase.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 7DCCA5DE1BB33708007894DF /* RWTBase.vsh */; settings = {ASSET_TAGS = (); }; };
+		7DDEE0711BB204EE00A83549 /* ViewerWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7DDEE0701BB204EE00A83549 /* ViewerWrapper.mm */; settings = {ASSET_TAGS = (); }; };
+		7DDEE0741BB2057B00A83549 /* CameraWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7DDEE0731BB2057B00A83549 /* CameraWrapper.mm */; settings = {ASSET_TAGS = (); }; };
 		7DE57E581BB054390042257C /* OpenGL_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE57E571BB054390042257C /* OpenGL_iOSTests.m */; };
 		7DE57E631BB054390042257C /* OpenGL_iOSUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE57E621BB054390042257C /* OpenGL_iOSUITests.m */; };
 		7DE57E751BB089130042257C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DE57E741BB089130042257C /* OpenGLES.framework */; };
@@ -128,6 +131,11 @@
 		7D151D031BB0A26C00E71A7C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Supporting Files/main.m"; sourceTree = "<group>"; };
 		7D151D0A1BB0A43500E71A7C /* glm-0.9.4.0 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "glm-0.9.4.0"; path = "thirdparty/glm-0.9.4.0"; sourceTree = "<group>"; };
 		7D151D0B1BB0A43500E71A7C /* stb_image */ = {isa = PBXFileReference; lastKnownFileType = folder; name = stb_image; path = thirdparty/stb_image; sourceTree = "<group>"; };
+		7DCCA5DE1BB33708007894DF /* RWTBase.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = RWTBase.vsh; path = "../Downloads/RWTPixelShader-starter/Xcode/RWTPixelShader/RWTPixelShader/Shaders/RWTBase.vsh"; sourceTree = "<group>"; };
+		7DDEE06F1BB204EE00A83549 /* ViewerWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewerWrapper.h; path = Wrappers/ViewerWrapper.h; sourceTree = "<group>"; };
+		7DDEE0701BB204EE00A83549 /* ViewerWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ViewerWrapper.mm; path = Wrappers/ViewerWrapper.mm; sourceTree = "<group>"; };
+		7DDEE0721BB2057B00A83549 /* CameraWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CameraWrapper.h; path = Wrappers/CameraWrapper.h; sourceTree = "<group>"; };
+		7DDEE0731BB2057B00A83549 /* CameraWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CameraWrapper.mm; path = Wrappers/CameraWrapper.mm; sourceTree = "<group>"; };
 		7DE57E3A1BB054390042257C /* OpenGL-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OpenGL-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DE57E531BB054390042257C /* OpenGL-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OpenGL-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DE57E571BB054390042257C /* OpenGL_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenGL_iOSTests.m; sourceTree = "<group>"; };
@@ -215,6 +223,7 @@
 				7D151CB71BB0A1AA00E71A7C /* vertex_noTexture_bumpMapping.txt */,
 				7D151CB81BB0A1AA00E71A7C /* vertex_noTexture.txt */,
 				7D151CB91BB0A1AA00E71A7C /* vertex_texture.txt */,
+				7DCCA5DE1BB33708007894DF /* RWTBase.vsh */,
 			);
 			name = Shaders;
 			sourceTree = "<group>";
@@ -228,10 +237,22 @@
 			name = ThirdParty;
 			sourceTree = "<group>";
 		};
+		7DDEE06B1BB1FD0000A83549 /* Wrappers */ = {
+			isa = PBXGroup;
+			children = (
+				7DDEE06F1BB204EE00A83549 /* ViewerWrapper.h */,
+				7DDEE0701BB204EE00A83549 /* ViewerWrapper.mm */,
+				7DDEE0721BB2057B00A83549 /* CameraWrapper.h */,
+				7DDEE0731BB2057B00A83549 /* CameraWrapper.mm */,
+			);
+			name = Wrappers;
+			sourceTree = "<group>";
+		};
 		7DE57E311BB054390042257C = {
 			isa = PBXGroup;
 			children = (
 				7DE57E3C1BB054390042257C /* OpenGL-iOS */,
+				7DDEE06B1BB1FD0000A83549 /* Wrappers */,
 				7D151CA21BB0A18900E71A7C /* Engine */,
 				7DE57E561BB054390042257C /* OpenGL-iOSTests */,
 				7DE57E611BB054390042257C /* OpenGL-iOSUITests */,
@@ -401,6 +422,7 @@
 				7D151D0F1BB0A43500E71A7C /* stb_image in Resources */,
 				7D151CCC1BB0A1AA00E71A7C /* frag_noTexture.txt in Resources */,
 				7D151CE41BB0A1AA00E71A7C /* vertex_noTexture_bumpMapping.txt in Resources */,
+				7DCCA5DF1BB33708007894DF /* RWTBase.vsh in Resources */,
 				7D151D041BB0A26C00E71A7C /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,9 +470,11 @@
 				7D151CF01BB0A1AA00E71A7C /* Window.cpp in Sources */,
 				7D151D001BB0A26400E71A7C /* AppDelegate.m in Sources */,
 				7D151CC01BB0A1AA00E71A7C /* Asset.cpp in Sources */,
+				7DDEE0741BB2057B00A83549 /* CameraWrapper.mm in Sources */,
 				7D151D051BB0A26C00E71A7C /* main.m in Sources */,
 				7D151CE11BB0A1AA00E71A7C /* Texture.cpp in Sources */,
 				7D151CF31BB0A1AA00E71A7C /* World.cpp in Sources */,
+				7DDEE0711BB204EE00A83549 /* ViewerWrapper.mm in Sources */,
 				7D151CC61BB0A1AA00E71A7C /* Camera.cpp in Sources */,
 				7D151CED1BB0A1AA00E71A7C /* Viewer.cpp in Sources */,
 			);

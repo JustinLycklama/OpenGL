@@ -8,6 +8,17 @@
 
 #import "OpenGLView.h"
 
+// C++ Wrappers
+#import "ViewerWrapper.h"
+#import "CameraWrapper.h"
+
+@interface OpenGLView()
+{
+	ViewerWrapper* _viewer;
+}
+
+@end
+
 @implementation OpenGLView
 
 #pragma mark - View Lifecycle
@@ -16,13 +27,19 @@
 - (id)initWithFrame:(CGRect)frame
 {
 	self = [super initWithFrame:frame];
-	if (self) {
+	
+	if (self)
+	{
 		[self setupLayer];
 		[self setupContext];
 		[self setupRenderBuffer];
 		[self setupFrameBuffer];
+		
+		[self setupObjects];
+		
 		[self setupDisplayLink];
 	}
+	
 	return self;
 }
 
@@ -39,6 +56,26 @@
 }
 
 #pragma mark - Setup
+
+-(void)setupObjects
+{
+	
+	CameraWrapper* camera = [[CameraWrapper alloc] init];
+	_viewer = [[ViewerWrapper alloc] initWithCamera:camera];
+	
+	
+	
+//	Viewer* viewer = new Viewer();
+//	Camera* camera = new Camera();
+//
+//	window->setCamera(camera);
+//	window->setViewer(viewer);
+//
+//	viewer->setCamera(camera);
+//	viewer->setWindow(window);
+//
+//	viewer->initialize();
+}
 
 - (void)setupLayer {
 	_eaglLayer = (CAEAGLLayer*) self.layer;
@@ -81,6 +118,10 @@
 - (void)render:(CADisplayLink*)displayLink {
 	glClearColor(255.0/255.0, 104.0/255.0, 55.0/255.0, 1.0);
 	glClear(GL_COLOR_BUFFER_BIT);
+	
+	[_viewer update:0.1];
+	[_viewer render];
+	
 	[_context presentRenderbuffer:GL_RENDERBUFFER];
 }
 
