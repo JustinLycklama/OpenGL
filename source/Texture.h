@@ -18,6 +18,7 @@ class Texture
 {
   public:
 	Texture(string file, GLint minMagFiler, GLint wrapMode);
+	Texture(string file, string fileType, GLint minMagFiler, GLint wrapMode);
 	~Texture(void);
 	GLuint getId();
 

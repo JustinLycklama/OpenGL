@@ -26,7 +26,7 @@ in vec2 fragTexCoord;
 
 out vec4 finalColor;
 
-void main() {
+void main(void) {
 	// Constants
 	//vec3 normal = normalize(transpose(inverse(mat3(model))) * fragNormal);
 	vec3 nMap = texture(normalMap, fragTexCoord).rgb;

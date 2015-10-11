@@ -50,8 +50,8 @@ void Viewer::initialize() {
 	vector<pair<string, GLenum>> shaderList;
 
 	// No textures
-	shaderList.push_back(pair<string, GLenum> ("vertex_noTexture", GL_VERTEX_SHADER));
-	shaderList.push_back(pair<string, GLenum> ("frag_noTexture", GL_FRAGMENT_SHADER));
+	shaderList.push_back(pair<string, GLenum> ("RWTBaseVertex", GL_VERTEX_SHADER));
+	shaderList.push_back(pair<string, GLenum> ("RWTBaseFragment", GL_FRAGMENT_SHADER));
 
     Program* noTextures = new Program(NO_TEX);
 	noTextures->linkProgram(shaderList);
@@ -82,8 +82,7 @@ void Viewer::initialize() {
 	if(textures->getProgramId() == -1) throw runtime_error("Could not create/link program: TEX");
 	programs.insert(std::pair<PROGRAM_TYPE, Program*>(TEX, textures));
 
-
-	camera->forward();
+	//camera->forward();
 	
 	/* Init Camera and World */
 	camera->setPosition(vec3(0, 0, 4));

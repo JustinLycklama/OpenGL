@@ -29,6 +29,7 @@
 		_cViewer = new Viewer();
 		[self setCamera:camera];
 		
+		_cViewer->setCamera(_cCamera);
 		_cViewer->initialize();
 	}
 	
@@ -42,7 +43,8 @@
 
 -(void)setCamera:(CameraWrapper*)camera
 {
-	_cCamera = (Camera*)[camera camera];
+	//_cCamera = (Camera*)[camera camera];
+	_cCamera = new Camera();
 }
 
 -(void)update:(CGFloat)timeElapsed

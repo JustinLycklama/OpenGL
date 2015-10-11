@@ -21,10 +21,10 @@ World::~World(void)
 
 void World::initAssets() {
 	// Load Textures
-	Texture* crate = new Texture("wooden-crate.jpg", 9729, 33071);
-	Texture* normalMap = new Texture("Normal_Map.bmp", 9729, 33071);
-	Texture* bodyTex = new Texture("body2.png", 9729, 33071);
-	Texture* tireTex = new Texture("tire.png", 9729, 33071);
+	Texture* crate = new Texture("wooden-crate", "jpg", 9729, 33071);
+	Texture* normalMap = new Texture("Normal_Map", "bmp", 9729, 33071);
+	Texture* bodyTex = new Texture("body2", "png", 9729, 33071);
+	Texture* tireTex = new Texture("tire", "png", 9729, 33071);
 
 
 	Asset* crateAsset = new Asset(Cube, crate, programs->at(TEX));	

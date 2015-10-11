@@ -29,9 +29,12 @@ class Program
 	GLint getUniformLocation(string var);
 	GLint getUniformStructLocation(string var, int index);
 	GLint getAttributeLocation(string var);
-
+	
+	static string ResourcePath(std::string fileName);
+	static string ResourcePath(std::string fileName, string fileType);
+	
   private:
-	static std::string ResourcePath(std::string fileName);
+	//static std::string ResourcePath(std::string fileName);
 	string getSource(std::string fileName);
 	static void init_resources(void);
 

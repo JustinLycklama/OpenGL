@@ -65,15 +65,23 @@
 		7D151D011BB0A26400E71A7C /* OpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D151CFF1BB0A26400E71A7C /* OpenGLView.m */; settings = {ASSET_TAGS = (); }; };
 		7D151D041BB0A26C00E71A7C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7D151D021BB0A26C00E71A7C /* Info.plist */; settings = {ASSET_TAGS = (); }; };
 		7D151D051BB0A26C00E71A7C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D151D031BB0A26C00E71A7C /* main.m */; settings = {ASSET_TAGS = (); }; };
-		7D151D0E1BB0A43500E71A7C /* glm-0.9.4.0 in Resources */ = {isa = PBXBuildFile; fileRef = 7D151D0A1BB0A43500E71A7C /* glm-0.9.4.0 */; settings = {ASSET_TAGS = (); }; };
 		7D151D0F1BB0A43500E71A7C /* stb_image in Resources */ = {isa = PBXBuildFile; fileRef = 7D151D0B1BB0A43500E71A7C /* stb_image */; settings = {ASSET_TAGS = (); }; };
-		7DCCA5DF1BB33708007894DF /* RWTBase.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 7DCCA5DE1BB33708007894DF /* RWTBase.vsh */; settings = {ASSET_TAGS = (); }; };
+		7DCCA5E31BB34E7F007894DF /* glm-0.9.7.1 in Resources */ = {isa = PBXBuildFile; fileRef = 7DCCA5E21BB34E7F007894DF /* glm-0.9.7.1 */; settings = {ASSET_TAGS = (); }; };
+		7DCCA5E41BB34E7F007894DF /* glm-0.9.7.1 in Resources */ = {isa = PBXBuildFile; fileRef = 7DCCA5E21BB34E7F007894DF /* glm-0.9.7.1 */; settings = {ASSET_TAGS = (); }; };
+		7DCCA5E51BB34E7F007894DF /* glm-0.9.7.1 in Resources */ = {isa = PBXBuildFile; fileRef = 7DCCA5E21BB34E7F007894DF /* glm-0.9.7.1 */; settings = {ASSET_TAGS = (); }; };
 		7DDEE0711BB204EE00A83549 /* ViewerWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7DDEE0701BB204EE00A83549 /* ViewerWrapper.mm */; settings = {ASSET_TAGS = (); }; };
 		7DDEE0741BB2057B00A83549 /* CameraWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7DDEE0731BB2057B00A83549 /* CameraWrapper.mm */; settings = {ASSET_TAGS = (); }; };
 		7DE57E581BB054390042257C /* OpenGL_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE57E571BB054390042257C /* OpenGL_iOSTests.m */; };
 		7DE57E631BB054390042257C /* OpenGL_iOSUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE57E621BB054390042257C /* OpenGL_iOSUITests.m */; };
 		7DE57E751BB089130042257C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DE57E741BB089130042257C /* OpenGLES.framework */; };
 		7DE57E771BB0891C0042257C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DE57E761BB0891C0042257C /* QuartzCore.framework */; };
+		7DF195641BC9E34600DB7A2E /* wooden-crate.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DF195631BC9E34600DB7A2E /* wooden-crate.jpg */; settings = {ASSET_TAGS = (); }; };
+		7DF195681BC9E5FF00DB7A2E /* body.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DF195651BC9E5FF00DB7A2E /* body.png */; settings = {ASSET_TAGS = (); }; };
+		7DF195691BC9E5FF00DB7A2E /* Normal_Map.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 7DF195661BC9E5FF00DB7A2E /* Normal_Map.bmp */; settings = {ASSET_TAGS = (); }; };
+		7DF1956A1BC9E5FF00DB7A2E /* tire.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DF195671BC9E5FF00DB7A2E /* tire.png */; settings = {ASSET_TAGS = (); }; };
+		7DF1956C1BC9E67C00DB7A2E /* body2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1956B1BC9E67C00DB7A2E /* body2.png */; settings = {ASSET_TAGS = (); }; };
+		7DF1956F1BC9F64400DB7A2E /* RWTBaseFragment.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1956D1BC9F64400DB7A2E /* RWTBaseFragment.txt */; settings = {ASSET_TAGS = (); }; };
+		7DF195701BC9F64400DB7A2E /* RWTBaseVertex.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1956E1BC9F64400DB7A2E /* RWTBaseVertex.txt */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,9 +137,8 @@
 		7D151CFF1BB0A26400E71A7C /* OpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenGLView.m; sourceTree = "<group>"; };
 		7D151D021BB0A26C00E71A7C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Supporting Files/Info.plist"; sourceTree = "<group>"; };
 		7D151D031BB0A26C00E71A7C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Supporting Files/main.m"; sourceTree = "<group>"; };
-		7D151D0A1BB0A43500E71A7C /* glm-0.9.4.0 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "glm-0.9.4.0"; path = "thirdparty/glm-0.9.4.0"; sourceTree = "<group>"; };
 		7D151D0B1BB0A43500E71A7C /* stb_image */ = {isa = PBXFileReference; lastKnownFileType = folder; name = stb_image; path = thirdparty/stb_image; sourceTree = "<group>"; };
-		7DCCA5DE1BB33708007894DF /* RWTBase.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = RWTBase.vsh; path = "../Downloads/RWTPixelShader-starter/Xcode/RWTPixelShader/RWTPixelShader/Shaders/RWTBase.vsh"; sourceTree = "<group>"; };
+		7DCCA5E21BB34E7F007894DF /* glm-0.9.7.1 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "glm-0.9.7.1"; path = "thirdparty/glm-0.9.7.1"; sourceTree = "<group>"; };
 		7DDEE06F1BB204EE00A83549 /* ViewerWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewerWrapper.h; path = Wrappers/ViewerWrapper.h; sourceTree = "<group>"; };
 		7DDEE0701BB204EE00A83549 /* ViewerWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ViewerWrapper.mm; path = Wrappers/ViewerWrapper.mm; sourceTree = "<group>"; };
 		7DDEE0721BB2057B00A83549 /* CameraWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CameraWrapper.h; path = Wrappers/CameraWrapper.h; sourceTree = "<group>"; };
@@ -145,6 +152,13 @@
 		7DE57E641BB054390042257C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7DE57E741BB089130042257C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		7DE57E761BB0891C0042257C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		7DF195631BC9E34600DB7A2E /* wooden-crate.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "wooden-crate.jpg"; path = "Image_Resources/wooden-crate.jpg"; sourceTree = "<group>"; };
+		7DF195651BC9E5FF00DB7A2E /* body.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = body.png; path = Image_Resources/body.png; sourceTree = "<group>"; };
+		7DF195661BC9E5FF00DB7A2E /* Normal_Map.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = Normal_Map.bmp; path = Image_Resources/Normal_Map.bmp; sourceTree = "<group>"; };
+		7DF195671BC9E5FF00DB7A2E /* tire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tire.png; path = Image_Resources/tire.png; sourceTree = "<group>"; };
+		7DF1956B1BC9E67C00DB7A2E /* body2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = body2.png; path = Image_Resources/body2.png; sourceTree = "<group>"; };
+		7DF1956D1BC9F64400DB7A2E /* RWTBaseFragment.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = RWTBaseFragment.txt; path = source/RWTBaseFragment.txt; sourceTree = "<group>"; };
+		7DF1956E1BC9F64400DB7A2E /* RWTBaseVertex.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = RWTBaseVertex.txt; path = source/RWTBaseVertex.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,7 +237,8 @@
 				7D151CB71BB0A1AA00E71A7C /* vertex_noTexture_bumpMapping.txt */,
 				7D151CB81BB0A1AA00E71A7C /* vertex_noTexture.txt */,
 				7D151CB91BB0A1AA00E71A7C /* vertex_texture.txt */,
-				7DCCA5DE1BB33708007894DF /* RWTBase.vsh */,
+				7DF1956D1BC9F64400DB7A2E /* RWTBaseFragment.txt */,
+				7DF1956E1BC9F64400DB7A2E /* RWTBaseVertex.txt */,
 			);
 			name = Shaders;
 			sourceTree = "<group>";
@@ -231,7 +246,7 @@
 		7D151D071BB0A40100E71A7C /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
-				7D151D0A1BB0A43500E71A7C /* glm-0.9.4.0 */,
+				7DCCA5E21BB34E7F007894DF /* glm-0.9.7.1 */,
 				7D151D0B1BB0A43500E71A7C /* stb_image */,
 			);
 			name = ThirdParty;
@@ -251,6 +266,7 @@
 		7DE57E311BB054390042257C = {
 			isa = PBXGroup;
 			children = (
+				7DF195621BC9E33000DB7A2E /* Resources */,
 				7DE57E3C1BB054390042257C /* OpenGL-iOS */,
 				7DDEE06B1BB1FD0000A83549 /* Wrappers */,
 				7D151CA21BB0A18900E71A7C /* Engine */,
@@ -309,6 +325,18 @@
 				7DE57E641BB054390042257C /* Info.plist */,
 			);
 			path = "OpenGL-iOSUITests";
+			sourceTree = "<group>";
+		};
+		7DF195621BC9E33000DB7A2E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7DF195631BC9E34600DB7A2E /* wooden-crate.jpg */,
+				7DF195651BC9E5FF00DB7A2E /* body.png */,
+				7DF1956B1BC9E67C00DB7A2E /* body2.png */,
+				7DF195661BC9E5FF00DB7A2E /* Normal_Map.bmp */,
+				7DF195671BC9E5FF00DB7A2E /* tire.png */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -416,13 +444,19 @@
 			files = (
 				7D151CC91BB0A1AA00E71A7C /* frag_noTexture_bumpMapping.txt in Resources */,
 				7D151CCF1BB0A1AA00E71A7C /* frag_texture.txt in Resources */,
+				7DF1956F1BC9F64400DB7A2E /* RWTBaseFragment.txt in Resources */,
+				7DF195641BC9E34600DB7A2E /* wooden-crate.jpg in Resources */,
 				7D151CE71BB0A1AA00E71A7C /* vertex_noTexture.txt in Resources */,
-				7D151D0E1BB0A43500E71A7C /* glm-0.9.4.0 in Resources */,
 				7D151CEA1BB0A1AA00E71A7C /* vertex_texture.txt in Resources */,
+				7DF195681BC9E5FF00DB7A2E /* body.png in Resources */,
 				7D151D0F1BB0A43500E71A7C /* stb_image in Resources */,
+				7DF1956A1BC9E5FF00DB7A2E /* tire.png in Resources */,
+				7DF1956C1BC9E67C00DB7A2E /* body2.png in Resources */,
+				7DCCA5E31BB34E7F007894DF /* glm-0.9.7.1 in Resources */,
+				7DF195701BC9F64400DB7A2E /* RWTBaseVertex.txt in Resources */,
 				7D151CCC1BB0A1AA00E71A7C /* frag_noTexture.txt in Resources */,
+				7DF195691BC9E5FF00DB7A2E /* Normal_Map.bmp in Resources */,
 				7D151CE41BB0A1AA00E71A7C /* vertex_noTexture_bumpMapping.txt in Resources */,
-				7DCCA5DF1BB33708007894DF /* RWTBase.vsh in Resources */,
 				7D151D041BB0A26C00E71A7C /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -431,6 +465,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DCCA5E41BB34E7F007894DF /* glm-0.9.7.1 in Resources */,
 				7D151CEB1BB0A1AA00E71A7C /* vertex_texture.txt in Resources */,
 				7D151CE51BB0A1AA00E71A7C /* vertex_noTexture_bumpMapping.txt in Resources */,
 				7D151CCA1BB0A1AA00E71A7C /* frag_noTexture_bumpMapping.txt in Resources */,
@@ -444,6 +479,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DCCA5E51BB34E7F007894DF /* glm-0.9.7.1 in Resources */,
 				7D151CEC1BB0A1AA00E71A7C /* vertex_texture.txt in Resources */,
 				7D151CE61BB0A1AA00E71A7C /* vertex_noTexture_bumpMapping.txt in Resources */,
 				7D151CCB1BB0A1AA00E71A7C /* frag_noTexture_bumpMapping.txt in Resources */,
@@ -575,6 +611,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Justin.OpenGL;
+				PRODUCT_NAME = OpenGL;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -612,6 +650,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Justin.OpenGL;
+				PRODUCT_NAME = OpenGL;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;

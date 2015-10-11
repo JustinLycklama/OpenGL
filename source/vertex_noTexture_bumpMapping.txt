@@ -12,7 +12,7 @@ out vec3 fragVert;
 out vec2 fragTexCoord;
 out mat3 TBN;
 
-void main() {
+void main(void) {
 	fragVert = vert;
 	fragTexCoord = vertTexCoord;
 

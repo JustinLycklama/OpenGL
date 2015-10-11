@@ -15,10 +15,20 @@
 
 #include "Texture.h"
 #include "Window.h"
+#include "Program.h"
+
+using namespace std;
 
 Texture::Texture(string file, GLint minMagFiler, GLint wrapMode)
-{ 
-	//bitmap = Bitmap::bitmapFromFile(Window::ResourcePath(file));
+{
+	Texture::Texture(file, ".png", minMagFiler, wrapMode);
+}
+
+Texture::Texture(string file, string fileType, GLint minMagFiler, GLint wrapMode)
+{
+	string path = Program::ResourcePath(file, fileType);
+	
+	bitmap = Bitmap::bitmapFromFile(path);
 	bitmap->flipVertically();
 
 	glGenTextures(1, &id);

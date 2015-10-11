@@ -135,8 +135,13 @@ void Program::linkProgram(vector<pair<string, GLenum>> fileList) {
     }
 }
 
+string Program::ResourcePath(std::string fileName)
+{
+	return Program::ResourcePath(fileName, "txt");
+}
+
 // returns the full path to the file `fileName` in the resources directory of the app bundle
-string Program::ResourcePath(std::string fileName){//, std::string fileType) {
+string Program::ResourcePath(std::string fileName, std::string fileType) {
 //    char executablePath[1024] = {'\0'};
 //    DWORD charsCopied = GetModuleFileName(NULL, executablePath, 1024);
 //    if(charsCopied > 0 && charsCopied < 1024)
@@ -157,8 +162,6 @@ string Program::ResourcePath(std::string fileName){//, std::string fileType) {
 //	
 //	return (std::string str(manifest_path));
 	
-	string fileType = "txt";
-	
 	CFStringRef fileNameRef = CFStringCreateWithCString(NULL, fileName.c_str(), kCFStringEncodingUTF8);
 	CFStringRef fileTypeRef = CFStringCreateWithCString(NULL, fileType.c_str(), kCFStringEncodingUTF8);
 	
@@ -168,9 +171,14 @@ string Program::ResourcePath(std::string fileName){//, std::string fileType) {
 	if (CFURLGetFileSystemRepresentation(url, true, filePath, sizeof(filePath)))
 	{
 		std::string str((char*)filePath);
+		
+		cout << "Found Path: " << str << endl;
+		
 		return str;
 	}
 
+	cout << "Could not get Path for" << fileName << endl;
+	
 	return "";
 }
 
