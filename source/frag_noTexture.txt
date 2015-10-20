@@ -1,22 +1,15 @@
 #version 300 es
+precision mediump float;
 
 uniform mat4 model;
 uniform vec3 cameraPosition;
 
 // material settings
-uniform float materialShininess;
-uniform vec3 materialSpecularColor;
+//uniform float materialShininess;
+//uniform vec3 materialSpecularColor;
 
 #define MAX_LIGHTS 10
 uniform int numLights;
-uniform struct Light {
-   vec3 position;
-   vec3 intensities; //a.k.a the color of the light
-   float attenuation;
-   float ambientCoefficient;
-   float coneAngle;
-   vec3 coneDirection;
-} allLights[MAX_LIGHTS];
 
 in vec3 fragNormal;
 in vec3 fragVert;
@@ -31,35 +24,6 @@ void main(void) {
 	vec3 surfaceToCamera = normalize(cameraPosition - surfacePos);
 
 	vec3 linearColor = vec3(0, 0, 0);
-	
-	for(int i = 0; i < numLights; i++) {
-		vec3 surfaceToLight = normalize(allLights[i].position - surfacePos);
-    
-		//ambient
-		vec3 ambient = allLights[i].ambientCoefficient * surfaceColor.rgb * allLights[i].intensities;
-
-		//diffuse
-		float diffuseCoefficient = max(0.0, dot(normal, surfaceToLight));
-		vec3 diffuse = diffuseCoefficient * surfaceColor.rgb * allLights[i].intensities;
-    
-		//specular
-		float specularCoefficient = 0.0;
-		if(diffuseCoefficient > 0.0)
-			specularCoefficient = pow(max(0.0, dot(surfaceToCamera, reflect(-surfaceToLight, normal))), materialShininess);
-		vec3 specular = specularCoefficient * materialSpecularColor * allLights[i].intensities;
-    
-		//attenuation
-		float distanceToLight = length(allLights[i].position - surfacePos);
-		float attenuation = 1.0 / (1.0 + allLights[i].attenuation * pow(distanceToLight, 2));
-
-		float lightToSurfaceAngle = degrees(acos(dot(-surfaceToLight, normalize(allLights[i].coneDirection))));
-		if(lightToSurfaceAngle > allLights[i].coneAngle){
-			attenuation = 0.0f;
-		} 
-
-		//linear color (color before gamma correction)
-		linearColor += ambient + attenuation*(diffuse + specular);
-	}
     
     //final color (after gamma correction)
     vec3 gamma = vec3(1.0/2.2);

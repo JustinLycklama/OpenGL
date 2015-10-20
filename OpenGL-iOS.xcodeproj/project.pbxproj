@@ -69,6 +69,8 @@
 		7DCCA5E31BB34E7F007894DF /* glm-0.9.7.1 in Resources */ = {isa = PBXBuildFile; fileRef = 7DCCA5E21BB34E7F007894DF /* glm-0.9.7.1 */; settings = {ASSET_TAGS = (); }; };
 		7DCCA5E41BB34E7F007894DF /* glm-0.9.7.1 in Resources */ = {isa = PBXBuildFile; fileRef = 7DCCA5E21BB34E7F007894DF /* glm-0.9.7.1 */; settings = {ASSET_TAGS = (); }; };
 		7DCCA5E51BB34E7F007894DF /* glm-0.9.7.1 in Resources */ = {isa = PBXBuildFile; fileRef = 7DCCA5E21BB34E7F007894DF /* glm-0.9.7.1 */; settings = {ASSET_TAGS = (); }; };
+		7DD7426E1BD5BBDF0039E054 /* frag_test.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7DD7426C1BD5BBDF0039E054 /* frag_test.txt */; settings = {ASSET_TAGS = (); }; };
+		7DD7426F1BD5BBDF0039E054 /* vertex_test.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7DD7426D1BD5BBDF0039E054 /* vertex_test.txt */; settings = {ASSET_TAGS = (); }; };
 		7DDEE0711BB204EE00A83549 /* ViewerWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7DDEE0701BB204EE00A83549 /* ViewerWrapper.mm */; settings = {ASSET_TAGS = (); }; };
 		7DDEE0741BB2057B00A83549 /* CameraWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7DDEE0731BB2057B00A83549 /* CameraWrapper.mm */; settings = {ASSET_TAGS = (); }; };
 		7DE57E581BB054390042257C /* OpenGL_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE57E571BB054390042257C /* OpenGL_iOSTests.m */; };
@@ -139,6 +141,8 @@
 		7D151D031BB0A26C00E71A7C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Supporting Files/main.m"; sourceTree = "<group>"; };
 		7D151D0B1BB0A43500E71A7C /* stb_image */ = {isa = PBXFileReference; lastKnownFileType = folder; name = stb_image; path = thirdparty/stb_image; sourceTree = "<group>"; };
 		7DCCA5E21BB34E7F007894DF /* glm-0.9.7.1 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "glm-0.9.7.1"; path = "thirdparty/glm-0.9.7.1"; sourceTree = "<group>"; };
+		7DD7426C1BD5BBDF0039E054 /* frag_test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = frag_test.txt; path = source/frag_test.txt; sourceTree = "<group>"; };
+		7DD7426D1BD5BBDF0039E054 /* vertex_test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vertex_test.txt; path = source/vertex_test.txt; sourceTree = "<group>"; };
 		7DDEE06F1BB204EE00A83549 /* ViewerWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewerWrapper.h; path = Wrappers/ViewerWrapper.h; sourceTree = "<group>"; };
 		7DDEE0701BB204EE00A83549 /* ViewerWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ViewerWrapper.mm; path = Wrappers/ViewerWrapper.mm; sourceTree = "<group>"; };
 		7DDEE0721BB2057B00A83549 /* CameraWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CameraWrapper.h; path = Wrappers/CameraWrapper.h; sourceTree = "<group>"; };
@@ -231,14 +235,12 @@
 		7D151CF61BB0A1BB00E71A7C /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
-				7D151CA91BB0A1AA00E71A7C /* frag_noTexture_bumpMapping.txt */,
-				7D151CAA1BB0A1AA00E71A7C /* frag_noTexture.txt */,
-				7D151CAB1BB0A1AA00E71A7C /* frag_texture.txt */,
-				7D151CB71BB0A1AA00E71A7C /* vertex_noTexture_bumpMapping.txt */,
-				7D151CB81BB0A1AA00E71A7C /* vertex_noTexture.txt */,
-				7D151CB91BB0A1AA00E71A7C /* vertex_texture.txt */,
-				7DF1956D1BC9F64400DB7A2E /* RWTBaseFragment.txt */,
+				7DD7426B1BD5BB750039E054 /* Test */,
+				7DD7426A1BD5B3EF0039E054 /* Textures */,
+				7DD742691BD5B3DC0039E054 /* Bump Mapping */,
+				7DD742681BD5B3C70039E054 /* No Texture */,
 				7DF1956E1BC9F64400DB7A2E /* RWTBaseVertex.txt */,
+				7DF1956D1BC9F64400DB7A2E /* RWTBaseFragment.txt */,
 			);
 			name = Shaders;
 			sourceTree = "<group>";
@@ -250,6 +252,42 @@
 				7D151D0B1BB0A43500E71A7C /* stb_image */,
 			);
 			name = ThirdParty;
+			sourceTree = "<group>";
+		};
+		7DD742681BD5B3C70039E054 /* No Texture */ = {
+			isa = PBXGroup;
+			children = (
+				7D151CB81BB0A1AA00E71A7C /* vertex_noTexture.txt */,
+				7D151CAA1BB0A1AA00E71A7C /* frag_noTexture.txt */,
+			);
+			name = "No Texture";
+			sourceTree = "<group>";
+		};
+		7DD742691BD5B3DC0039E054 /* Bump Mapping */ = {
+			isa = PBXGroup;
+			children = (
+				7D151CB71BB0A1AA00E71A7C /* vertex_noTexture_bumpMapping.txt */,
+				7D151CA91BB0A1AA00E71A7C /* frag_noTexture_bumpMapping.txt */,
+			);
+			name = "Bump Mapping";
+			sourceTree = "<group>";
+		};
+		7DD7426A1BD5B3EF0039E054 /* Textures */ = {
+			isa = PBXGroup;
+			children = (
+				7D151CB91BB0A1AA00E71A7C /* vertex_texture.txt */,
+				7D151CAB1BB0A1AA00E71A7C /* frag_texture.txt */,
+			);
+			name = Textures;
+			sourceTree = "<group>";
+		};
+		7DD7426B1BD5BB750039E054 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				7DD7426D1BD5BBDF0039E054 /* vertex_test.txt */,
+				7DD7426C1BD5BBDF0039E054 /* frag_test.txt */,
+			);
+			name = Test;
 			sourceTree = "<group>";
 		};
 		7DDEE06B1BB1FD0000A83549 /* Wrappers */ = {
@@ -452,11 +490,13 @@
 				7D151D0F1BB0A43500E71A7C /* stb_image in Resources */,
 				7DF1956A1BC9E5FF00DB7A2E /* tire.png in Resources */,
 				7DF1956C1BC9E67C00DB7A2E /* body2.png in Resources */,
+				7DD7426E1BD5BBDF0039E054 /* frag_test.txt in Resources */,
 				7DCCA5E31BB34E7F007894DF /* glm-0.9.7.1 in Resources */,
 				7DF195701BC9F64400DB7A2E /* RWTBaseVertex.txt in Resources */,
 				7D151CCC1BB0A1AA00E71A7C /* frag_noTexture.txt in Resources */,
 				7DF195691BC9E5FF00DB7A2E /* Normal_Map.bmp in Resources */,
 				7D151CE41BB0A1AA00E71A7C /* vertex_noTexture_bumpMapping.txt in Resources */,
+				7DD7426F1BD5BBDF0039E054 /* vertex_test.txt in Resources */,
 				7D151D041BB0A26C00E71A7C /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

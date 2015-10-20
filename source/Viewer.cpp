@@ -50,8 +50,8 @@ void Viewer::initialize() {
 	vector<pair<string, GLenum>> shaderList;
 
 	// No textures
-	shaderList.push_back(pair<string, GLenum> ("RWTBaseVertex", GL_VERTEX_SHADER));
-	shaderList.push_back(pair<string, GLenum> ("RWTBaseFragment", GL_FRAGMENT_SHADER));
+	shaderList.push_back(pair<string, GLenum> ("vertex_test", GL_VERTEX_SHADER));
+	shaderList.push_back(pair<string, GLenum> ("frag_test", GL_FRAGMENT_SHADER));
 
     Program* noTextures = new Program(NO_TEX);
 	noTextures->linkProgram(shaderList);
@@ -61,8 +61,8 @@ void Viewer::initialize() {
 	programs.insert(std::pair<PROGRAM_TYPE, Program*>(NO_TEX, noTextures));
 
 	// No textures and Bump Mapping
-	shaderList.push_back(pair<string, GLenum> ("vertex_noTexture_bumpMapping", GL_VERTEX_SHADER));
-	shaderList.push_back(pair<string, GLenum> ("frag_noTexture_bumpMapping", GL_FRAGMENT_SHADER));
+	shaderList.push_back(pair<string, GLenum> ("vertex_noTexture", GL_VERTEX_SHADER));
+	shaderList.push_back(pair<string, GLenum> ("frag_noTexture", GL_FRAGMENT_SHADER));
 
     Program* noTexturesBump = new Program(NO_TEX_BUMP);
 	noTexturesBump->linkProgram(shaderList);
@@ -72,15 +72,15 @@ void Viewer::initialize() {
 	programs.insert(std::pair<PROGRAM_TYPE, Program*>(NO_TEX_BUMP, noTexturesBump));
 
 	// Textures
-	shaderList.push_back(pair<string, GLenum> ("vertex_texture", GL_VERTEX_SHADER));
-	shaderList.push_back(pair<string, GLenum> ("frag_texture", GL_FRAGMENT_SHADER));
-
-    Program* textures = new Program(TEX);
-	textures->linkProgram(shaderList);
-	shaderList.clear();
-
-	if(textures->getProgramId() == -1) throw runtime_error("Could not create/link program: TEX");
-	programs.insert(std::pair<PROGRAM_TYPE, Program*>(TEX, textures));
+//	shaderList.push_back(pair<string, GLenum> ("vertex_texture", GL_VERTEX_SHADER));
+//	shaderList.push_back(pair<string, GLenum> ("frag_texture", GL_FRAGMENT_SHADER));
+//
+//    Program* textures = new Program(TEX);
+//	textures->linkProgram(shaderList);
+//	shaderList.clear();
+//
+//	if(textures->getProgramId() == -1) throw runtime_error("Could not create/link program: TEX");
+//	programs.insert(std::pair<PROGRAM_TYPE, Program*>(TEX, textures));
 
 	//camera->forward();
 	

@@ -1,4 +1,4 @@
-#version 300 es
+
 
 uniform mat4 model;
 uniform vec3 cameraPosition;
@@ -11,14 +11,14 @@ uniform vec3 materialSpecularColor;
 
 #define MAX_LIGHTS 10
 uniform int numLights;
-uniform struct Light {
-   vec3 position;
-   vec3 intensities; //a.k.a the color of the light
-   float attenuation;
-   float ambientCoefficient;
-   float coneAngle;
-   vec3 coneDirection;
-} allLights[MAX_LIGHTS];
+//uniform struct Light {
+//   vec3 position;
+//   vec3 intensities; //a.k.a the color of the light
+//   float attenuation;
+//   float ambientCoefficient;
+//   float coneAngle;
+//   vec3 coneDirection;
+//} allLights[MAX_LIGHTS];
 
 in mat3 TBN;
 in vec3 fragVert;

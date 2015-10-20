@@ -94,6 +94,8 @@
 		NSLog(@"Failed to set current OpenGL context");
 		exit(1);
 	}
+	
+	NSLog(@"Current GL Context %s", glGetString(GL_VERSION));
 }
 
 - (void)setupRenderBuffer {

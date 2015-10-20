@@ -97,9 +97,14 @@ void Program::linkProgram(vector<pair<string, GLenum>> fileList) {
 			GLint logSize;
 			glGetShaderiv(shader, (GLenum)35716, &logSize); // (GLenum)35716 -> GL_INFO_LOG_LENGTH
 			
-			char* strInfoLog = new char[logSize + 1];
-			glGetProgramInfoLog(GLprogram, logSize, NULL, strInfoLog);
-			msg += strInfoLog;
+			GLchar* strInfoLog = new GLchar[logSize + 1];
+			glGetProgramInfoLog(GLprogram, logSize, &logSize, &strInfoLog[0]);
+			
+			//vector<GLchar> infoLog(logSize);
+			//glGetProgramInfoLog(GLprogram, logSize, &logSize, &infoLog[0]);
+			
+			cout << &strInfoLog << endl;
+			//msg += strInfoLog;
 			
 			cout << msg << endl;
 			

@@ -6,8 +6,10 @@
 //  Copyright (c) 2014 RayWenderlich. All rights reserved.
 //
 
+#version 300 es
+
 // Attributes
-attribute vec2 aPosition;
+i nvec2 aPosition;
 
 void main(void) {
   gl_Position = vec4(aPosition, 0., 1.);
