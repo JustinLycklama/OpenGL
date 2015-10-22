@@ -10,7 +10,6 @@ World::World(map<PROGRAM_TYPE, Program*>* progs, Camera* cam)
 	initInstances();
 }
 
-
 World::~World(void)
 {
 	for(vector<Instance*>::iterator it = instances.begin(); it != instances.end(); ++it){ free(*it); }
@@ -27,20 +26,20 @@ void World::initAssets() {
 	Texture* tireTex = new Texture("tire", "png", 9729, 33071);
 
 
-	Asset* interior = new Asset(Cube, NULL, programs->at(NO_TEX_BUMP));
+	Asset* interior = new Asset(Cube, NULL, programs->at(NO_TEX));
 	interior->shininess = 80.0f;
 	interior->setSpecularColor(vec3(1.0f, 1.0f, 1.0f));
 	assets.insert(std::pair<ASSETS, Asset*>(BOX, interior));
 	
-//	Asset* crateAsset = new Asset(Cube, crate, programs->at(TEX));	
-//	crateAsset->shininess = 80.0f;
-//	crateAsset->setSpecularColor(vec3(1.0f, 1.0f, 1.0f));
-//	assets.insert(std::pair<ASSETS, Asset*>(CRATE, crateAsset));
-//
-//	Asset* body = new Asset("micro_subaru_body", bodyTex, NULL, programs->at(TEX));
-//	body->shininess = 80.0f;
-//	body->setSpecularColor(vec3(1.0f, 1.0f, 1.0f));
-//	assets.insert(std::pair<ASSETS, Asset*>(BODY, body));
+	Asset* crateAsset = new Asset(Cube, crate, programs->at(TEX));	
+	crateAsset->shininess = 80.0f;
+	crateAsset->setSpecularColor(vec3(1.0f, 1.0f, 1.0f));
+	assets.insert(std::pair<ASSETS, Asset*>(CRATE, crateAsset));
+
+	Asset* body = new Asset("micro_subaru_body", bodyTex, NULL, programs->at(TEX));
+	body->shininess = 80.0f;
+	body->setSpecularColor(vec3(1.0f, 1.0f, 1.0f));
+	assets.insert(std::pair<ASSETS, Asset*>(BODY, body));
 //
 //	Asset* wheel = new Asset("WheelCenter", NULL, tireTex, programs->at(NO_TEX_BUMP));
 //	wheel->shininess = 80.0f;
@@ -82,6 +81,14 @@ void World::initLights() {
 }
 	
 void World::initInstances() {
+	Instance* one = new Instance(assets.at(CRATE));
+	one->translate(vec3(-1, -2, -4));
+	//one->scale(vec3(5,5,5));
+	
+	
+	one->shouldRotate = true;
+	instances.push_back(one);
+	
 	/*Instance* one = new Instance(assets.at(BOX));
 	Instance* two = new Instance(assets.at(BOX));
 

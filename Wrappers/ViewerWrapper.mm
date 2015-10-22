@@ -12,13 +12,13 @@
 @interface ViewerWrapper ()
 
 @property (nonatomic, readonly) Viewer* cViewer;
-@property (nonatomic, readonly) Camera* cCamera;
+//@property (nonatomic, readonly) Camera* cCamera;
 
 @end
 
 @implementation ViewerWrapper
 @synthesize cViewer = _cViewer;
-@synthesize cCamera = _cCamera;
+//@synthesize cCamera = _cCamera;
 
 -(instancetype)initWithCamera:(CameraWrapper*)camera
 {
@@ -29,7 +29,6 @@
 		_cViewer = new Viewer();
 		[self setCamera:camera];
 		
-		_cViewer->setCamera(_cCamera);
 		_cViewer->initialize();
 	}
 	
@@ -43,8 +42,9 @@
 
 -(void)setCamera:(CameraWrapper*)camera
 {
-	//_cCamera = (Camera*)[camera camera];
-	_cCamera = new Camera();
+	Camera* cCamera = (Camera*)[camera camera];
+
+	_cViewer->setCamera(cCamera);
 }
 
 -(void)update:(CGFloat)timeElapsed

@@ -36,8 +36,13 @@
 }
 
 -(void*)camera
+{	
+	return _cCamera;
+}
+
+-(void)setAspectRatio:(CGFloat)ratio
 {
-	return (_cCamera);
+	_cCamera->setAspectRatio(ratio);
 }
 
 @end

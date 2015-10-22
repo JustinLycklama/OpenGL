@@ -12,5 +12,6 @@
 @interface CameraWrapper : NSObject
 
 -(void*)camera;
+-(void)setAspectRatio:(CGFloat)ratio;
 
 @end

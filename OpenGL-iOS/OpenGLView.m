@@ -15,6 +15,7 @@
 @interface OpenGLView()
 {
 	ViewerWrapper* _viewer;
+	CameraWrapper* _camera;
 }
 
 @end
@@ -59,11 +60,11 @@
 
 -(void)setupObjects
 {
+	_camera = [[CameraWrapper alloc] init];
+	_viewer = [[ViewerWrapper alloc] initWithCamera:_camera];
 	
-	CameraWrapper* camera = [[CameraWrapper alloc] init];
-	_viewer = [[ViewerWrapper alloc] initWithCamera:camera];
-	
-	
+	[_camera setAspectRatio:(self.frame.size.width / self.frame.size.height)];
+	//[camera setAspectRatio:(1.0/1.0)];
 	
 //	Viewer* viewer = new Viewer();
 //	Camera* camera = new Camera();
@@ -115,14 +116,27 @@
 - (void)setupDisplayLink {
 	CADisplayLink* displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(render:)];
 	[displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+	
+	glViewport(0, 0, self.frame.size.width, self.frame.size.height);
 }
 
 - (void)render:(CADisplayLink*)displayLink {
-	glClearColor(255.0/255.0, 104.0/255.0, 55.0/255.0, 1.0);
+	glClearColor(100.0/255.0, 104.0/255.0, 55.0/255.0, 1.0);
 	glClear(GL_COLOR_BUFFER_BIT);
 	
-	[_viewer update:0.1];
+	//glViewport(0, 0, self.frame.size.width, self.frame.size.height);
+	
+	[_viewer update:0.01];
 	[_viewer render];
+ 
+//	// 2
+//	glVertexAttribPointer(_positionSlot, 3, GL_FLOAT, GL_FALSE,
+//        sizeof(Vertex), 0);
+//	glVertexAttribPointer(_colorSlot, 4, GL_FLOAT, GL_FALSE,
+//        sizeof(Vertex), (GLvoid*) (sizeof(float) * 3));
+// 
+//	// 3
+//	glDrawElements(GL_TRIANGLES, sizeof(Indices)/sizeof(Indices[0]),
 	
 	[_context presentRenderbuffer:GL_RENDERBUFFER];
 }

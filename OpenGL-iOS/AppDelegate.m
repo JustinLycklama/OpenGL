@@ -26,7 +26,11 @@
 	
 	UIViewController* rootViewController = [[UIViewController alloc] init];
 	
-	OpenGLView* glView = [[OpenGLView alloc] initWithFrame:CGRectMake(0, 0, 500, 500)];
+	CGRect screenRect = [[UIScreen mainScreen] bounds];
+	OpenGLView* glView = [[OpenGLView alloc] initWithFrame:CGRectMake(0, 0, screenRect.size.width, screenRect.size.height)];
+	glView.layer.borderColor = [UIColor redColor].CGColor;
+	glView.layer.borderWidth = 2;
+	
 	[rootViewController setView:glView];
 	
 	[self.window setRootViewController:rootViewController];
