@@ -16,6 +16,8 @@
 {
 	ViewerWrapper* _viewer;
 	CameraWrapper* _camera;
+	
+	CGFloat _lastTime;
 }
 
 @end
@@ -35,10 +37,12 @@
 		[self setupContext];
 		[self setupRenderBuffer];
 		[self setupFrameBuffer];
+		[self setupDepthBuffer];
 		
 		[self setupObjects];
 		
 		[self setupDisplayLink];
+		_lastTime = [[NSDate date] timeIntervalSince1970];
 	}
 	
 	return self;
@@ -113,6 +117,16 @@
 							  GL_RENDERBUFFER, _colorRenderBuffer);
 }
 
+-(void)setupDepthBuffer
+{
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_BACK);
+	glFrontFace(GL_CCW);
+ 
+	glDepthRangef(0.0,10.0);
+	glEnable(GL_DEPTH_TEST);
+}
+
 - (void)setupDisplayLink {
 	CADisplayLink* displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(render:)];
 	[displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
@@ -125,8 +139,12 @@
 	glClear(GL_COLOR_BUFFER_BIT);
 	
 	//glViewport(0, 0, self.frame.size.width, self.frame.size.height);
+
+	CGFloat thisTime = [[NSDate date] timeIntervalSince1970];
+	CGFloat secondsElapsed = thisTime - _lastTime;
+	_lastTime = thisTime;
 	
-	[_viewer update:0.01];
+	[_viewer update:secondsElapsed];
 	[_viewer render];
  
 //	// 2

@@ -21,25 +21,25 @@ World::~World(void)
 void World::initAssets() {
 	// Load Textures
 	Texture* crate = new Texture("wooden-crate", "jpg", 9729, 33071);
-	Texture* normalMap = new Texture("Normal_Map", "bmp", 9729, 33071);
-	Texture* bodyTex = new Texture("body2", "png", 9729, 33071);
-	Texture* tireTex = new Texture("tire", "png", 9729, 33071);
+	//Texture* normalMap = new Texture("Normal_Map", "bmp", 9729, 33071);
+	//Texture* bodyTex = new Texture("body2", "png", 9729, 33071);
+	//Texture* tireTex = new Texture("tire", "png", 9729, 33071);
 
 
-	Asset* interior = new Asset(Cube, NULL, programs->at(NO_TEX));
-	interior->shininess = 80.0f;
-	interior->setSpecularColor(vec3(1.0f, 1.0f, 1.0f));
-	assets.insert(std::pair<ASSETS, Asset*>(BOX, interior));
+//	Asset* interior = new Asset(Cube, NULL, programs->at(NO_TEX));
+//	interior->shininess = 80.0f;
+//	interior->setSpecularColor(vec3(1.0f, 1.0f, 1.0f));
+//	assets.insert(std::pair<ASSETS, Asset*>(BOX, interior));
 	
-	Asset* crateAsset = new Asset(Cube, crate, programs->at(TEX));	
+	Asset* crateAsset = new Asset(Cube, crate, programs->at(TEX));
 	crateAsset->shininess = 80.0f;
 	crateAsset->setSpecularColor(vec3(1.0f, 1.0f, 1.0f));
 	assets.insert(std::pair<ASSETS, Asset*>(CRATE, crateAsset));
 
-	Asset* body = new Asset("micro_subaru_body", bodyTex, NULL, programs->at(TEX));
-	body->shininess = 80.0f;
-	body->setSpecularColor(vec3(1.0f, 1.0f, 1.0f));
-	assets.insert(std::pair<ASSETS, Asset*>(BODY, body));
+//	Asset* body = new Asset("micro_subaru_body", bodyTex, NULL, programs->at(TEX));
+//	body->shininess = 80.0f;
+//	body->setSpecularColor(vec3(1.0f, 1.0f, 1.0f));
+//	assets.insert(std::pair<ASSETS, Asset*>(BODY, body));
 //
 //	Asset* wheel = new Asset("WheelCenter", NULL, tireTex, programs->at(NO_TEX_BUMP));
 //	wheel->shininess = 80.0f;
@@ -58,7 +58,7 @@ void World::initAssets() {
 }
 
 void World::initLights() {
-	Light* light = new Light(assets.at(BOX));
+	Light* light = new Light(assets.at(CRATE));
 	light->translate(vec3(2, 0, 4));
 	light->setIntensities(vec3(0.9, 0.9, 0.9));
 	light->setAttenuation(0.01f);
@@ -83,6 +83,7 @@ void World::initLights() {
 void World::initInstances() {
 	Instance* one = new Instance(assets.at(CRATE));
 	one->translate(vec3(-1, -2, -4));
+	one->rotate(vec3(1, 1, 1), 45.0f);
 	//one->scale(vec3(5,5,5));
 	
 	
