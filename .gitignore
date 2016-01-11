@@ -7,6 +7,9 @@
 *.userosscache
 *.sln.docstates
 
+TEMPORARY_SUB_BACKUP/
+!Resources
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
