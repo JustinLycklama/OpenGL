@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Shaders">
+      <UniqueIdentifier>{9eaab6d0-e615-4294-b52f-977877d34c18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object">
+      <UniqueIdentifier>{4e229e6a-3105-4a8e-889f-d2140ee4b441}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shaders\Fragment">
+      <UniqueIdentifier>{e862ecce-eea5-4f23-b5c0-4f82f462b42e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shaders\Vertex">
+      <UniqueIdentifier>{682ce5d9-2053-40b8-af2c-69678a4ce532}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Texture">
+      <UniqueIdentifier>{68258447-8da0-4fa4-8c78-e132729e5c21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Viewer">
+      <UniqueIdentifier>{8f6801cf-8969-43a5-aedd-eba01c117883}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Core Assets">
+      <UniqueIdentifier>{42011e1e-e0ec-4053-955f-a8d900b7c5d3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+    <None Include="..\source\vertex_noTexture.txt">
+      <Filter>Source Files\Shaders\Vertex</Filter>
+    </None>
+    <None Include="..\source\vertex_noTexture_bumpMapping.txt">
+      <Filter>Source Files\Shaders\Vertex</Filter>
+    </None>
+    <None Include="..\source\vertex_texture.txt">
+      <Filter>Source Files\Shaders\Vertex</Filter>
+    </None>
+    <None Include="..\source\frag_noTexture.txt">
+      <Filter>Source Files\Shaders\Fragment</Filter>
+    </None>
+    <None Include="..\source\frag_noTexture_bumpMapping.txt">
+      <Filter>Source Files\Shaders\Fragment</Filter>
+    </None>
+    <None Include="..\source\frag_texture.txt">
+      <Filter>Source Files\Shaders\Fragment</Filter>
+    </None>
+    <None Include="..\Core Resources\Normal Maps\Normal_Map.bmp">
+      <Filter>Resource Files\Core Assets</Filter>
+    </None>
+    <None Include="..\Core Resources\Textures\wooden-crate.jpg">
+      <Filter>Resource Files\Core Assets</Filter>
+    </None>
+    <None Include="..\Core Resources\Textures\hazard.png">
+      <Filter>Resource Files\Core Assets</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\Viewer.h">
+      <Filter>Source Files\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\Camera.h">
+      <Filter>Source Files\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\Bitmap.h">
+      <Filter>Source Files\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\Texture.h">
+      <Filter>Source Files\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\Program.h">
+      <Filter>Source Files\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\Asset.h">
+      <Filter>Source Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\Instance.h">
+      <Filter>Source Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\Light.h">
+      <Filter>Source Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\Mesh.h">
+      <Filter>Source Files\Object</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLDll.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\Viewer.cpp">
+      <Filter>Source Files\Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\Camera.cpp">
+      <Filter>Source Files\Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\Bitmap.cpp">
+      <Filter>Source Files\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\Texture.cpp">
+      <Filter>Source Files\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\Program.cpp">
+      <Filter>Source Files\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\Asset.cpp">
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\Instance.cpp">
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\Light.cpp">
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\Mesh.cpp">
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
