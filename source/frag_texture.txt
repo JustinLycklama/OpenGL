@@ -5,7 +5,7 @@ uniform mat4 model;
 uniform vec3 cameraPosition;
 
 // material settings
-uniform sampler2D materialTex;
+uniform lowp sampler2D materialTex;
 uniform float materialShininess;
 uniform vec3 materialSpecularColor;
 
@@ -20,7 +20,7 @@ uniform struct Light {
    vec3 coneDirection;
 } allLights[MAX_LIGHTS];
 
-in vec2 fragTexCoord;
+in vec2 texCoord;
 in vec3 fragNormal;
 in vec3 fragVert;
 
@@ -30,8 +30,10 @@ void main(void) {
 	// Constants
 	vec3 normal = normalize(transpose(inverse(mat3(model))) * fragNormal);
 	vec3 surfacePos = vec3(model * vec4(fragVert, 1));
-	vec4 surfaceColor = texture(materialTex, fragTexCoord);
-	vec3 surfaceToCamera = normalize(cameraPosition - surfacePos);
+	vec4 surfaceColor = texture(materialTex, texCoord);
+//surfaceColor.y = texCoord.x;
+//surfaceColor.x = texCoord.y;
+vec3 surfaceToCamera = normalize(cameraPosition - surfacePos);
 
 	vec3 linearColor = vec3(0, 0, 0);
 	

@@ -31,11 +31,19 @@ void World::initAssets() {
 //	interior->setSpecularColor(vec3(1.0f, 1.0f, 1.0f));
 //	assets.insert(std::pair<ASSETS, Asset*>(BOX, interior));
 	
+	// Old
 	Asset* crateAsset = new Asset(Cube, crate, programs->at(TEX));
 	crateAsset->shininess = 80.0f;
 	crateAsset->setSpecularColor(vec3(1.0f, 1.0f, 1.0f));
 	assets.insert(std::pair<ASSETS, Asset*>(CRATE, crateAsset));
 
+	//Test
+//	Asset* crateAsset = new Asset("cube", crate, NULL, programs->at(TEX));
+//	crateAsset->shininess = 80.0f;
+//	crateAsset->setSpecularColor(vec3(1.0f, 1.0f, 1.0f));
+//	assets.insert(std::pair<ASSETS, Asset*>(CRATE, crateAsset));
+	
+	
 //	Asset* body = new Asset("micro_subaru_body", bodyTex, NULL, programs->at(TEX));
 //	body->shininess = 80.0f;
 //	body->setSpecularColor(vec3(1.0f, 1.0f, 1.0f));

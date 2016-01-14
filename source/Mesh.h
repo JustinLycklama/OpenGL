@@ -48,7 +48,7 @@ class Mesh
 	int getPointsPerVertex();
 
   private:
-	void loadMesh(string fileName);
+	void loadMesh(string fileName, string type);
 	vertexData* buildVertexData(string data);
 	
 	void averageVertexTangents();

@@ -39,13 +39,15 @@ Texture::Texture(string file, string fileType, GLint minMagFiler, GLint wrapMode
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wrapMode);
     glTexImage2D(GL_TEXTURE_2D,
                  0, 
-				 TextureFormatForBitmapFormat(bitmap->format(), true),
+				 TextureFormatForBitmapFormat(bitmap->format(), false),
                  (GLsizei)bitmap->width(), 
                  (GLsizei)bitmap->height(),
                  0, 
 				 TextureFormatForBitmapFormat(bitmap->format(), false), 
                  GL_UNSIGNED_BYTE, 
 				 bitmap->pixelBuffer());
+	
+	// Unbind the texture
     glBindTexture(GL_TEXTURE_2D, 0);
 }
 

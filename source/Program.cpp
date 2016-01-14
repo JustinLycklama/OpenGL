@@ -182,7 +182,7 @@ string Program::ResourcePath(std::string fileName, std::string fileType) {
 		return str;
 	}
 
-	cout << "Could not get Path for" << fileName << endl;
+	cout << "Could not get Path for " << fileName << endl;
 	
 	return "";
 }

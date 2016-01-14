@@ -6,13 +6,14 @@
 #include "Mesh.h"
 #include "Window.h"
 #include "math.h"
+#include "Program.h"
 
 /* NOTE: When exporting, only select: INCLUDE NORMALS, INCLUDE UV, TRIANGULATE FACES */
 
 Mesh::Mesh(string fileName)
 {
-	loadMesh(fileName + ".obj");
-	writeVertexData(fileName + ".data");
+	loadMesh(fileName, ".obj");
+	//writeVertexData(fileName + ".data");
 }
 
 
@@ -77,10 +78,10 @@ void Mesh::averageVertexTangents() {
 	}
 }
 
-void Mesh::loadMesh(string fileName) {
+void Mesh::loadMesh(string fileName, string type) {
 
 	ifstream inOBJ;
-    //inOBJ.open(Window::ResourcePath(fileName));
+    inOBJ.open(Program::ResourcePath(fileName, type));
     if(!inOBJ.good())
     {
         throw runtime_error("Could not load mesh: " + fileName + ".\n");

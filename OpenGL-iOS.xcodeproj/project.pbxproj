@@ -66,6 +66,9 @@
 		7D151D041BB0A26C00E71A7C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7D151D021BB0A26C00E71A7C /* Info.plist */; };
 		7D151D051BB0A26C00E71A7C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D151D031BB0A26C00E71A7C /* main.m */; };
 		7D151D0F1BB0A43500E71A7C /* stb_image in Resources */ = {isa = PBXBuildFile; fileRef = 7D151D0B1BB0A43500E71A7C /* stb_image */; };
+		7D1C9ECE1C4740E100587CB3 /* wooden-crate.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7D1C9ECD1C4740E100587CB3 /* wooden-crate.jpg */; };
+		7D1C9ED01C47488400587CB3 /* cube.obj in Resources */ = {isa = PBXBuildFile; fileRef = 7D1C9ECF1C47488400587CB3 /* cube.obj */; };
+		7D1C9ED21C474BB600587CB3 /* micro_subaru_body.obj in Resources */ = {isa = PBXBuildFile; fileRef = 7D1C9ED11C474BB600587CB3 /* micro_subaru_body.obj */; };
 		7DCCA5E31BB34E7F007894DF /* glm-0.9.7.1 in Resources */ = {isa = PBXBuildFile; fileRef = 7DCCA5E21BB34E7F007894DF /* glm-0.9.7.1 */; };
 		7DCCA5E41BB34E7F007894DF /* glm-0.9.7.1 in Resources */ = {isa = PBXBuildFile; fileRef = 7DCCA5E21BB34E7F007894DF /* glm-0.9.7.1 */; };
 		7DCCA5E51BB34E7F007894DF /* glm-0.9.7.1 in Resources */ = {isa = PBXBuildFile; fileRef = 7DCCA5E21BB34E7F007894DF /* glm-0.9.7.1 */; };
@@ -77,7 +80,6 @@
 		7DE57E631BB054390042257C /* OpenGL_iOSUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE57E621BB054390042257C /* OpenGL_iOSUITests.m */; };
 		7DE57E751BB089130042257C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DE57E741BB089130042257C /* OpenGLES.framework */; };
 		7DE57E771BB0891C0042257C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DE57E761BB0891C0042257C /* QuartzCore.framework */; };
-		7DF195641BC9E34600DB7A2E /* wooden-crate.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DF195631BC9E34600DB7A2E /* wooden-crate.jpg */; };
 		7DF195681BC9E5FF00DB7A2E /* body.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DF195651BC9E5FF00DB7A2E /* body.png */; };
 		7DF195691BC9E5FF00DB7A2E /* Normal_Map.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 7DF195661BC9E5FF00DB7A2E /* Normal_Map.bmp */; };
 		7DF1956A1BC9E5FF00DB7A2E /* tire.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DF195671BC9E5FF00DB7A2E /* tire.png */; };
@@ -140,6 +142,9 @@
 		7D151D021BB0A26C00E71A7C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Supporting Files/Info.plist"; sourceTree = "<group>"; };
 		7D151D031BB0A26C00E71A7C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Supporting Files/main.m"; sourceTree = "<group>"; };
 		7D151D0B1BB0A43500E71A7C /* stb_image */ = {isa = PBXFileReference; lastKnownFileType = folder; name = stb_image; path = thirdparty/stb_image; sourceTree = "<group>"; };
+		7D1C9ECD1C4740E100587CB3 /* wooden-crate.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "wooden-crate.jpg"; path = "Image_Resources/wooden-crate.jpg"; sourceTree = "<group>"; };
+		7D1C9ECF1C47488400587CB3 /* cube.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cube.obj; path = Image_Resources/cube.obj; sourceTree = "<group>"; };
+		7D1C9ED11C474BB600587CB3 /* micro_subaru_body.obj */ = {isa = PBXFileReference; lastKnownFileType = text; name = micro_subaru_body.obj; path = Image_Resources/micro_subaru_body.obj; sourceTree = "<group>"; };
 		7DCCA5E21BB34E7F007894DF /* glm-0.9.7.1 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "glm-0.9.7.1"; path = "thirdparty/glm-0.9.7.1"; sourceTree = "<group>"; };
 		7DD7426C1BD5BBDF0039E054 /* frag_test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = frag_test.txt; path = source/frag_test.txt; sourceTree = "<group>"; };
 		7DD7426D1BD5BBDF0039E054 /* vertex_test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vertex_test.txt; path = source/vertex_test.txt; sourceTree = "<group>"; };
@@ -156,7 +161,6 @@
 		7DE57E641BB054390042257C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7DE57E741BB089130042257C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		7DE57E761BB0891C0042257C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		7DF195631BC9E34600DB7A2E /* wooden-crate.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "wooden-crate.jpg"; path = "Image_Resources/wooden-crate.jpg"; sourceTree = "<group>"; };
 		7DF195651BC9E5FF00DB7A2E /* body.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = body.png; path = Image_Resources/body.png; sourceTree = "<group>"; };
 		7DF195661BC9E5FF00DB7A2E /* Normal_Map.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = Normal_Map.bmp; path = Image_Resources/Normal_Map.bmp; sourceTree = "<group>"; };
 		7DF195671BC9E5FF00DB7A2E /* tire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tire.png; path = Image_Resources/tire.png; sourceTree = "<group>"; };
@@ -368,7 +372,9 @@
 		7DF195621BC9E33000DB7A2E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				7DF195631BC9E34600DB7A2E /* wooden-crate.jpg */,
+				7D1C9ED11C474BB600587CB3 /* micro_subaru_body.obj */,
+				7D1C9ECF1C47488400587CB3 /* cube.obj */,
+				7D1C9ECD1C4740E100587CB3 /* wooden-crate.jpg */,
 				7DF195651BC9E5FF00DB7A2E /* body.png */,
 				7DF1956B1BC9E67C00DB7A2E /* body2.png */,
 				7DF195661BC9E5FF00DB7A2E /* Normal_Map.bmp */,
@@ -439,6 +445,9 @@
 		7DE57E321BB054390042257C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+				);
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Justin Lycklama";
 				TargetAttributes = {
@@ -483,17 +492,19 @@
 				7D151CC91BB0A1AA00E71A7C /* frag_noTexture_bumpMapping.txt in Resources */,
 				7D151CCF1BB0A1AA00E71A7C /* frag_texture.txt in Resources */,
 				7DF1956F1BC9F64400DB7A2E /* RWTBaseFragment.txt in Resources */,
-				7DF195641BC9E34600DB7A2E /* wooden-crate.jpg in Resources */,
 				7D151CE71BB0A1AA00E71A7C /* vertex_noTexture.txt in Resources */,
 				7D151CEA1BB0A1AA00E71A7C /* vertex_texture.txt in Resources */,
 				7DF195681BC9E5FF00DB7A2E /* body.png in Resources */,
 				7D151D0F1BB0A43500E71A7C /* stb_image in Resources */,
 				7DF1956A1BC9E5FF00DB7A2E /* tire.png in Resources */,
+				7D1C9ED01C47488400587CB3 /* cube.obj in Resources */,
+				7D1C9ED21C474BB600587CB3 /* micro_subaru_body.obj in Resources */,
 				7DF1956C1BC9E67C00DB7A2E /* body2.png in Resources */,
 				7DD7426E1BD5BBDF0039E054 /* frag_test.txt in Resources */,
 				7DCCA5E31BB34E7F007894DF /* glm-0.9.7.1 in Resources */,
 				7DF195701BC9F64400DB7A2E /* RWTBaseVertex.txt in Resources */,
 				7D151CCC1BB0A1AA00E71A7C /* frag_noTexture.txt in Resources */,
+				7D1C9ECE1C4740E100587CB3 /* wooden-crate.jpg in Resources */,
 				7DF195691BC9E5FF00DB7A2E /* Normal_Map.bmp in Resources */,
 				7D151CE41BB0A1AA00E71A7C /* vertex_noTexture_bumpMapping.txt in Resources */,
 				7DD7426F1BD5BBDF0039E054 /* vertex_test.txt in Resources */,
