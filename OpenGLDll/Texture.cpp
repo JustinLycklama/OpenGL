@@ -1,16 +1,4 @@
-// third-party libraries
-#include <windows.h>
-#include <GL/glew.h>
-
-// standard C++ libraries
-#include <fstream>
-#include <sstream>
-#include <iostream>
-#include <algorithm>
-#include <string>
-
-#include "Texture.h"
-#include "Window.h"
+#include "StdAfx.h"
 
 Texture::Texture(string file, GLint minMagFiler, GLint wrapMode)
 { 
