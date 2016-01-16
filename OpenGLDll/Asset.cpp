@@ -1,17 +1,5 @@
 
-// standard C++ libraries
-#include <cassert>
-#include <fstream>
-#include <iostream>
-#include <sstream>
-#include <stdexcept>
-#include <cmath>
-
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-
-#include "Asset.h"
-#include "Mesh.h"
+#include "StdAfx.h"
 
 const bool FORCE_RELOAD = false;
 

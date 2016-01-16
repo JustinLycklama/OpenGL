@@ -1,6 +1,4 @@
-#include <glm/gtc/matrix_access.hpp>
-
-#include "Instance.h"
+#include "StdAfx.h"
 
 Instance::Instance(Asset* ast)
 {

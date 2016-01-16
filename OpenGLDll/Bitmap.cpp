@@ -16,8 +16,7 @@
  limitations under the License.
  */
 
-#include "Bitmap.h"
-#include <stdexcept>
+#include "StdAfx.h"
 
 //uses stb_image to try load files
 #define STBI_FAILURE_USERMSG

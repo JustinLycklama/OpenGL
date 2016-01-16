@@ -34,6 +34,9 @@
     <Filter Include="Resource Files\Core Assets">
       <UniqueIdentifier>{42011e1e-e0ec-4053-955f-a8d900b7c5d3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Temporary">
+      <UniqueIdentifier>{175ea6a0-5de7-47cd-a0b4-154ff20a66d9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -72,32 +75,32 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\Viewer.h">
-      <Filter>Source Files\Viewer</Filter>
+    <ClInclude Include="Asset.h">
+      <Filter>Source Files\Object</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\Camera.h">
-      <Filter>Source Files\Viewer</Filter>
+    <ClInclude Include="Instance.h">
+      <Filter>Source Files\Object</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\Bitmap.h">
-      <Filter>Source Files\Texture</Filter>
+    <ClInclude Include="Light.h">
+      <Filter>Source Files\Object</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\Texture.h">
-      <Filter>Source Files\Texture</Filter>
+    <ClInclude Include="Mesh.h">
+      <Filter>Source Files\Object</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\Program.h">
+    <ClInclude Include="Program.h">
       <Filter>Source Files\Shaders</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\Asset.h">
-      <Filter>Source Files\Object</Filter>
+    <ClInclude Include="Texture.h">
+      <Filter>Source Files\Texture</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\Instance.h">
-      <Filter>Source Files\Object</Filter>
+    <ClInclude Include="Bitmap.h">
+      <Filter>Source Files\Texture</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\Light.h">
-      <Filter>Source Files\Object</Filter>
+    <ClInclude Include="Camera.h">
+      <Filter>Source Files\Viewer</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\Mesh.h">
-      <Filter>Source Files\Object</Filter>
+    <ClInclude Include="Viewer.h">
+      <Filter>Source Files\Viewer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -110,32 +113,32 @@
     <ClCompile Include="dllmain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\Viewer.cpp">
-      <Filter>Source Files\Viewer</Filter>
+    <ClCompile Include="Asset.cpp">
+      <Filter>Source Files\Object</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\Camera.cpp">
-      <Filter>Source Files\Viewer</Filter>
+    <ClCompile Include="Instance.cpp">
+      <Filter>Source Files\Object</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\Bitmap.cpp">
-      <Filter>Source Files\Texture</Filter>
+    <ClCompile Include="Light.cpp">
+      <Filter>Source Files\Object</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\Texture.cpp">
-      <Filter>Source Files\Texture</Filter>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Source Files\Object</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\Program.cpp">
+    <ClCompile Include="Program.cpp">
       <Filter>Source Files\Shaders</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\Asset.cpp">
-      <Filter>Source Files\Object</Filter>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Source Files\Texture</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\Instance.cpp">
-      <Filter>Source Files\Object</Filter>
+    <ClCompile Include="Bitmap.cpp">
+      <Filter>Source Files\Texture</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\Light.cpp">
-      <Filter>Source Files\Object</Filter>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files\Viewer</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\Mesh.cpp">
-      <Filter>Source Files\Object</Filter>
+    <ClCompile Include="Viewer.cpp">
+      <Filter>Source Files\Viewer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -6,22 +6,42 @@
 #pragma once
 
 #include "targetver.h"
+// Exclude rarely-used stuff from Windows headers
+#define WIN32_LEAN_AND_MEAN             
 
-#define WIN32_LEAN_AND_MEAN             // Exclude rarely-used stuff from Windows headers
 // Windows Header Files:
 #include <windows.h>
+#include <cassert>
+#include <stdexcept>
 
-#include <windows.h>
+#include <fstream>
+#include <stdio.h>
+#include <iostream>
+#include <sstream>
+
+#include <cmath>
+#include <vector>
+#include <algorithm>
+
+// third-party libraries
 #include <GL/glew.h>
 #include <GL/glfw.h>
 #include <glm/glm.hpp>
 
-#include <cassert>
-#include <fstream>
-#include <iostream>
-#include <sstream>
-#include <stdexcept>
-#include <cmath>
-
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/matrix_access.hpp>
 #include <glm/gtc/type_ptr.hpp>
+
+// Local includes
+#include "Program.h"
+#include "Mesh.h"
+#include "Texture.h"
+#include "Bitmap.h"
+
+#include "Viewer.h"
+#include "Camera.h"
+
+#include "Asset.h"
+#include "Instance.h"
+
+#include "Light.h"

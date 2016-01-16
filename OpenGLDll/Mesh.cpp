@@ -1,10 +1,4 @@
-#include <stdio.h>
-#include <fstream>
-#include <sstream>
-#include <algorithm>
-
-#include "Mesh.h"
-#include "Window.h"
+#include "StdAfx.h"
 
 /* NOTE: When exporting, only select: INCLUDE NORMALS, INCLUDE UV, TRIANGULATE FACES */
 

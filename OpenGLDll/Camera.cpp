@@ -1,14 +1,4 @@
-// standard C++ libraries
-#include <cassert>
-#include <fstream>
-#include <iostream>
-#include <sstream>
-#include <stdexcept>
-#include <cmath>
-
-#include <glm/gtc/type_ptr.hpp>
-
-#include "Camera.h"
+#include "StdAfx.h"
 
 using namespace std;
 

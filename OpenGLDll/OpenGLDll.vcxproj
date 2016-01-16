@@ -49,6 +49,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;OPENGLDLL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Development Files\OpenGL\thirdparty\glew-1.9.0\include;D:\Development Files\OpenGL\thirdparty\glfw-2.7.7\include;D:\Development Files\OpenGL\thirdparty\glm-0.9.4.0;D:\Development Files\OpenGL\thirdparty\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -84,28 +85,22 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\source\Asset.h" />
-    <ClInclude Include="..\source\Bitmap.h" />
-    <ClInclude Include="..\source\Camera.h" />
-    <ClInclude Include="..\source\Instance.h" />
-    <ClInclude Include="..\source\Light.h" />
-    <ClInclude Include="..\source\Mesh.h" />
-    <ClInclude Include="..\source\Program.h" />
-    <ClInclude Include="..\source\Texture.h" />
-    <ClInclude Include="..\source\Viewer.h" />
+    <ClInclude Include="Asset.h" />
+    <ClInclude Include="Bitmap.h" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="Instance.h" />
+    <ClInclude Include="Light.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="Program.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="Texture.h" />
+    <ClInclude Include="Viewer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\source\Asset.cpp" />
-    <ClCompile Include="..\source\Bitmap.cpp" />
-    <ClCompile Include="..\source\Camera.cpp" />
-    <ClCompile Include="..\source\Instance.cpp" />
-    <ClCompile Include="..\source\Light.cpp" />
-    <ClCompile Include="..\source\Mesh.cpp" />
-    <ClCompile Include="..\source\Program.cpp" />
-    <ClCompile Include="..\source\Texture.cpp" />
-    <ClCompile Include="..\source\Viewer.cpp" />
+    <ClCompile Include="Asset.cpp" />
+    <ClCompile Include="Bitmap.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="dllmain.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -114,11 +109,17 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
       </PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Instance.cpp" />
+    <ClCompile Include="Light.cpp" />
+    <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="OpenGLDll.cpp" />
+    <ClCompile Include="Program.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="Viewer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

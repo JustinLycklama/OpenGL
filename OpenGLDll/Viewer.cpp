@@ -1,23 +1,4 @@
-// standard C++ libraries
-#include <cassert>
-#include <fstream>
-#include <iostream>
-#include <sstream>
-#include <stdexcept>
-#include <cmath>
-
-#include <vector>
-
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-
-#include "Viewer.h"
-#include "Program.h"
-
-#include "Camera.h"
-
-#include "Instance.h"
-#include "Light.h"
+#include "StdAfx.h"
 
 Viewer::Viewer(void)
 {	

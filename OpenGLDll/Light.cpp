@@ -1,4 +1,4 @@
-#include "Light.h"
+#include "StdAfx.h"
 
 int Light::count = 0;
 
