@@ -6,15 +6,9 @@ Viewer::Viewer(void)
 
 Viewer::~Viewer(void)
 {
-	free(world);
-
 	for(map<PROGRAM_TYPE, Program*>::iterator it = programs.begin(); it != programs.end(); ++it) {
 		free(it->second);
 	}
-}
-
-void Viewer::setWindow(Window* win) {
-	window = win;
 }
 
 void Viewer::setCamera(Camera* cam) {
@@ -62,42 +56,42 @@ void Viewer::initialize() {
 
 
 	/* Init Camera and World */
-	camera->setPosition(vec3(0, 0, 4));
-	camera->setAspectRatio(window->SCREEN_SIZE.x / window->SCREEN_SIZE.y);
-	
-	world = new World(&programs, camera);
+	//camera->setPosition(vec3(0, 0, 4));
+	//camera->setAspectRatio(window->SCREEN_SIZE.x / window->SCREEN_SIZE.y);
+	//
+	//world = new World(&programs, camera);
 }
 
 void Viewer::render() {
     glClearColor(1, 1, 1, 1);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	vector<Instance*> objects = world->getLightsAndInstances();
+	//vector<Instance*> objects = world->getLightsAndInstances();
 
-	for(vector<Instance*>::iterator it = objects.begin(); it != objects.end(); ++it)
-	{
-		Instance* instance = *it;
-		Program* program = instance->getProgram();
+	//for(vector<Instance*>::iterator it = objects.begin(); it != objects.end(); ++it)
+	//{
+	//	Instance* instance = *it;
+	//	Program* program = instance->getProgram();
 
-		if(!program)
-			continue;
+	//	if(!program)
+	//		continue;
 
-		// If this program is not in use, we need to redo camera + lighting for this program
-		if(!(program->isInUse())){
-			glUseProgram(program->getProgramId());
-			camera->render(program);
+	//	// If this program is not in use, we need to redo camera + lighting for this program
+	//	if(!(program->isInUse())){
+	//		glUseProgram(program->getProgramId());
+	//		camera->render(program);
 
-			// Render Lights
-			glUniform1i(program->getUniformLocation("numLights"), (world->getLights())->size());
-			for(vector<Light*>::iterator it = (world->getLights())->begin(); it != (world->getLights())->end(); ++it)
-			{
-				Light* light = *it;
-				light->updateLighting(program);
-			}
-		}
+	//		// Render Lights
+	//		glUniform1i(program->getUniformLocation("numLights"), (world->getLights())->size());
+	//		for(vector<Light*>::iterator it = (world->getLights())->begin(); it != (world->getLights())->end(); ++it)
+	//		{
+	//			Light* light = *it;
+	//			light->updateLighting(program);
+	//		}
+	//	}
 
-		instance->render();
-	}
+	//	instance->render();
+	//}
     
     // unbind the VAO
     glBindVertexArray(0);
@@ -112,11 +106,11 @@ void Viewer::render() {
 
 void Viewer::update(float secondsElapsed){
 	
-	(world->getLights())->front()->copyTransform(camera);
+	//(world->getLights())->front()->copyTransform(camera);
 
-	for(vector<Instance*>::iterator it = (world->getInstances())->begin(); it != (world->getInstances())->end(); ++it)
-	{
-		Instance* object = *it;
-		object->update(secondsElapsed);
-	}
+	//for(vector<Instance*>::iterator it = (world->getInstances())->begin(); it != (world->getInstances())->end(); ++it)
+	//{
+	//	Instance* object = *it;
+	//	object->update(secondsElapsed);
+	//}
 }

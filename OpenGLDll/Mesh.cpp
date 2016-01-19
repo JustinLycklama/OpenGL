@@ -73,7 +73,7 @@ void Mesh::averageVertexTangents() {
 void Mesh::loadMesh(string fileName) {
 
 	ifstream inOBJ;
-    inOBJ.open(Window::ResourcePath(fileName));
+    //inOBJ.open(Window::ResourcePath(fileName));
     if(!inOBJ.good())
     {
         throw runtime_error("Could not load mesh: " + fileName + ".\n");

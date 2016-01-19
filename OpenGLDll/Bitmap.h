@@ -20,6 +20,8 @@
 
 #include <string>
 
+#define STBI_FAILURE_USERMSG
+
 /**
     A bitmap image (i.e. a grid of pixels).
      

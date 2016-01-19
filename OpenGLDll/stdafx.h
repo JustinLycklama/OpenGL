@@ -29,6 +29,9 @@
 #include <GL/glfw.h>
 #include <glm/glm.hpp>
 
+//uses stb_image to try load files
+#include <stb_image.c>
+
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/matrix_access.hpp>
 #include <glm/gtc/type_ptr.hpp>

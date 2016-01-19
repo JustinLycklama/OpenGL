@@ -2,7 +2,7 @@
 
 Texture::Texture(string file, GLint minMagFiler, GLint wrapMode)
 { 
-	bitmap = Bitmap::bitmapFromFile(Window::ResourcePath(file));
+	//bitmap = Bitmap::bitmapFromFile(Window::ResourcePath(file));
 	bitmap->flipVertically();
 
 	glGenTextures(1, &id);

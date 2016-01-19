@@ -98,7 +98,7 @@ void Program::linkProgram(vector<pair<string, GLenum>> fileList) {
 // returns the full path to the file `fileName` in the resources directory of the app bundle
 string Program::ResourcePath(std::string fileName) {
     char executablePath[1024] = {'\0'};
-    DWORD charsCopied = GetModuleFileName(NULL, executablePath, 1024);
+    DWORD charsCopied = GetModuleFileName(NULL, (LPWSTR) executablePath, 1024);
     if(charsCopied > 0 && charsCopied < 1024)
         return std::string(executablePath) + "\\..\\" + fileName;
     else
