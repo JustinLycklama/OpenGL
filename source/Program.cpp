@@ -177,7 +177,7 @@ string Program::ResourcePath(std::string fileName, std::string fileType) {
 	{
 		std::string str((char*)filePath);
 		
-		cout << "Found Path: " << str << endl;
+		//cout << "Found Path: " << str << endl;
 		
 		return str;
 	}

@@ -60,16 +60,16 @@ void Viewer::initialize() {
 	if(noTextures->getProgramId() == -1) throw runtime_error("Could not create/link program: NO_TEX");
 	programs.insert(std::pair<PROGRAM_TYPE, Program*>(NO_TEX, noTextures));
 
-//	// No textures and Bump Mapping
-//	shaderList.push_back(pair<string, GLenum> ("vertex_noTexture", GL_VERTEX_SHADER));
-//	shaderList.push_back(pair<string, GLenum> ("frag_noTexture", GL_FRAGMENT_SHADER));
-//
-//    Program* noTexturesBump = new Program(NO_TEX_BUMP);
-//	noTexturesBump->linkProgram(shaderList);
-//	shaderList.clear();
-//
-//	if(noTextures->getProgramId() == -1) throw runtime_error("Could not create/link program: NO_TEX_BUMP");
-//	programs.insert(std::pair<PROGRAM_TYPE, Program*>(NO_TEX_BUMP, noTexturesBump));
+	// No textures and Bump Mapping
+	shaderList.push_back(pair<string, GLenum> ("vertex_noTexture_bumpMapping", GL_VERTEX_SHADER));
+	shaderList.push_back(pair<string, GLenum> ("frag_noTexture_bumpMapping", GL_FRAGMENT_SHADER));
+
+    Program* noTexturesBump = new Program(NO_TEX_BUMP);
+	noTexturesBump->linkProgram(shaderList);
+	shaderList.clear();
+
+	if(noTextures->getProgramId() == -1) throw runtime_error("Could not create/link program: NO_TEX_BUMP");
+	programs.insert(std::pair<PROGRAM_TYPE, Program*>(NO_TEX_BUMP, noTexturesBump));
 
 	// Textures
 	shaderList.push_back(pair<string, GLenum> ("vertex_texture", GL_VERTEX_SHADER));

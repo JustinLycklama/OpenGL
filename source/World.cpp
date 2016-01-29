@@ -21,7 +21,7 @@ World::~World(void)
 void World::initAssets() {
 	// Load Textures
 	Texture* crate = new Texture("wooden-crate", "jpg", 9729, 33071);
-	//Texture* normalMap = new Texture("Normal_Map", "bmp", 9729, 33071);
+	Texture* normalMap = new Texture("Normal_Map", "bmp", 9729, 33071);
 	//Texture* bodyTex = new Texture("body2", "png", 9729, 33071);
 	//Texture* tireTex = new Texture("tire", "png", 9729, 33071);
 
@@ -32,13 +32,18 @@ void World::initAssets() {
 //	assets.insert(std::pair<ASSETS, Asset*>(BOX, interior));
 	
 	// Old
-	Asset* crateAsset = new Asset(Cube, crate, programs->at(TEX));
+//	Asset* crateAsset = new Asset(Cube, crate, programs->at(TEX));
+//	crateAsset->shininess = 80.0f;
+//	crateAsset->setSpecularColor(vec3(1.0f, 1.0f, 1.0f));
+//	assets.insert(std::pair<ASSETS, Asset*>(CRATE, crateAsset));
+
+	//Test
+	Asset* crateAsset = new Asset("cube", NULL, normalMap, programs->at(NO_TEX_BUMP));
 	crateAsset->shininess = 80.0f;
 	crateAsset->setSpecularColor(vec3(1.0f, 1.0f, 1.0f));
 	assets.insert(std::pair<ASSETS, Asset*>(CRATE, crateAsset));
 
-	//Test
-//	Asset* crateAsset = new Asset("cube", crate, NULL, programs->at(TEX));
+//	Asset* crateAsset = new Asset("cube", NULL, NULL, programs->at(NO_TEX));
 //	crateAsset->shininess = 80.0f;
 //	crateAsset->setSpecularColor(vec3(1.0f, 1.0f, 1.0f));
 //	assets.insert(std::pair<ASSETS, Asset*>(CRATE, crateAsset));

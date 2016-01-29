@@ -1,4 +1,5 @@
-
+#version 300 es
+precision mediump float;
 
 uniform mat4 model;
 uniform vec3 cameraPosition;
@@ -11,34 +12,37 @@ uniform vec3 materialSpecularColor;
 
 #define MAX_LIGHTS 10
 uniform int numLights;
-//uniform struct Light {
-//   vec3 position;
-//   vec3 intensities; //a.k.a the color of the light
-//   float attenuation;
-//   float ambientCoefficient;
-//   float coneAngle;
-//   vec3 coneDirection;
-//} allLights[MAX_LIGHTS];
+uniform struct Light {
+   vec3 position;
+   vec3 intensities; //a.k.a the color of the light
+   float attenuation;
+   float ambientCoefficient;
+   float coneAngle;
+   vec3 coneDirection;
+} allLights[MAX_LIGHTS];
 
 in mat3 TBN;
+
 in vec3 fragVert;
-in vec2 fragTexCoord;
+in vec2 texCoord;
+
+in vec3 fragNormal;
 
 out vec4 finalColor;
 
 void main(void) {
 	// Constants
 	//vec3 normal = normalize(transpose(inverse(mat3(model))) * fragNormal);
-	vec3 nMap = texture(normalMap, fragTexCoord).rgb;
+	vec3 nMap = texture(normalMap, texCoord).rgb;
 	vec3 normal;
 
-	normal.x = ((nMap.r * 2) - 1);
-	normal.y = ((nMap.g * 2) - 1);
-	normal.z = ((nMap.b * 2) - 1);
+	normal.x = ((nMap.r * 2.0) - 1.0);
+	normal.y = ((nMap.g * 2.0) - 1.0);
+	normal.z = ((nMap.b * 2.0) - 1.0);
 
-	//normal.x = ((nMap.r + 1) / 2);
-	//normal.y = ((nMap.g + 1) / 2);
-	//normal.z = ((nMap.b + 1) / 2);
+	//normal.x = ((nMap.r + 1.0) / 2.0);
+	//normal.y = ((nMap.g + 1.0) / 2.0);
+	//normal.z = ((nMap.b + 1.0) / 2.0);
 
 	//normal.x = nMap.r;
 	//normal.y = nMap.g;
@@ -48,22 +52,14 @@ void main(void) {
 	normal = TBN * normal;
 	normal = normalize(normal);
 
+    normal = normalize(transpose(inverse(mat3(model))) * normal);
+
 	// goes from object to model space?
 	//normal = normalize(vec3(model * vec4(normal, 1)));
 
 	vec3 surfacePos = vec3(model * vec4(fragVert, 1));
-	vec4 surfaceColor =  vec4( 0.8, 0.8, 0.8, 1); //texture(normalMap, fragTexCoord);
+	vec4 surfaceColor = vec4( 0.8, 0.8, 0.8, 1); //texture(normalMap, texCoord);
 	vec3 surfaceToCamera = normalize(cameraPosition - surfacePos);
-
-
-
-
-
-
-
-
-
-
 
 	vec3 linearColor = vec3(0, 0, 0);
 	
@@ -85,7 +81,7 @@ void main(void) {
     
 		//attenuation
 		float distanceToLight = length(allLights[i].position - surfacePos);
-		float attenuation = 1.0 / (1.0 + allLights[i].attenuation * pow(distanceToLight, 2));
+		float attenuation = 1.0 / (1.0 + allLights[i].attenuation * pow(distanceToLight, 2.0));
 
 		float lightToSurfaceAngle = degrees(acos(dot(-surfaceToLight, normalize(allLights[i].coneDirection))));
 		if(lightToSurfaceAngle > allLights[i].coneAngle){

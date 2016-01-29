@@ -1,4 +1,5 @@
-
+#version 300 es
+precision mediump float;
 
 uniform mat4 camera; // Contains projection and view transformations
 uniform mat4 model;
@@ -8,13 +9,15 @@ in vec3 vertNormal;
 in vec3 vertTangent;
 in vec2 vertTexCoord;
 
+out vec3 fragNormal;
 out vec3 fragVert;
-out vec2 fragTexCoord;
+out vec2 texCoord;
 out mat3 TBN;
 
 void main(void) {
 	fragVert = vert;
-	fragTexCoord = vertTexCoord;
+	texCoord = vertTexCoord;
+	fragNormal = vertNormal;
 
 	// Create TBN matrix - Tangent space to object space
 	vec3 tangent = normalize(vertTangent - dot(vertTangent, vertNormal) * vertNormal);

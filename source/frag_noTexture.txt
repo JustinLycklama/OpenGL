@@ -1,35 +1,56 @@
 #version 300 es
 precision mediump float;
 
+#define MAX_LIGHTS 10
+
+/* Uniforms */
+
+// The model transformations
 uniform mat4 model;
+
+// The camera position, in World Space
 uniform vec3 cameraPosition;
 
-// material settings
-uniform float materialShininess;
-uniform vec3 materialSpecularColor;
+// Material settings
+uniform float materialShininess;	// The higher, the more reflective, the brighter the specular highlights
+uniform vec3 materialSpecularColor;	// Color of specular highlights
 
-#define MAX_LIGHTS 10
 uniform int numLights;
-uniform struct Light {
-vec3 position;
-vec3 intensities; //a.k.a the color of the light
-float attenuation;
-float ambientCoefficient;
-float coneAngle;
-vec3 coneDirection;
+uniform struct Light
+{
+	vec3 position;				// Light position.
+	vec3 intensities;			// Light color.
+	float attenuation;
+	float ambientCoefficient;
+	float coneAngle;
+	vec3 coneDirection;
 } allLights[MAX_LIGHTS];
 
+/* IN Values */
 
+// The normal in Object Space (directly in referece to the object's model)
 in vec3 fragNormal;
+
+// The vertex for this fragment in Object Space
 in vec3 fragVert;
 
+/* OUT Values */
+
+// The final color for this pixel / framgent
 out vec4 finalColor;
 
-void main(void) {
-	// Constants
-	vec3 normal = normalize(transpose(inverse(mat3(model))) * fragNormal);
+void main(void)
+{
+	//
+	//vec3 normal = normalize(transpose(inverse(mat3(model))) * fragNormal);
+   vec3 normal = normalize(mat3(model) * fragNormal);
+
+
+	// Rotate our vertex with our model's transformations
 	vec3 surfacePos = vec3(model * vec4(fragVert, 1));
+
 	vec4 surfaceColor = vec4(0.8, 0.8, 0.8, 1);
+
 	vec3 surfaceToCamera = normalize(cameraPosition - surfacePos);
 
 	vec3 linearColor = vec3(0, 0, 0);
@@ -46,13 +67,12 @@ void main(void) {
 
 		//specular
 		float specularCoefficient = 0.0;
-		if(diffuseCoefficient > 0.0){
-//float test = dot(surfaceToCamera, reflect(-surfaceToLight, normal));
-//float test2 = max(0.0, test);
-//specularCoefficient = pow(test2, materialShininess);
 
+		if(diffuseCoefficient > 0.0)
+		{
 			specularCoefficient = pow(max(0.0, dot(surfaceToCamera, reflect(-surfaceToLight, normal))), materialShininess);
 		}
+
 		vec3 specular = specularCoefficient * materialSpecularColor * allLights[i].intensities;
 
 		//attenuation
