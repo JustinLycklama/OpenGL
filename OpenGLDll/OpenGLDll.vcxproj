@@ -94,8 +94,11 @@
     <ClInclude Include="Bitmap.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Instance.h" />
+    <ClInclude Include="InterfaceMath.h" />
+    <ClInclude Include="InterfaceMathDefinitions.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="Mesh.h" />
+    <ClInclude Include="OpenGLDll.h" />
     <ClInclude Include="Program.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -115,6 +118,7 @@
       </PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Instance.cpp" />
+    <ClCompile Include="InterfaceMath.cpp" />
     <ClCompile Include="Light.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="OpenGLDll.cpp" />

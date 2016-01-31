@@ -34,8 +34,8 @@
     <Filter Include="Resource Files\Core Assets">
       <UniqueIdentifier>{42011e1e-e0ec-4053-955f-a8d900b7c5d3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Temporary">
-      <UniqueIdentifier>{175ea6a0-5de7-47cd-a0b4-154ff20a66d9}</UniqueIdentifier>
+    <Filter Include="Source Files\Math">
+      <UniqueIdentifier>{d5d90763-74f9-4557-96bd-adc7da406f53}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -102,12 +102,18 @@
     <ClInclude Include="Viewer.h">
       <Filter>Source Files\Viewer</Filter>
     </ClInclude>
+    <ClInclude Include="InterfaceMath.h">
+      <Filter>Source Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="InterfaceMathDefinitions.h">
+      <Filter>Source Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLDll.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="OpenGLDll.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="dllmain.cpp">
@@ -139,6 +145,12 @@
     </ClCompile>
     <ClCompile Include="Viewer.cpp">
       <Filter>Source Files\Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="InterfaceMath.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLDll.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

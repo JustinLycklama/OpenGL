@@ -3,6 +3,12 @@
 
 #include "Bitmap.h"
 
+#ifdef OPENGLDLL_EXPORTS   
+#define EXPORT __declspec(dllexport) 
+#else   
+#define EXPORT __declspec(dllimport) 
+#endif
+
 using namespace std;
 
 enum Format {

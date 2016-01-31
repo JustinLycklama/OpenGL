@@ -1,5 +1,11 @@
 #pragma once
 
+#ifdef OPENGLDLL_EXPORTS   
+#define EXPORT __declspec(dllexport) 
+#else   
+#define EXPORT __declspec(dllimport) 
+#endif
+
 using namespace glm;
 
 enum Shape {

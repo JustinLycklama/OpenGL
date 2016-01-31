@@ -8,6 +8,12 @@
 #include "Instance.h"
 #include "Program.h"
 
+#ifdef OPENGLDLL_EXPORTS   
+#define EXPORT __declspec(dllexport) 
+#else   
+#define EXPORT __declspec(dllimport) 
+#endif
+
 using namespace glm;
 
 class Light : public Instance

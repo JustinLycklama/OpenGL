@@ -5,7 +5,15 @@
 #include <GL/glfw.h>
 #include <glm/glm.hpp>
 
+#include <map>
+
 #include "Camera.h"
+
+#ifdef OPENGLDLL_EXPORTS   
+#define EXPORT __declspec(dllexport) 
+#else   
+#define EXPORT __declspec(dllimport) 
+#endif
 
 using namespace std;
 

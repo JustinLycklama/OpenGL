@@ -37,6 +37,10 @@
 #include <glm/gtc/type_ptr.hpp>
 
 // Local includes
+#include "InterfaceMathDefinitions.h"
+#include "InterfaceMath.h"
+#include "OpenGLDll.h"
+
 #include "Program.h"
 #include "Mesh.h"
 #include "Texture.h"
