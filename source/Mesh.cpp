@@ -8,6 +8,8 @@
 #include "math.h"
 #include "Program.h"
 
+#include "glm/glm.hpp"
+
 /* NOTE: When exporting, only select: INCLUDE NORMALS, INCLUDE UV, TRIANGULATE FACES */
 
 Mesh::Mesh(string fileName)
@@ -134,28 +136,107 @@ void Mesh::loadMesh(string fileName, string type) {
 			vertexData* a = buildVertexData(params.at(1));
 			vertexData* b = buildVertexData(params.at(2));
 			vertexData* c = buildVertexData(params.at(3));
-
+			
 			if(vertices.size() <= a->n || vertices.size() <= b->n) {
 				 throw runtime_error("Faces loaded before verticies.\n");
 			}
 
 			Vertex* av = vertices.at(a->v);
 			Vertex* bv = vertices.at(b->v);
+			Vertex* cv = vertices.at(c->v);
 			Tex* at = textures.at(a->t);
 			Tex* bt = textures.at(b->t);
+			Tex* ct	= textures.at(c->t);
+			
 			Normal* tangent = new Normal();
 
 			// Old Tangent Method
 
-			tangent->x = av->x - bv->x;
-			tangent->y = av->y - bv->y;
-			tangent->z = av->z - bv->z;
+			/*vertexData* smallestTextureDataPoint = a;
+			vertexData* largestTextureDataPoint = a;
+			
+			// B
+			
+			if(bt->u + bt->v < textures.at(smallestTextureDataPoint->t)->u + textures.at(smallestTextureDataPoint->t)->v)
+			{
+				smallestTextureDataPoint = b;
+			}
+			else if (bt->u + bt->v > textures.at(largestTextureDataPoint->t)->u + textures.at(largestTextureDataPoint->t)->v)
+			{
+				largestTextureDataPoint = b;
+			}
+
+			// C
+			
+			if(ct->u + ct->v < textures.at(smallestTextureDataPoint->t)->u + textures.at(smallestTextureDataPoint->t)->v)
+			{
+				smallestTextureDataPoint = c;
+			}
+			else if (ct->u + ct->v > textures.at(largestTextureDataPoint->t)->u + textures.at(largestTextureDataPoint->t)->v)
+			{
+				largestTextureDataPoint = c;
+			}
+
+			tangent->x = vertices.at(largestTextureDataPoint->v)->x - vertices.at(smallestTextureDataPoint->v)->x;
+			tangent->y = vertices.at(largestTextureDataPoint->v)->y - vertices.at(smallestTextureDataPoint->v)->y;
+			tangent->z = vertices.at(largestTextureDataPoint->v)->z - vertices.at(smallestTextureDataPoint->v)->z;*/
 
 			// New Tangent Method
-			/*float coef = 1/ (at->u * bt->v - bt->u * at->v);
-			tangent->x = coef * ((av->x * bt->v)  + (bv->x * -at->v));
-			tangent->y = coef * ((av->y * bt->v)  + (bv->y * -at->v));
-			tangent->z = coef * ((av->z * bt->v)  + (bv->z * -at->v));*/
+			// http://www.terathon.com/code/tangent.html
+			/*
+			 Q − P0 = (u − u0)T + (v − v0)B,
+			 
+			 Q − P0 = (u − u0)T + (v − v0)B,
+			 where T and B are tangent vectors aligned to the texture map, P0 is the position of one of the vertices of the triangle, and (u0, v0) are the texture coordinates at that vertex. The letter B stands for bitangent, but in many places it is stilled called binormal because of a mix-up in terms when tangent-space bump mapping first became widespread. (See “Bitangent versus Binormal” below.)
+			 
+			 Suppose that we have a triangle whose vertex positions are given by the points P0, P1, and P2, and whose corresponding texture coordinates are given by (u0, v0), (u1, v1), and (u2, v2). Our calculations can be made much simpler by working relative to the vertex P0, so we let
+			 
+			 Q1 = P1 − P0
+			 Q2 = P2 − P0
+			 and
+			 
+			 (s1, t1) = (u1 − u0, v1 − v0)
+			 (s2, t2) = (u2 − u0, v2 − v0).
+			 We need to solve the following equations for T and B.
+			 
+			 Q1 = s1T + t1B
+			 Q2 = s2T + t2B
+			
+			 */
+			
+			Vertex* Q1 = new Vertex;
+			
+			Q1->x = bv->x - av->x;
+			Q1->y = bv->y - av->y;
+			Q1->z = bv->z - av->z;
+			
+			Vertex* Q2 = new Vertex;
+			
+			Q2->x = cv->x - av->x;
+			Q2->y = cv->y - av->y;
+			Q2->z = cv->z - av->z;
+			
+			float s1 = bt->u - at->u;
+			float t1 = bt->v - at->v;
+			
+			float s2 = ct->u - at->u;
+			float t2 = ct->v - at->v;
+			
+			float coef = 1.0 / (s1 * t2 - s2 * t1);
+			
+			glm::mat2 ts = glm::mat2(glm::vec2(t2, -s2), glm::vec2(-t1, s1));
+			
+			glm::mat3x2 QMat = glm::mat3x2(glm::vec2(Q1->x, Q2->x), glm::vec2(Q1->y, Q2->y), glm::vec2(Q1->z, Q2->z));
+			
+			glm::mat3x2 TB = coef * ts * QMat;
+
+			tangent->x = TB[0][0];
+			tangent->y = TB[1][0];
+			tangent->z = TB[2][0];
+			
+//			tangent->x = coef * ((av->x * bt->v)  + (bv->x * -at->v));
+//			tangent->y = coef * ((av->y * bt->v)  + (bv->y * -at->v));
+//			tangent->z = coef * ((av->z * bt->v)  + (bv->z * -at->v));
 
 			a->tangent = tangents.size();
 			b->tangent = tangents.size();
