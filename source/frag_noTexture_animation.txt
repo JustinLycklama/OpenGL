@@ -1,0 +1,98 @@
+#version 300 es
+precision mediump float;
+
+#define MAX_LIGHTS 10
+#define MAX_BONES 100
+
+/* Uniforms */
+
+// The model transformations
+uniform mat4 model;
+
+uniform mat4 boneTransform[MAX_BONES];
+
+// The camera position, in World Space
+uniform vec3 cameraPosition;
+
+// Material settings
+uniform float materialShininess;	// The higher, the more reflective, the brighter the specular highlights
+uniform vec3 materialSpecularColor;	// Color of specular highlights
+
+uniform int numLights;
+uniform struct Light
+{
+	vec3 position;				// Light position.
+	vec3 intensities;			// Light color.
+	float attenuation;
+	float ambientCoefficient;
+	float coneAngle;
+	vec3 coneDirection;
+} allLights[MAX_LIGHTS];
+
+/* IN Values */
+
+// The normal in Object Space (directly in referece to the object's model)
+in vec3 fragNormal;
+
+// The vertex for this fragment in Object Space
+in vec3 fragVert;
+
+/* OUT Values */
+
+// The final color for this pixel / framgent
+out vec4 finalColor;
+
+void main(void)
+{
+	//
+	//vec3 normal = normalize(transpose(inverse(mat3(model))) * fragNormal);
+   vec3 normal = normalize(mat3(model) * fragNormal);
+
+
+	// Rotate our vertex with our model's transformations
+	vec3 surfacePos = vec3(model * vec4(fragVert, 1));
+
+	vec4 surfaceColor = vec4(0.8, 0.8, 0.8, 1);
+
+	vec3 surfaceToCamera = normalize(cameraPosition - surfacePos);
+
+	vec3 linearColor = vec3(0, 0, 0);
+
+	for(int i = 0; i < numLights; i++) {
+		vec3 surfaceToLight = normalize(allLights[i].position - surfacePos);
+
+		//ambient
+		vec3 ambient = allLights[i].ambientCoefficient * surfaceColor.rgb * allLights[i].intensities;
+
+		//diffuse
+		float diffuseCoefficient = max(0.0, dot(normal, surfaceToLight));
+		vec3 diffuse = diffuseCoefficient * surfaceColor.rgb * allLights[i].intensities;
+
+		//specular
+		float specularCoefficient = 0.0;
+
+		if(diffuseCoefficient > 0.0)
+		{
+			specularCoefficient = pow(max(0.0, dot(surfaceToCamera, reflect(-surfaceToLight, normal))), materialShininess);
+		}
+
+		vec3 specular = specularCoefficient * materialSpecularColor * allLights[i].intensities;
+
+		//attenuation
+		float distanceToLight = length(allLights[i].position - surfacePos);
+		float attenuation = 1.0 / (1.0 + allLights[i].attenuation * pow(distanceToLight, 2.0)); /// HERE!! 2.0!! NOT 2!
+
+		float lightToSurfaceAngle = degrees(acos(dot(-surfaceToLight, normalize(allLights[i].coneDirection))));
+		if(lightToSurfaceAngle > allLights[i].coneAngle){
+			attenuation = 0.0f;
+		}
+
+		//linear color (color before gamma correction)
+		linearColor += ambient + attenuation*(diffuse + specular);
+	}
+
+
+    //final color (after gamma correction)
+    vec3 gamma = vec3(1.0/2.2);
+    finalColor = vec4(pow(linearColor, gamma), surfaceColor.a);
+}

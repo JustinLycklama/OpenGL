@@ -8,7 +8,7 @@
 using namespace std;
 
 enum PROGRAM_TYPE {
-	NO_TEX, TEX, NO_TEX_BUMP, TEX_BUMP
+	NO_TEX, TEX, NO_TEX_BUMP, TEX_BUMP, ANIMATION
 };
 
 class Program

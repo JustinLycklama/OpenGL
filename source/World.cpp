@@ -38,11 +38,16 @@ void World::initAssets() {
 //	assets.insert(std::pair<ASSETS, Asset*>(CRATE, crateAsset));
 
 	//Test
-	Asset* crateAsset = new Asset("cube", NULL, normalMap, programs->at(NO_TEX_BUMP));
+//	Asset* crateAsset = new Asset("cube", NULL, normalMap, programs->at(NO_TEX_BUMP));
+//	crateAsset->shininess = 80.0f;
+//	crateAsset->setSpecularColor(vec3(1.0f, 1.0f, 1.0f));
+//	assets.insert(std::pair<ASSETS, Asset*>(CRATE, crateAsset));
+
+	Asset* crateAsset = new Asset("Fox", programs->at(ANIMATION));
 	crateAsset->shininess = 80.0f;
 	crateAsset->setSpecularColor(vec3(1.0f, 1.0f, 1.0f));
 	assets.insert(std::pair<ASSETS, Asset*>(CRATE, crateAsset));
-
+	
 //	Asset* crateAsset = new Asset("cube", NULL, NULL, programs->at(NO_TEX));
 //	crateAsset->shininess = 80.0f;
 //	crateAsset->setSpecularColor(vec3(1.0f, 1.0f, 1.0f));
@@ -95,9 +100,11 @@ void World::initLights() {
 	
 void World::initInstances() {
 	Instance* one = new Instance(assets.at(CRATE));
-	one->translate(vec3(-1, -2, -4));
-	one->rotate(vec3(1, 1, 1), 45.0f);
-	//one->scale(vec3(5,5,5));
+	one->translate(vec3(0, -10, -25));
+	one->rotate(vec3(1, 0, 0), 90.0f);
+	one->rotate(vec3(0, 1, 0), 180.0f);
+	one->rotate(vec3(0, 0, 1), 90.0f);
+	one->scale(vec3(0.1,0.1,0.1));
 	
 	
 	one->shouldRotate = true;

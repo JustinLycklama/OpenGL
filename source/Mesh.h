@@ -1,9 +1,13 @@
 #pragma once
 
 #include <OpenGLES/gltypes.h>
-//#include <GL/glew.h>
+
 #include <vector>
 #include <map>
+
+#include "assimp/Importer.hpp"      // C++ importer interface
+#include "assimp/scene.h"           // Output data structure
+#include "assimp/postprocess.h"     // Post processing fla
 
 using namespace std;
 
@@ -39,6 +43,7 @@ class Mesh
 
   public:
 	Mesh(string fileName);
+	Mesh(aiMesh* mesh);
 	~Mesh(void);
 
 	GLfloat* getVertexData();

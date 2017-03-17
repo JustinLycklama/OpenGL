@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D040D081E74CCC8008BC88A /* Fox_Walk.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 7D040D071E74CCC8008BC88A /* Fox_Walk.fbx */; };
+		7D040D101E77781F008BC88A /* Fox.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 7D040D0F1E77781F008BC88A /* Fox.fbx */; };
+		7D040D151E7780E1008BC88A /* frag_noTexture_animation.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7D040D131E7780E1008BC88A /* frag_noTexture_animation.txt */; };
+		7D040D161E7780E1008BC88A /* vertex_noTexture_animation.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7D040D141E7780E1008BC88A /* vertex_noTexture_animation.txt */; };
 		7D151CC01BB0A1AA00E71A7C /* Asset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D151CA31BB0A1AA00E71A7C /* Asset.cpp */; settings = {COMPILER_FLAGS = "-x objective-c++"; }; };
 		7D151CC11BB0A1AA00E71A7C /* Asset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D151CA31BB0A1AA00E71A7C /* Asset.cpp */; };
 		7D151CC21BB0A1AA00E71A7C /* Asset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D151CA31BB0A1AA00E71A7C /* Asset.cpp */; };
@@ -71,6 +75,7 @@
 		7D1C9ED21C474BB600587CB3 /* micro_subaru_body.obj in Resources */ = {isa = PBXBuildFile; fileRef = 7D1C9ED11C474BB600587CB3 /* micro_subaru_body.obj */; };
 		7D5AD3191E7066560083E7F5 /* include in Resources */ = {isa = PBXBuildFile; fileRef = 7D5AD3181E7066560083E7F5 /* include */; };
 		7D5AD31B1E7066EF0083E7F5 /* libassimp-fat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D5AD31A1E7066EF0083E7F5 /* libassimp-fat.a */; };
+		7D5AD31D1E7091680083E7F5 /* Skeleton.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 7D5AD31C1E7091680083E7F5 /* Skeleton.fbx */; };
 		7DCCA5E31BB34E7F007894DF /* glm-0.9.7.1 in Resources */ = {isa = PBXBuildFile; fileRef = 7DCCA5E21BB34E7F007894DF /* glm-0.9.7.1 */; };
 		7DCCA5E41BB34E7F007894DF /* glm-0.9.7.1 in Resources */ = {isa = PBXBuildFile; fileRef = 7DCCA5E21BB34E7F007894DF /* glm-0.9.7.1 */; };
 		7DCCA5E51BB34E7F007894DF /* glm-0.9.7.1 in Resources */ = {isa = PBXBuildFile; fileRef = 7DCCA5E21BB34E7F007894DF /* glm-0.9.7.1 */; };
@@ -109,6 +114,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7D040D071E74CCC8008BC88A /* Fox_Walk.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fox_Walk.fbx; sourceTree = "<group>"; };
+		7D040D0F1E77781F008BC88A /* Fox.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fox.fbx; sourceTree = "<group>"; };
+		7D040D131E7780E1008BC88A /* frag_noTexture_animation.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = frag_noTexture_animation.txt; path = source/frag_noTexture_animation.txt; sourceTree = "<group>"; };
+		7D040D141E7780E1008BC88A /* vertex_noTexture_animation.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vertex_noTexture_animation.txt; path = source/vertex_noTexture_animation.txt; sourceTree = "<group>"; };
 		7D151CA31BB0A1AA00E71A7C /* Asset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Asset.cpp; path = source/Asset.cpp; sourceTree = "<group>"; };
 		7D151CA41BB0A1AA00E71A7C /* Asset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Asset.h; path = source/Asset.h; sourceTree = "<group>"; };
 		7D151CA51BB0A1AA00E71A7C /* Bitmap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Bitmap.cpp; path = source/Bitmap.cpp; sourceTree = "<group>"; };
@@ -150,6 +159,7 @@
 		7D1C9ED11C474BB600587CB3 /* micro_subaru_body.obj */ = {isa = PBXFileReference; lastKnownFileType = text; name = micro_subaru_body.obj; path = Image_Resources/micro_subaru_body.obj; sourceTree = "<group>"; };
 		7D5AD3181E7066560083E7F5 /* include */ = {isa = PBXFileReference; lastKnownFileType = folder; name = include; path = "../../../Downloads/assimp-master/include"; sourceTree = "<group>"; };
 		7D5AD31A1E7066EF0083E7F5 /* libassimp-fat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libassimp-fat.a"; path = "thirdparty/assimp/libassimp-fat.a"; sourceTree = "<group>"; };
+		7D5AD31C1E7091680083E7F5 /* Skeleton.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Skeleton.fbx; sourceTree = "<group>"; };
 		7DCCA5E21BB34E7F007894DF /* glm-0.9.7.1 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "glm-0.9.7.1"; path = "thirdparty/glm-0.9.7.1"; sourceTree = "<group>"; };
 		7DD7426C1BD5BBDF0039E054 /* frag_test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = frag_test.txt; path = source/frag_test.txt; sourceTree = "<group>"; };
 		7DD7426D1BD5BBDF0039E054 /* vertex_test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vertex_test.txt; path = source/vertex_test.txt; sourceTree = "<group>"; };
@@ -203,6 +213,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7D040D121E778070008BC88A /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				7D040D141E7780E1008BC88A /* vertex_noTexture_animation.txt */,
+				7D040D131E7780E1008BC88A /* frag_noTexture_animation.txt */,
+			);
+			name = Animation;
+			sourceTree = "<group>";
+		};
 		7D151CA11BB0A17700E71A7C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,6 +266,7 @@
 		7D151CF61BB0A1BB00E71A7C /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
+				7D040D121E778070008BC88A /* Animation */,
 				7DD7426B1BD5BB750039E054 /* Test */,
 				7DD7426A1BD5B3EF0039E054 /* Textures */,
 				7DD742691BD5B3DC0039E054 /* Bump Mapping */,
@@ -381,6 +401,9 @@
 		7DF195621BC9E33000DB7A2E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7D040D0F1E77781F008BC88A /* Fox.fbx */,
+				7D040D071E74CCC8008BC88A /* Fox_Walk.fbx */,
+				7D5AD31C1E7091680083E7F5 /* Skeleton.fbx */,
 				7DF4257B1C4EE22700A67618 /* WheelCenter.obj */,
 				7D1C9ED11C474BB600587CB3 /* micro_subaru_body.obj */,
 				7D1C9ECF1C47488400587CB3 /* cube.obj */,
@@ -504,16 +527,21 @@
 				7DF1956F1BC9F64400DB7A2E /* RWTBaseFragment.txt in Resources */,
 				7D151CE71BB0A1AA00E71A7C /* vertex_noTexture.txt in Resources */,
 				7D151CEA1BB0A1AA00E71A7C /* vertex_texture.txt in Resources */,
+				7D040D081E74CCC8008BC88A /* Fox_Walk.fbx in Resources */,
+				7D040D101E77781F008BC88A /* Fox.fbx in Resources */,
 				7DF195681BC9E5FF00DB7A2E /* body.png in Resources */,
 				7D151D0F1BB0A43500E71A7C /* stb_image in Resources */,
 				7DF1956A1BC9E5FF00DB7A2E /* tire.png in Resources */,
 				7DF4257C1C4EE22700A67618 /* WheelCenter.obj in Resources */,
 				7D1C9ED01C47488400587CB3 /* cube.obj in Resources */,
+				7D5AD31D1E7091680083E7F5 /* Skeleton.fbx in Resources */,
 				7D1C9ED21C474BB600587CB3 /* micro_subaru_body.obj in Resources */,
 				7DF1956C1BC9E67C00DB7A2E /* body2.png in Resources */,
 				7DD7426E1BD5BBDF0039E054 /* frag_test.txt in Resources */,
+				7D040D161E7780E1008BC88A /* vertex_noTexture_animation.txt in Resources */,
 				7DCCA5E31BB34E7F007894DF /* glm-0.9.7.1 in Resources */,
 				7DF195701BC9F64400DB7A2E /* RWTBaseVertex.txt in Resources */,
+				7D040D151E7780E1008BC88A /* frag_noTexture_animation.txt in Resources */,
 				7D5AD3191E7066560083E7F5 /* include in Resources */,
 				7D151CCC1BB0A1AA00E71A7C /* frag_noTexture.txt in Resources */,
 				7D1C9ECE1C4740E100587CB3 /* wooden-crate.jpg in Resources */,

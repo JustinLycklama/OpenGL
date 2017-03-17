@@ -1,0 +1,22 @@
+#version 300 es
+precision mediump float;
+
+uniform mat4 camera; // Contains projection and view transformations
+uniform mat4 model;
+
+in vec3 vert;
+in vec3 vertNormal;
+in int vertBone;
+
+out vec3 fragVert;
+out vec3 fragNormal;
+out int fragBone;
+
+void main(void) {
+    // Pass the texture coord straight through to the fragment shader
+	fragVert = vert;
+    fragNormal = vertNormal;
+	fragBone = vertBone;
+
+    gl_Position =  camera * model * vec4(vert, 1);
+}
