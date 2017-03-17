@@ -21,6 +21,7 @@ class Asset
   public:
 	Asset(Shape shape, Texture* tex, Program* prog);
 	Asset(string mesh, Texture* tex, Texture* bmp, Program* prog);
+    Asset(string assetPath);
 	~Asset(void);
 
 	void render();
@@ -38,6 +39,7 @@ class Asset
 	void loadMesh(string mesh);
 	
 	GLfloat* loadDataFile(string fileName);
+	void loadFBXFile(const char* filePath);
 
 	Mesh* mesh;
 
