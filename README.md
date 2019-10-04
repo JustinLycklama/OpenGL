@@ -11,17 +11,16 @@ Fiddling around with basic graphic techniques in OpenGL. Includes lighting effec
 
 ---
 
-[![Escape From Io](https://github.com/JustinLycklama/OpenGL/blob/master/docs/SpecularThumb.png?raw=true)](https://www.youtube.com/watch?v=A589Oj3lFeM "Specular Highlights")
+<div align="center">
+  <a href="https://www.youtube.com/watch?v=A589Oj3lFeM"><img src="https://github.com/JustinLycklama/OpenGL/blob/master/docs/SpecularThumb.png?raw=true" alt="Specular Highlights"></a>
+</div>
 
 <p align=center>Adding Specular Highlights</p>
 
 ---
 
-[![Escape From Io](https://github.com/JustinLycklama/OpenGL/blob/master/docs/BumpMapThumb.png?raw=true)](https://www.youtube.com/watch?v=E1fejdFiEiE "Bump Mapping")
+<div align="center">
+  <a href="https://www.youtube.com/watch?v=E1fejdFiEiE"><img src="https://github.com/JustinLycklama/OpenGL/blob/master/docs/BumpMapThumb.png?raw=true" alt="Bump Mapping"></a>
+</div>
 
 <p align=center>Bump Mapping, with inverted normals on each half face of the cube</p>
-
-img[src*='#center'] { 
-    display: block;
-    margin: auto;
-}
